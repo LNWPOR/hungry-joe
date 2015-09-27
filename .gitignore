@@ -6,6 +6,8 @@ platforms/
 plugins/
 hooks/
 scss/
+resources/
+server/
 .bowerrc
 .editorconfig
 bower.json
