@@ -4,5 +4,6 @@ angular.module('Login',[])
 	
   	
   	vm.users = UsersServices.getUsers();
-
+  	vm.users = 'por';
+  	vm.a = 'gg';
 }]);
