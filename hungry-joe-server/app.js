@@ -12,7 +12,7 @@ mongoose.connect('mongodb://LNWPOR:lnwpor@ds051553.mongolab.com:51553/hungry-joe
 
 
 
-// app.use(bodyParser());
+app.use(bodyParser());
 // app.use(bodyParser.urlencoded());
 // app.use(bodyParser.json());
 
@@ -29,15 +29,15 @@ var Users = mongoose.model('Users', {
 });
 
 app.get('/api/users', function(req, res) {
-    // Users.find(function(err, Users) {
-    //     if (err)
-    //         res.send(err)
-    //     res.json(Users);
-    // });
+    Users.find(function(err, Users) {
+        if (err)
+            res.send(err)
+        res.json(Users);
+    });
     
-    // res.writeHead(200, {"Context-Type": "text/plain"});
-    // res.write("Here is some data");
-    // res.end();
+    res.writeHead(200, {"Context-Type": "text/plain"});
+    res.write("Here is some data");
+    res.end();
 });
 
 // app.set('port', (process.env.PORT || 5000));
@@ -47,3 +47,9 @@ app.get('/api/users', function(req, res) {
 
 app.listen(port, host);
 console.log('App started on port ' + port);
+
+// app.listen(appEnv.port, function() {
+
+//     // print a message when the server starts listening
+//   console.log("server starting on " + appEnv.url);
+// });
