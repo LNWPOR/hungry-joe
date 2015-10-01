@@ -1,16 +1,44 @@
-var express           = require('express');
-var app               = express();
-var bodyParser        = require('body-parser');
-var mongoose          = require('mongoose');
-
+// dependencies
+var express = require('express'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    expressSession = require('express-session'),
+    mongoose = require('mongoose'),
+    hash = require('bcrypt-nodejs'),
+    path = require('path'),
+    passport = require('passport'),
+    localStrategy = require('passport-local' ).Strategy;
 
 mongoose.connect('mongodb://LNWPOR:lnwpor@ds051553.mongolab.com:51553/hungry-joe');
 
+// user schema/model
+var Users = require('./models/users');
 
+// create instance of express
+var app = express();
 
+// define middleware
+app.use(logger('dev'));
+// parse application/json
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
-app.use(bodyParser());
+app.use(cookieParser());
+app.use(require('express-session')({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
+// configure passport
+passport.use(new localStrategy(Users.authenticate()));
+passport.serializeUser(Users.serializeUser());
+passport.deserializeUser(Users.deserializeUser());
 
 //Cross Origin Request Sharing
 app.use(function(req, res, next) {
@@ -20,21 +48,9 @@ app.use(function(req, res, next) {
     next();
 });
 
-var Users = mongoose.model('Users', {
-        Name : String
-});
+// require routes
+var routes = require('./routes/api');
+// routes
+app.use('/api', routes);
 
-app.get('/api/users', function(req, res) {
-    Users.find(function(err, Users) {
-        if (err)
-            res.send(err)
-        res.json(Users);
-    });
-});
-
-
-app.listen(process.env.PORT,process.env.IP, function() {
-  console.log('I\'m Listening...');
-  console.log(process.env.IP);
-  console.log(process.env.PORT);
-});
+module.exports = app;
