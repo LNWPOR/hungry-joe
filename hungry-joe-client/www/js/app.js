@@ -9,6 +9,7 @@ angular.module('HungryJoe',
   'Users',
   'MenuLists',
   'Comments',
+  'RestaurantLists',
   'ngResource'
 ])
 
