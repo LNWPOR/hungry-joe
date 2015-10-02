@@ -2,7 +2,7 @@ angular.module('Showmap',[])
 .controller('ShowmapController', ['$ionicLoading', function($ionicLoading){
 	var vm = this;
 
-	google.maps.event.addDomListener(window, 'click', function() {
+	google.maps.event.addDomListenerOnce(window, 'click', function() {
         var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
  
         var mapOptions = {
