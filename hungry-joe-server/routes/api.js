@@ -37,6 +37,14 @@ router.get('/users/logout', function(req, res) {
   res.status(200).json({status: 'Bye!'})
 });
 
+router.get('/users', function(req, res) {
+    Users.find(function(err, MenuLists ) {
+        if (err)
+            res.send(err)
+        res.json(MenuLists);
+    });
+});
+
 router.get('/comments', function(req, res) {
     Comments.find(function(err, Comments) {
         if (err)
@@ -52,6 +60,12 @@ router.get('/restaurantlists', function(req, res) {
         res.json(RestaurantLists);
     });
 });
+router.post('/restaurantlists', function(req, res) {
+  var restaurant = new RestaurantLists(req.body);
+  restaurant.save(function (err, result) {
+    res.json(result);
+  });
+});
 
 router.get('/menulists', function(req, res) {
     MenuLists.find(function(err, MenuLists ) {
@@ -61,10 +75,10 @@ router.get('/menulists', function(req, res) {
     });
 });
 
-// router.post('/newuser', function (req, res) {
-//     var json = req.body;
-//     res.send('Add new ' + json.name + ' Completed!');
-// });
+router.post('/newuser', function (req, res) {
+    var json = req.body;
+    res.send('Add new ' + json.name + ' Completed!');
+});
 
 
 
