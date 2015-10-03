@@ -8,5 +8,14 @@ angular.module('RestaurantLists',[]).factory('RestaurantListsServices', ['$resou
         return RestaurantLists.query();
     }
 
+    RestaurantListsServices.addRestaurant = function(name,lat,lng){
+    	var restaurant = new RestaurantLists();
+    	restaurant.name = name;
+    	restaurant.location = [lat,lng];
+    	restaurant.rating = 0;
+
+    	RestaurantLists.save(restaurant)
+    }
+
     return RestaurantListsServices;
 }]);

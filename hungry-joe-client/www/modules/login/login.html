@@ -1,5 +1,8 @@
 <ion-nav-view title="Login">
 	{{LoginCtrl.users}}
+	{{LoginCtrl.res}}
+	<button ng-click="LoginCtrl.pushRes()">PushRes</button>
+
 
 	<div ng-show = "!LoginCtrl.getUserStatus()">
 	  <h1>Login</h2>
@@ -23,8 +26,8 @@
 	</div>
 
 	
-	<button ng-show = "!LoginCtrl.registerForm" ng-click='LoginCtrl.showRegisterForm()'>Register</button>
-	<div ng-show = "LoginCtrl.registerForm">
+	<button ng-show = "!LoginCtrl.registerFormIsActive" ng-click='LoginCtrl.showRegisterForm()'>Register</button>
+	<div ng-show = "LoginCtrl.registerFormIsActive">
 	  <h1>Register</h2>
 	  <form ng-submit="LoginCtrl.register()">
 	    <div>
