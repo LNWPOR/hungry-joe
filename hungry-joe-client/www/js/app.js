@@ -12,7 +12,6 @@ angular.module('HungryJoe',
   'RestaurantLists',
   'ngResource'
 ])
-
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
 
@@ -21,6 +20,13 @@ angular.module('HungryJoe',
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
+    }
+  });
+})
+.run(function ($rootScope, $location, UsersServices) {
+  $rootScope.$on('$stateChangeStart', function (event, next, current) {
+    if (UsersServices.isLoggedIn() === false) {
+      $location.path('/login');
     }
   });
 });
