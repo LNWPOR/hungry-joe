@@ -1,7 +1,50 @@
 <ion-nav-view title="Login">
-	{{LoginCtrl.users}}
-	{{LoginCtrl.a}}
+
+	<div ng-show = "!LoginCtrl.getUserStatus()">
+	  <h1>Login</h2>
+	  <form ng-submit="LoginCtrl.login()">
+	    <div>
+	      <label>Username</label>
+	      <input type="text" name="username" ng-model="LoginCtrl.loginForm.username" required>
+	    </div>
+	    <div>
+	      <label>Password</label>
+	        <input type="password"  name="password" ng-model="LoginCtrl.loginForm.password" required>
+	      </div>
+	      <div>
+	        <button type="submit" ng-disabled="LoginCtrl.disabled">Login</button>
+	      </div>
+	  </form>
+	</div>
+
+	<div ng-show = "LoginCtrl.getUserStatus()">
+		<button ng-click='LoginCtrl.logout()'>Logout</button>
+	</div>
+
 	
+	<button ng-show = "!LoginCtrl.registerFormIsActive" ng-click='LoginCtrl.showRegisterForm()'>Register</button>
+	<div ng-show = "LoginCtrl.registerFormIsActive">
+	  <h1>Register</h2>
+	  <form ng-submit="LoginCtrl.register()">
+	    <div>
+	      <label>Username</label>
+	      <input type="text" name="username" ng-model="LoginCtrl.registerForm.username" required>
+	    </div>
+	    <div>
+	      <label>Password</label>
+	        <input type="password" name="password" ng-model="LoginCtrl.registerForm.password" required>
+	      </div>
+	      <div>
+	        <button type="submit" ng-disabled="LoginCtrl.disabled">Submit</button>
+	      </div>
+	  </form>
+	</div>
+
+	<!-- <button ng-click ="LoginCtrl.getUserStatus()">check status</button> -->
+
+
+
+	<h5>You need to login before doing anything haha</h5>
 	<ul>
 		<li><a href="#/home">home</a></li>
 		<li><a href="#/km">km</a></li>
