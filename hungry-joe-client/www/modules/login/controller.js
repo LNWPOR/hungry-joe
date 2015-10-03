@@ -1,10 +1,20 @@
 angular.module('Login',[])
 .controller('LoginController', ['UsersServices','$location', function(UsersServices,$location){
 	var vm = this;
-	
   	vm.users = UsersServices.getUsers();
-  
-  	console.log(UsersServices.getUserStatus());
+  	vm.currentUsername = UsersServices.getCurrentUsername();
+  	// console.log(UsersServices.getUserStatus());
+
+  	vm.registerForm = false;
+  	vm.showRegisterForm = function(){
+  		vm.registerForm = true;
+  	}
+
+
+  	vm.getUserStatus = function(){
+  		console.log(UsersServices.getUserStatus());
+  		return UsersServices.getUserStatus();
+  	}
 
   	vm.login = function () {
       // initial values
@@ -26,20 +36,17 @@ angular.module('Login',[])
           vm.disabled = false;
           vm.loginForm = {};
         });
-
     };	
   	
-
   	vm.logout = function () {
 
-      console.log(UsersServices.getUserStatus());
+      // console.log(UsersServices.getUserStatus());
 
       // call logout from service
       UsersServices.logout()
         .then(function () {
           $location.path('/login');
         });
-
     };
 
     vm.register = function () {
@@ -63,6 +70,5 @@ angular.module('Login',[])
           vm.disabled = false;
           vm.registerForm = {};
         });
-
     };
 }]);

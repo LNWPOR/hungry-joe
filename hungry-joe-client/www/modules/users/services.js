@@ -3,13 +3,17 @@ angular.module('Users',[]).factory('UsersServices', ['$resource','$q', '$timeout
 
     var base = "https://hungry-joe-lnwpor-1.c9.io:8080"
 	var Users = $resource(base+'/api/users');
-  
+  	var user = null;
+    var currentUsername = null;
+
     UsersServices.getUsers = function(){
         return Users.query();
     }
 
+    UsersServices.getCurrentUsername = function(){
+        return currentUsername;
+    }
 
-    var user = null;
 
     UsersServices.isLoggedIn = function() {
 	  if(user) {
@@ -33,6 +37,7 @@ angular.module('Users',[]).factory('UsersServices', ['$resource','$q', '$timeout
 		    .success(function (data, status) {
 		      if(status === 200 && data.status){
 		        user = true;
+		        currentUsername = username;
 		        deferred.resolve();
 		      } else {
 		        user = false;
@@ -58,6 +63,7 @@ angular.module('Users',[]).factory('UsersServices', ['$resource','$q', '$timeout
 	    // handle success
 	    .success(function (data) {
 	      user = false;
+	      currentUsername = null;
 	      deferred.resolve();
 	    })
 	    // handle error
@@ -68,7 +74,6 @@ angular.module('Users',[]).factory('UsersServices', ['$resource','$q', '$timeout
 
 	  // return promise object
 	  return deferred.promise;
-
 	}
 
 	UsersServices.register = function(username, password) {
@@ -92,7 +97,6 @@ angular.module('Users',[]).factory('UsersServices', ['$resource','$q', '$timeout
 
 	  // return promise object
 	  return deferred.promise;
-
 	}
 
     return UsersServices;
