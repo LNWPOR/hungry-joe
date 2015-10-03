@@ -1,8 +1,4 @@
 <ion-nav-view title="Login">
-	{{LoginCtrl.users}}
-	{{LoginCtrl.res}}
-	<button ng-click="LoginCtrl.pushRes()">PushRes</button>
-
 
 	<div ng-show = "!LoginCtrl.getUserStatus()">
 	  <h1>Login</h2>
@@ -21,7 +17,7 @@
 	  </form>
 	</div>
 
-	<div>
+	<div ng-show = "LoginCtrl.getUserStatus()">
 		<button ng-click='LoginCtrl.logout()'>Logout</button>
 	</div>
 
@@ -44,11 +40,11 @@
 	  </form>
 	</div>
 
-	<button ng-click ="LoginCtrl.getUserStatus()">check status</button>
+	<!-- <button ng-click ="LoginCtrl.getUserStatus()">check status</button> -->
 
 
 
-
+	<h5>You need to login before doing anything haha</h5>
 	<ul>
 		<li><a href="#/home">home</a></li>
 		<li><a href="#/km">km</a></li>
