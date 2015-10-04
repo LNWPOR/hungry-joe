@@ -7,11 +7,7 @@ angular.module('Showmap',[])
  
     var mapOptions = {
         center: myLatlng,
-<<<<<<< HEAD
-        zoom: 16,
-=======
         zoom: 14,
->>>>>>> a4d929f58043ae5c5f1fc11cc46fa9d39f9c03b4
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };    
 
