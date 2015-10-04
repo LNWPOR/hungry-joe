@@ -7,10 +7,6 @@ angular.module('Kmradius',[]).factory('KmradiusServices', ['$resource', function
    		// console.log(Rad);
    }
 
-   // KmradiusServices.tryclick = function(x){
-   // 		console.log(x);
-   // }
-
    KmradiusServices.getRad = function(){
      return Rad;
    }

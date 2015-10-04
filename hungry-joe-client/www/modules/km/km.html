@@ -1,24 +1,12 @@
 <ion-nav-view title="KM">
 
-	<div class="bar bar-header bar-balanced">
+	<link href="css/kmstyle.css" rel="stylesheet">
+
+	<div id="kmheader" class="bar bar-header bar-balanced">
   		<h1 class="title">K.M</h1>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
+
 	<div id="kmsearch" class="row">
   		<div class="col col-75">
 		
@@ -40,16 +28,16 @@
 
 		</div>
 		
-		<!-- <button ng-click="KmCtrl.clickeiei()"></button> -->
+		<button ng-click="KmCtrl.clickeiei()"></button>
 
   		</div>
   		<div class="col">
 
-			<a href="#/showmap"><button class="button icon ion-search"></button></a>
+			<a href="#/showmap" ng-click="KmCtrl.Set()"><button class="button icon ion-search"></button></a>
 
   		</div>
 	</div>
 
-	<!-- <tt> select val = {{KmCtrl.kmsearch}} </tt> -->
+	<!-- <tt> select val = {{KmCtrl.testval}} </tt> -->
 
 </ion-nav-view>
