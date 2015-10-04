@@ -6,6 +6,8 @@ angular.module('Km',[])
 	 vm.clickeiei = function(){
 	 	// console.log(vm.kmsearch);	
 	 	KmradiusServices.setRad(vm.kmsearch);
+	 	vm.eiei = KmradiusServices.getRad();
+	 	console.log(vm.eiei);
 	 }
 
 
