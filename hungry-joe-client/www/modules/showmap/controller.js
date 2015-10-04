@@ -7,7 +7,11 @@ angular.module('Showmap',[])
  
     var mapOptions = {
         center: myLatlng,
+<<<<<<< HEAD
         zoom: 16,
+=======
+        zoom: 14,
+>>>>>>> a4d929f58043ae5c5f1fc11cc46fa9d39f9c03b4
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };    
 
@@ -39,7 +43,7 @@ angular.module('Showmap',[])
                 location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
                 radius: '5000',
                 type: ['food'],
-                name: 'kfc'
+                keyword: 'kfc'
               };
 
             service.nearbySearch(request, callback);
@@ -66,8 +70,7 @@ angular.module('Showmap',[])
             position: place.geometry.location
           });
           google.maps.event.addListener(marker, 'click', function() {
-            var infoWindow = new google.maps.InfoWindow(); 
-            infowindow.setContent(place.name);
+            infowindow.setContent(place.name +"\n"+ place.id +"\n"+ place.vicinity);
             infowindow.open(map, this);
           });
         }
