@@ -10,7 +10,8 @@ angular.module('HungryJoe',
   'MenuLists',
   'Comments',
   'RestaurantLists',
-  'ngResource'
+  'ngResource',
+  'Kmradius'
 ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
