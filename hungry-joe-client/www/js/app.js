@@ -25,7 +25,7 @@ angular.module('HungryJoe',
 })
 .run(function ($rootScope, $location, UsersServices) {
   $rootScope.$on('$stateChangeStart', function (event, next, current) {
-    if (UsersServices.isLoggedIn() === false) {
+    if (UsersServices.isLoggedIn() === true) {
       $location.path('/login');
     }
   });
