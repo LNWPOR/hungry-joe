@@ -2,14 +2,15 @@ angular.module('Showmap',[])
 .controller('ShowmapController', ['$ionicLoading', function($ionicLoading){
 	var vm = this;
 
-	google.maps.event.addDomListener(window, 'click', function() {
-        var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
+    var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
  
-        var mapOptions = {
-            center: myLatlng,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+    var mapOptions = {
+        center: myLatlng,
+        zoom: 16,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+	google.maps.event.addDomListenerOnce(window, 'click', function() {
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
  
@@ -21,9 +22,19 @@ angular.module('Showmap',[])
                 title: "My Location"
             });
         });
- 
+
+        vm.go_Mypos = function(){
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
+            });
+        };
+
         vm.map = map;
     });
-  	
+
+
+
+
+
 
 }]);
