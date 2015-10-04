@@ -10,7 +10,6 @@ angular.module('HungryJoe',
   'MenuLists',
   'Comments',
   'RestaurantLists',
-  'ngResource'
   'ngResource',
   'Kmradius'
 ])

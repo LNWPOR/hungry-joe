@@ -1,5 +1,5 @@
 angular.module('Km',[])
-.controller('KmController', [function(){
+.controller('KmController', ['KmradiusServices',function(KmradiusServices){
 	var vm = this;
 	var INW;
 
