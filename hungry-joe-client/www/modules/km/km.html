@@ -1,5 +1,56 @@
-<ion-nav-view title="KM">
-	km
-	{{KmCtrl.test}}
-	<h1>GG</h1>
-</ion-nav-view>
+
+<div>
+
+	<div class="bar bar-header bar-balanced">
+  		<h1 class="title">K.M</h1>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="row">
+  		<div class="col col-75">
+		
+		
+		<div class="list">
+
+  			<label class="item item-input item-select">
+    				<div class="input-label">
+      				select k.m radius
+    				</div>
+    			<select name="mySelect" ng-model="KmCtrl.kmsearch">
+    				<!-- <option selected> </option> -->
+     				<option value="15">15</option>
+      				<option value="25">25</option>
+      				<option value="35">35</option>
+      				<option value="45">45</option>
+    			</select>
+  			</label>
+
+		</div>
+		
+		<!-- <button ng-click="KmCtrl.clickeiei()"></button> -->
+
+  		</div>
+  		<div class="col">
+
+			<a href="#/showmap"><button class="button icon ion-search"></button></a>
+
+  		</div>
+	</div>
+
+	<tt> select val = {{KmCtrl.kmsearch}} </tt>
+
+</div>
