@@ -17,7 +17,7 @@ angular.module('Login',[])
 	}
 
 	vm.getUserStatus = function(){
-		console.log(UsersServices.getUserStatus());
+		// console.log(UsersServices.getUserStatus());
 
 		return UsersServices.getUserStatus();
 	}
