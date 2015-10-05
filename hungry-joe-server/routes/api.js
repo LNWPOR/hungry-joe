@@ -38,10 +38,17 @@ router.get('/users/logout', function(req, res) {
 });
 
 router.get('/users', function(req, res) {
-    Users.find(function(err, MenuLists ) {
+    Users.find(function(err, Users ) {
         if (err)
             res.send(err)
-        res.json(MenuLists);
+        res.json(Users);
+    });
+});
+
+router.get('/users/:username', function(req, res) {
+    Users.findOne({ username: req.params.username }, function(err, Users) {
+      if (err) return console.error(err);
+        res.json(Users);
     });
 });
 
