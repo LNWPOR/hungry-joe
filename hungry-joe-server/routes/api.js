@@ -87,6 +87,17 @@ router.get('/restaurantlists/:gres_id', function(req, res) {
         res.json(RestaurantLists);
     });
 });
+router.put('/restaurantlists/:restaurant_id', function(req, res) {
+    RestaurantLists.findById(req.params.restaurant_id, function(err, restaurant) {
+		if (err)
+			res.send(err);
+		restaurant.rate = req.body.rate;
+		restaurant.save(function(err) {
+		    if (err)
+			    res.send(err);
+		});
+	});
+});
 
 router.get('/menulists', function(req, res) {
     MenuLists.find(function(err, MenuLists ) {
