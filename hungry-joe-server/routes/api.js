@@ -59,6 +59,13 @@ router.get('/comments', function(req, res) {
         res.json(Comments);
     });
 });
+router.get('/comments/:restaurant_id', function(req, res) {
+    Comments.find({restaurant_id:req.params.restaurant_id},function(err, Comments) {
+        if (err)
+            res.send(err)
+        res.json(Comments);
+    });
+});
 
 router.get('/restaurantlists', function(req, res) {
     RestaurantLists.find(function(err, RestaurantLists ) {
