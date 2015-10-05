@@ -91,7 +91,7 @@ router.put('/restaurantlists/:restaurant_id', function(req, res) {
     RestaurantLists.findById(req.params.restaurant_id, function(err, restaurant) {
 		if (err)
 			res.send(err);
-		restaurant.rate = req.body.rate;
+		restaurant.rating = req.body.rating;
 		restaurant.save(function(err) {
 		    if (err)
 			    res.send(err);
