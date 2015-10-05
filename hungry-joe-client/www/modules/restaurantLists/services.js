@@ -8,10 +8,10 @@ angular.module('RestaurantLists',[]).factory('RestaurantListsServices', ['$resou
         return RestaurantLists.query();
     }
 
-    RestaurantListsServices.addRestaurant = function(name,lat,lng){
+    RestaurantListsServices.addRestaurant = function(name,gres_id){
     	var restaurant = new RestaurantLists();
     	restaurant.name = name;
-    	restaurant.location = [lat,lng];
+    	restaurant.gres_id = gres_id;
     	restaurant.rating = 0;
 
     	RestaurantLists.save(restaurant)
