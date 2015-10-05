@@ -11,9 +11,11 @@
 
 .my_position{
 	position: absolute;
-	width: 2px;
-	height: 2px;
-	top: 100px;
-	right: 0px;
+	width: 35px;
+	height: 30px;
+	bottom: 130px;
+	right: 10px;
 	z-index: +1;
+	background-color: lightblue;
+	border-color: lightblue;
 }
