@@ -11,7 +11,7 @@ angular.module('Showmap',[])
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };    
 
-    // start google map
+    // init google map
 	google.maps.event.addDomListenerOnce(window, 'click', function() {
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
@@ -48,10 +48,8 @@ angular.module('Showmap',[])
 
         var service = new google.maps.places.PlacesService(map);
         var infowindow = new google.maps.InfoWindow(); 
-
-        // service.nearbySearch(request, callback);
         
-
+        // mark place that found
         function callback(results, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
@@ -66,8 +64,12 @@ angular.module('Showmap',[])
             map: map,
             position: place.geometry.location
           });
+          // click mark to pop up the detail window
+
+        var link_web = '<a href ="https://www.kfc.co.th/#!/home">KFC</a>';
+        var img_res = '<img src="../../img/KFC.png" alt="KFC" style="width:15;height:15px;"></img>';
           google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(place.name +"\n"+ place.id +"\n"+ place.vicinity);
+            infowindow.setContent(img_res+" "+place.name +"\n"+ place.id +"\n"+ place.vicinity +" "+ link_web );
             infowindow.open(map, this);
           });
         }
