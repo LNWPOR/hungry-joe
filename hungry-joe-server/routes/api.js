@@ -73,6 +73,13 @@ router.post('/restaurantlists', function(req, res) {
     res.json(result);
   });
 });
+router.get('/restaurantlists/:gres_id', function(req, res) {
+    RestaurantLists.find({ gres_id:req.params.gres_id},function(err, RestaurantLists ) {
+        if (err)
+            res.send(err)
+        res.json(RestaurantLists);
+    });
+});
 
 router.get('/menulists', function(req, res) {
     MenuLists.find(function(err, MenuLists ) {
