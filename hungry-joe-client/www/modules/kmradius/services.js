@@ -1,16 +1,12 @@
 angular.module('Kmradius',[]).factory('KmradiusServices', ['$resource', function ($resource) {
     var KmradiusServices = {};
     var Rad ;
-   KmradiusServices.setRad = function(x){
 
+   KmradiusServices.setRad = function(x){
    		Rad = x;
-   		// console.log(Rad);
    }
 
-   // KmradiusServices.tryclick = function(x){
-   // 		console.log(x);
-   // }
-
+   //get kmRad from here !!
    KmradiusServices.getRad = function(){
      return Rad;
    }

@@ -39,7 +39,6 @@ angular.module('Showmap',[])
                 location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
                 radius: '5000',
                 type: ['food'],
-                // name: 'kfc',
                 keyword: 'kfc'
               };
 
