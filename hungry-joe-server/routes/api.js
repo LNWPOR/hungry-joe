@@ -81,7 +81,7 @@ router.post('/restaurantlists', function(req, res) {
   });
 });
 router.get('/restaurantlists/:gres_id', function(req, res) {
-    RestaurantLists.find({ gres_id:req.params.gres_id},function(err, RestaurantLists ) {
+    RestaurantLists.findOne({ gres_id:req.params.gres_id},function(err, RestaurantLists ) {
         if (err)
             res.send(err)
         res.json(RestaurantLists);
