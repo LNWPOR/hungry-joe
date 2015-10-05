@@ -11,7 +11,7 @@ angular.module('Showmap',[])
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };    
 
-    // start google map
+    // init google map
 	google.maps.event.addDomListenerOnce(window, 'click', function() {
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
@@ -39,7 +39,6 @@ angular.module('Showmap',[])
                 location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
                 radius: '5000',
                 type: ['food'],
-                // name: 'kfc',
                 keyword: 'kfc'
               };
 
@@ -48,10 +47,8 @@ angular.module('Showmap',[])
 
         var service = new google.maps.places.PlacesService(map);
         var infowindow = new google.maps.InfoWindow(); 
-
-        // service.nearbySearch(request, callback);
         
-
+        // mark place that found
         function callback(results, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
@@ -66,8 +63,15 @@ angular.module('Showmap',[])
             map: map,
             position: place.geometry.location
           });
+          // click mark to pop up the detail window
+
+        var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"></img></div>'+
+        place.name + "<br>" +"<p>Address: "+place.vicinity+ "</p>" +
+        '<div><a href="https://www.kfc.co.th/#!/home">link web</a></div>'+
+        "<div>tel: <a href='tel://1150'>1150</a></div>";
+        
           google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(place.name +"\n"+ place.id +"\n"+ place.vicinity);
+            infowindow.setContent(pop_up);
             infowindow.open(map, this);
           });
         }

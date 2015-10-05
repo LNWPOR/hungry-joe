@@ -1,15 +1,16 @@
 angular.module('Km',[])
 .controller('KmController', ['KmradiusServices',function(KmradiusServices){
 	var vm = this;
-	var INW;
+	var testval;
 
-	 vm.clickeiei = function(){
-	 	// console.log(vm.kmsearch);	
+	 // vm.clickeiei = function(){
+	 // 	testval = KmradiusServices.getRad();
+	 // 	console.log(testval);
+	 // }
+
+	 vm.Set = function(){
 	 	KmradiusServices.setRad(vm.kmsearch);
 	 }
 
-
-
-	// KmradiusServices.getrad(vm.kmsearch);
 
 }]);
