@@ -65,12 +65,13 @@ angular.module('Showmap',[])
           });
           // click mark to pop up the detail window
 
-        var pop_up = '<d>'
-        var link_web = '<a href ="https://www.kfc.co.th/#!/home">KFC</a>';
-        var img_res = '<img src="../../img/KFC.png" alt="KFC" style="width:15px;height:15px;"></img>';
-        var tel = '<a href="tel:1150">1150</a>'
+        var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"></img></div>'+
+        place.name + "<br>" +"<p>Address: "+place.vicinity+ "</p>" +
+        '<div><a href="https://www.kfc.co.th/#!/home">link web</a></div>'+
+        "<div>tel: <a href='tel://1150'>1150</a></div>";
+        
           google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(img_res+" "+place.name +"\n"+ place.id +"\n"+ place.vicinity +" "+ link_web +" tel: "+tel);
+            infowindow.setContent(pop_up);
             infowindow.open(map, this);
           });
         }
