@@ -21,8 +21,13 @@ angular.module('Showmap',[])
             var myLocation = new google.maps.Marker({
                 position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
                 map: map,
-                title: "My Location"
+                title: "My Location",
+                animation: google.maps.Animation.BOUNCE,
             });
+            google.maps.event.addListener(myLocation, 'click', function() {
+                infowindow.setContent("<h style='color:pink'>หิว</h>");
+                infowindow.open(map, this);
+          });
             
         });
 
@@ -42,14 +47,14 @@ angular.module('Showmap',[])
                 keyword: 'kfc'
               };
 
-            service.nearbySearch(request, callback);
+            service_places.nearbySearch(request, callback_places);
         });
 
-        var service = new google.maps.places.PlacesService(map);
+        var service_places = new google.maps.places.PlacesService(map);
         var infowindow = new google.maps.InfoWindow(); 
         
         // mark place that found
-        function callback(results, status) {
+        function callback_places(results, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
               createMarker(results[i]);
@@ -61,14 +66,18 @@ angular.module('Showmap',[])
           var placeLoc = place.geometry.location;
           var marker = new google.maps.Marker({
             map: map,
-            position: place.geometry.location
+            position: place.geometry.location,
+            icon: "./img/KFC_icon.png",
+            title: "KFC",
+
           });
+          var service_distance = new google.maps.DistanceMatrixService();
           // click mark to pop up the detail window
 
         var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"></img></div>'+
         place.name + "<br>" +"<p>Address: "+place.vicinity+ "</p>" +
-        '<div><a href="https://www.kfc.co.th/#!/home">link web</a></div>'+
-        "<div>tel: <a href='tel://1150'>1150</a></div>";
+        '<div><a href="https://www.kfc.co.th/#!/home">www.kfc.com</a></div>'+
+        "<div>tel: <a href='tel://1150'>1150</a></div>"; // "<a href='restaurant/{{}}'>"
         
           google.maps.event.addListener(marker, 'click', function() {
             infowindow.setContent(pop_up);
