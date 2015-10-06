@@ -1,6 +1,7 @@
 angular.module('Showmap',[])
-.controller('ShowmapController', ['$ionicLoading', function($ionicLoading){
+.controller('ShowmapController', ['$ionicLoading','KmradiusServices', function($ionicLoading,KmradiusServices){
 	var vm = this;
+    var kmRad;
 
     // set default map
     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -33,13 +34,14 @@ angular.module('Showmap',[])
             });
         };
 
+        kmRad = KmradiusServices.getRad();
+
         // set radius search
         navigator.geolocation.getCurrentPosition(function(pos) {
             var request = {
                 location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-                radius: '5000',
-                type: ['food'],
-                keyword: 'kfc'
+                radius: kmRad,
+                type: ['food']
               };
 
             service.nearbySearch(request, callback);
@@ -73,6 +75,7 @@ angular.module('Showmap',[])
           google.maps.event.addListener(marker, 'click', function() {
             infowindow.setContent(pop_up);
             infowindow.open(map, this);
+            console.log(kmRad);
           });
         }
 
