@@ -1,7 +1,7 @@
 angular.module('Users',[]).factory('UsersServices', ['$resource','$q', '$timeout', '$http', function ($resource, $q, $timeout, $http) {
     var UsersServices = {};
 
-    var base = "https://hungry-joe-lnwpor-1.c9.io:8080"
+    var base = "https://hungry-joe-lnwpor-3.c9.io:8080"
 	var Users = $resource(base+'/api/users');
   	var user = null;
     var currentUsername = null;
