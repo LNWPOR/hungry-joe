@@ -38,15 +38,29 @@ router.get('/users/logout', function(req, res) {
 });
 
 router.get('/users', function(req, res) {
-    Users.find(function(err, MenuLists ) {
+    Users.find(function(err, Users ) {
         if (err)
             res.send(err)
-        res.json(MenuLists);
+        res.json(Users);
+    });
+});
+
+router.get('/users/:username', function(req, res) {
+    Users.findOne({ username: req.params.username }, function(err, Users) {
+      if (err) return console.error(err);
+        res.json(Users);
     });
 });
 
 router.get('/comments', function(req, res) {
     Comments.find(function(err, Comments) {
+        if (err)
+            res.send(err)
+        res.json(Comments);
+    });
+});
+router.get('/comments/:restaurant_id', function(req, res) {
+    Comments.find({restaurant_id:req.params.restaurant_id},function(err, Comments) {
         if (err)
             res.send(err)
         res.json(Comments);
@@ -65,6 +79,24 @@ router.post('/restaurantlists', function(req, res) {
   restaurant.save(function (err, result) {
     res.json(result);
   });
+});
+router.get('/restaurantlists/:gres_id', function(req, res) {
+    RestaurantLists.findOne({ gres_id:req.params.gres_id},function(err, RestaurantLists ) {
+        if (err)
+            res.send(err)
+        res.json(RestaurantLists);
+    });
+});
+router.put('/restaurantlists/:restaurant_id', function(req, res) {
+    RestaurantLists.findById(req.params.restaurant_id, function(err, restaurant) {
+		if (err)
+			res.send(err);
+		restaurant.rating = req.body.rating;
+		restaurant.save(function(err) {
+		    if (err)
+			    res.send(err);
+		});
+	});
 });
 
 router.get('/menulists', function(req, res) {

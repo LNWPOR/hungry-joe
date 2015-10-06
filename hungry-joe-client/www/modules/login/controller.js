@@ -1,15 +1,9 @@
 angular.module('Login',[])
-.controller('LoginController', ['UsersServices','$location','RestaurantListsServices',function(UsersServices,$location,RestaurantListsServices){
+.controller('LoginController', ['UsersServices','$location','RestaurantListsServices', function(UsersServices,$location,RestaurantListsServices){
 	var vm = this;
-
-  // vm.res = RestaurantListsServices.getRestaurantLists();
-  // vm.pushRes = function(){
-  //   RestaurantListsServices.addRestaurant('Mc',10,10);
-  // }
   
 	// vm.users = UsersServices.getUsers();
 	// vm.currentUsername = UsersServices.getCurrentUsername();
-	// console.log(UsersServices.getUserStatus());
 
 	vm.registerFormIsActive = false;
 	vm.showRegisterForm = function(){
@@ -77,4 +71,5 @@ angular.module('Login',[])
         vm.registerForm = {};
       });
   };
+
 }]);

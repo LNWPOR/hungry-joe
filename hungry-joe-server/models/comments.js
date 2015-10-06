@@ -2,11 +2,9 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema
     
 var Comments = new Schema({
-        name : String,
         description : String,
-        restaurantOwner : String,
-        UserOwner : String
+        restaurant_id : String,
+        user_id : String
 });    
     
 module.exports = mongoose.model('comments', Comments);
-
