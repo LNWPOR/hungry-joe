@@ -30,5 +30,7 @@ angular.module('RestaurantLists',[]).factory('RestaurantListsServices', ['$resou
         RestaurantLists.update({ _id : restaurant_id }, {rating : newRating});
     }
 
+    
+
     return RestaurantListsServices;
 }]);
