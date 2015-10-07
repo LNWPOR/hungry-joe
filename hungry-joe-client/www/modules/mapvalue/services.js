@@ -4,5 +4,4 @@ angular.module('Mapvalue',[]).factory('MapvalueServices', ['$resource', function
     
     
     return MapvalueServices;
-    
 }]);
