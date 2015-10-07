@@ -11,8 +11,8 @@ angular.module('HungryJoe',
   'Comments',
   'RestaurantLists',
   'ngResource',
-  'Kmradius'
-  // ,'Mapvalue'
+  'Kmradius',
+  'Mapvalue'
 ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

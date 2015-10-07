@@ -1,5 +1,5 @@
 angular.module('Showmap',[])
-.controller('ShowmapController', ['$ionicLoading','KmradiusServices', function($ionicLoading,KmradiusServices){
+.controller('ShowmapController', ['$ionicLoading','KmradiusServices','RestaurantListsServices','MapvalueServices', function($ionicLoading,KmradiusServices,RestaurantListsServices,MapvalueServices){
 	var vm = this;
     var kmRad;
 
@@ -84,7 +84,7 @@ angular.module('Showmap',[])
             service_places.getDetails({reference: place.reference}, function(place, status) {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-                    var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"></img></div>'+
+                    var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"><a href="#/restaurant">go to restaurant page</a></img></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>" +
                     '<div><a href="https://www.kfc.co.th/#!/home">link web</a></div>'+
                     "<div>tel: <a href='tel://1150'>1150</a></div>";
@@ -93,8 +93,20 @@ angular.module('Showmap',[])
                 }
             });
 
+            //get gres_id from database
+            var ResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id)
+            ResPromise.$promise.then(function(data){
+                    // console.log(data['gres_id']);
+                if(!data.hasOwnProperty('gres_id')){
+                    // console.log("haha");
+                    RestaurantListsServices.addRestaurant(place.name,place.place_id);
+                }
+            })
+
+            //set ResID
+            MapvalueServices.setResID(place.place_id);
+
             infowindow.open(map, this);
-            console.log(kmRad); 
             
           });
         }
