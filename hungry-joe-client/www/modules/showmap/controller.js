@@ -46,10 +46,11 @@ angular.module('Showmap',[])
             var request = {
                 location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
                 radius: kmRad,
-                type: ['food']
+                type: ['food'],
+                keyword: 'KFC'
               };
 
-            service_places.nearbySearch(request, callback_places);
+            service_places.radarSearch(request, callback_places);
         });
 
         var service_places = new google.maps.places.PlacesService(map);
@@ -63,7 +64,7 @@ angular.module('Showmap',[])
             }
           }
         }
-
+        // mark a place
         function createMarker(place) {
           var placeLoc = place.geometry.location;
           var marker = new google.maps.Marker({
@@ -75,18 +76,29 @@ angular.module('Showmap',[])
           });
           var service_distance = new google.maps.DistanceMatrixService();
           // click mark to pop up the detail window
-
-        var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"></img></div>'+
-        place.name + "<br>" +"<p>Address: "+place.vicinity+ "</p>" +
-        '<div><a href="https://www.kfc.co.th/#!/home">www.kfc.com</a></div>'+
-        "<div>tel: <a href='tel://1150'>1150</a></div>"; // "<a href='restaurant/{{}}'>"
-        
           google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(pop_up);
+                    
+            infowindow.setContent("");
             infowindow.open(map, this);
-            console.log(kmRad);
+
+            service_places.getDetails({reference: place.reference}, function(place, status) {
+                if (status == google.maps.places.PlacesServiceStatus.OK) {
+
+                    var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"></img></div>'+
+                    place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>" +
+                    '<div><a href="https://www.kfc.co.th/#!/home">link web</a></div>'+
+                    "<div>tel: <a href='tel://1150'>1150</a></div>";
+
+                    infowindow.setContent(pop_up);
+                }
+            });
+
+            infowindow.open(map, this);
+            console.log(kmRad); 
+            
           });
         }
+
 
         vm.map = map;
     });
