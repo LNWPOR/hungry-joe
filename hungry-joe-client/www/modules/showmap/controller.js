@@ -1,6 +1,6 @@
 angular.module('Showmap',[])
 .controller('ShowmapController', ['$ionicLoading','KmradiusServices', function($ionicLoading,KmradiusServices){
-	var vm = this;
+    var vm = this;
     var kmRad;
 
     // set default map
@@ -13,7 +13,7 @@ angular.module('Showmap',[])
     };    
 
     // init google map
-	google.maps.event.addDomListenerOnce(window, 'click', function() {
+    google.maps.event.addDomListenerOnce(window, 'click', function() {
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
  
@@ -45,9 +45,11 @@ angular.module('Showmap',[])
         navigator.geolocation.getCurrentPosition(function(pos) {
             var request = {
                 location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-                radius: kmRad,
-                type: ['food'],
-                keyword: 'KFC'
+
+                keyword: 'KFC' ,
+                types: ['restaurant', 'food','meal_delivery'],
+                name: ['KFC'],
+                radius: 25000
               };
 
             service_places.radarSearch(request, callback_places);
@@ -80,10 +82,10 @@ angular.module('Showmap',[])
                     
             infowindow.setContent("");
             infowindow.open(map, this);
-
-            service_places.getDetails({reference: place.reference}, function(place, status) {
+            service_places.getDetails({placeId: place.place_id}, function(place, status) {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
 
+            console.log(place)
                     var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"></img></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>" +
                     '<div><a href="https://www.kfc.co.th/#!/home">link web</a></div>'+
