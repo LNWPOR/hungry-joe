@@ -2,6 +2,7 @@ angular.module('Showmap',[])
 .controller('ShowmapController', ['$ionicLoading','KmradiusServices','RestaurantListsServices','MapvalueServices', function($ionicLoading,KmradiusServices,RestaurantListsServices,MapvalueServices){
 	var vm = this;
     var kmRad;
+    var ResID;
 
     // set default map
     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -76,6 +77,7 @@ angular.module('Showmap',[])
             title: "KFC",
 
           });
+
           var service_distance = new google.maps.DistanceMatrixService();
           // click mark to pop up the detail window
           google.maps.event.addListener(marker, 'click', function() {
@@ -100,14 +102,19 @@ angular.module('Showmap',[])
                 if(!data.hasOwnProperty('gres_id')){
                     // console.log("haha");
                     RestaurantListsServices.addRestaurant(place.name,place.place_id);
+                    RefreshResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id);
+                    RefreshResPromise.$promise.then(function(newdata){
+                        MapvalueServices.setResID(newdata['_id']);
+                    })
+                }
+
+                else{
+                    MapvalueServices.setResID(data['_id']);
                 }
             })
 
-            //set ResID
-            MapvalueServices.setResID(place.place_id);
-
             infowindow.open(map, this);
-            
+
           });
         }
 

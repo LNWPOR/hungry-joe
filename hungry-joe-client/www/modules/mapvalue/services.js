@@ -4,6 +4,7 @@ angular.module('Mapvalue',[]).factory('MapvalueServices', ['$resource', function
 
     MapvalueServices.setResID = function(x){
     	ResTmp = x;
+ 
     }
     
     MapvalueServices.getResID = function(){
