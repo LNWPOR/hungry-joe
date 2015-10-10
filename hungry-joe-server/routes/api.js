@@ -52,19 +52,21 @@ router.get('/users/:username', function(req, res) {
     });
 });
 
-router.get('/comments', function(req, res) {
-    Comments.find(function(err, Comments) {
-        if (err)
-            res.send(err)
-        res.json(Comments);
-    });
-});
 router.get('/comments/:restaurant_id', function(req, res) {
-    Comments.find({restaurant_id:req.params.restaurant_id},function(err, Comments) {
-        if (err)
-            res.send(err)
-        res.json(Comments);
-    });
+    if (req.params.restaurant_id) {
+      Comments.find({ restaurant_id: req.params.restaurant_id }, function(err, Comments) {
+          if (err)
+              res.send(err)
+          res.json(Comments);
+      });
+    }
+});
+
+router.post('/comments', function(req, res) {
+  var comment = new Comments(req.body);
+  comment.save(function (err, result) {
+    res.json(result);
+  });
 });
 
 router.get('/restaurantlists', function(req, res) {
