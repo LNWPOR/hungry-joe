@@ -98,17 +98,13 @@ angular.module('Showmap',[])
             ResPromise.$promise.then(function(data){
                     // console.log(data['gres_id']);
                 if(!data.hasOwnProperty('gres_id')){
-                    console.log("haha");
                     RestaurantListsServices.addRestaurant(place.name,place.place_id);
                      setTimeout(function(){
                          var RefreshResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id);
                         RefreshResPromise.$promise.then(function(newdata){
-                        console.log(ResPromise);
-                        console.log(RefreshResPromise);
-                        console.log(newdata['_id']);
                         MapvalueServices.setResID(newdata['_id']);
                     })
-                    }, 200);
+                    }, 500);
                 }
 
                 else{
