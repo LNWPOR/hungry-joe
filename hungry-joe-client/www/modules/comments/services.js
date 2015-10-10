@@ -1,7 +1,7 @@
 angular.module('Comments',[]).factory('CommentsServices', ['$resource', function ($resource) {
     var CommentsServices = {};
 
-    var base = "https://hungry-joe-lnwpor-3.c9.io:8080"
+    var base = "https://hungry-joe-lnwpor-5.c9.io:8080"
 	var Comments = $resource(base+'/api/comments/:restaurant_id',{restaurant_id : '@restaurant_id'});
    
     CommentsServices.getComments = function(){
