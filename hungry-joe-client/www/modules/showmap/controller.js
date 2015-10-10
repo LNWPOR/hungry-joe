@@ -1,6 +1,6 @@
 angular.module('Showmap',[])
-.controller('ShowmapController', ['$ionicLoading','KmradiusServices', function($ionicLoading,KmradiusServices){
-    var vm = this;
+.controller('ShowmapController', ['$ionicLoading','KmradiusServices','RestaurantListsServices','MapvalueServices', function($ionicLoading,KmradiusServices,RestaurantListsServices,MapvalueServices){
+	var vm = this;
     var kmRad;
 
     // set default map
@@ -25,6 +25,7 @@ angular.module('Showmap',[])
                 title: "My Location",
                 animation: google.maps.Animation.BOUNCE,
             });
+            // click to show pop up on mymark
             google.maps.event.addListener(myLocation, 'click', function() {
                 infowindow.setContent("<h style='color:pink'>หิว</h>");
                 infowindow.open(map, this);
@@ -49,22 +50,25 @@ angular.module('Showmap',[])
                 keyword: 'KFC' ,
                 types: ['restaurant', 'food','meal_delivery'],
                 name: ['KFC'],
-                radius: 25000
+                radius: 10000
               };
 
-            service_places.radarSearch(request, callback_places);
+            service_places.nearbySearch(request, callback_places);
         });
 
         var service_places = new google.maps.places.PlacesService(map);
         var infowindow = new google.maps.InfoWindow(); 
         
         // mark place that found
-        function callback_places(results, status) {
+        function callback_places(results, status, pagination) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
               createMarker(results[i]);
             }
           }
+            if(pagination.hasNextPage){
+                pagination.nextPage();
+            }
         }
         // mark a place
         function createMarker(place) {
@@ -85,8 +89,7 @@ angular.module('Showmap',[])
             service_places.getDetails({placeId: place.place_id}, function(place, status) {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
 
-            console.log(place)
-                    var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"></img></div>'+
+                    var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"><a href="#/restaurant">go to restaurant page</a></img></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>" +
                     '<div><a href="https://www.kfc.co.th/#!/home">link web</a></div>'+
                     "<div>tel: <a href='tel://1150'>1150</a></div>";
@@ -95,8 +98,20 @@ angular.module('Showmap',[])
                 }
             });
 
+            //get gres_id from database
+            var ResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id)
+            ResPromise.$promise.then(function(data){
+                    // console.log(data['gres_id']);
+                if(!data.hasOwnProperty('gres_id')){
+                    // console.log("haha");
+                    RestaurantListsServices.addRestaurant(place.name,place.place_id);
+                }
+            })
+
+            //set ResID
+            MapvalueServices.setResID(place.place_id);
+
             infowindow.open(map, this);
-            console.log(kmRad); 
             
           });
         }
