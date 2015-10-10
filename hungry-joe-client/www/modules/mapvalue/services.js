@@ -1,14 +1,14 @@
 angular.module('Mapvalue',[]).factory('MapvalueServices', ['$resource', function ($resource) {
     var MapvalueServices = {};
-    var ResTmp;
+    var gresTmp;
 
-    MapvalueServices.setResID = function(x){
-    	ResTmp = x;
+    MapvalueServices.setGresID = function(x){
+    	gresTmp = x;
  
     }
     
-    MapvalueServices.getResID = function(){
-    	return ResTmp;
+    MapvalueServices.getgresID = function(){
+    	return gresTmp;
     }
 
 
