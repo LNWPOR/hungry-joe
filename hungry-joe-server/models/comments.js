@@ -4,7 +4,8 @@ var mongoose = require('mongoose'),
 var Comments = new Schema({
         description : String,
         restaurant_id : String,
-        user_id : String
+        user_id : String,
+        date : String
 });    
     
 module.exports = mongoose.model('comments', Comments);
