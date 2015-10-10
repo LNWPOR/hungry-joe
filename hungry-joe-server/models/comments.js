@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 var Comments = new Schema({
         description : String,
         restaurant_id : String,
-        user_id : String,
+        username : String,
         date : String
 });    
     
