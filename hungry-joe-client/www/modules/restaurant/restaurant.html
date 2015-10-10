@@ -7,14 +7,16 @@
 
 	<div>
 		<ul ng-if = "RestaurantCtrl.showComment">
-			<li ng-repeat = "comment in RestaurantCtrl.comments">
-				eiei-{{comment.description}}
+			<li ng-repeat="comment in RestaurantCtrl.comments">
+				{{comment.username}}-{{comment.description}}
+			</li>
+			<li ng-repeat="token in RestaurantCtrl.tokens">
+				{{token.username}}-{{token.description}}
 			</li>
 		</ul>
 		<input type="text" ng-model="RestaurantCtrl.description" style="background-color:red">
 		<button ng-click="RestaurantCtrl.addNewComment()">comment</button>
 	</div>
 
-	{{RestaurantCtrl.comments}}
 </ion-nav-view>
 
