@@ -92,20 +92,23 @@ angular.module('Showmap',[])
                     "<div>tel: <a href='tel://1150'>1150</a></div>";
 
                     infowindow.setContent(pop_up);
-                }
-            });
 
             //get gres_id from database
             var ResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id)
             ResPromise.$promise.then(function(data){
                     // console.log(data['gres_id']);
                 if(!data.hasOwnProperty('gres_id')){
-                    // console.log("haha");
+                    console.log("haha");
                     RestaurantListsServices.addRestaurant(place.name,place.place_id);
-                    RefreshResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id);
-                    RefreshResPromise.$promise.then(function(newdata){
+                     setTimeout(function(){
+                         var RefreshResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id);
+                        RefreshResPromise.$promise.then(function(newdata){
+                        console.log(ResPromise);
+                        console.log(RefreshResPromise);
+                        console.log(newdata['_id']);
                         MapvalueServices.setResID(newdata['_id']);
                     })
+                    }, 200);
                 }
 
                 else{
@@ -113,6 +116,11 @@ angular.module('Showmap',[])
                 }
             })
 
+
+                }
+            });
+
+            
             infowindow.open(map, this);
 
           });
