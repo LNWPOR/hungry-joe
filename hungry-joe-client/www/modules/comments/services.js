@@ -17,6 +17,7 @@ angular.module('Comments',[]).factory('CommentsServices', ['$resource', function
         comment.description = description;
         comment.restaurant_id = restaurant_id;
         comment.user_id = user_id;
+        comment.date = new Date();
         Comments.save(comment);
     }
     
