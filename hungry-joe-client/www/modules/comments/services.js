@@ -2,21 +2,19 @@ angular.module('Comments',[]).factory('CommentsServices', ['$resource', function
     var CommentsServices = {};
 
     var base = "https://hungry-joe-lnwpor-5.c9.io:8080"
-	var Comments = $resource(base+'/api/comments/:restaurant_id',{restaurant_id : '@restaurant_id'});
-   
-    CommentsServices.getComments = function(){
-        return Comments.query();
-    }
-
+	// var Comments = $resource(base+'/api/comments');
+    var Comments = $resource(base+'/api/comments/:restaurant_id',{restaurant_id : '@restaurant_id'});
+    
     CommentsServices.getRestaurantComments = function(restaurant_id){
-        return Comments.get({restaurant_id:restaurant_id});
+        
+        return Comments.query({},{'restaurant_id':restaurant_id});
     }
   	
-    CommentsServices.addComments = function(description,restaurant_id,user_id){
+    CommentsServices.addComments = function(description,restaurant_id,username){
         var comment = new Comments();
         comment.description = description;
         comment.restaurant_id = restaurant_id;
-        comment.user_id = user_id;
+        comment.username = username;
         comment.date = new Date();
         Comments.save(comment);
     }

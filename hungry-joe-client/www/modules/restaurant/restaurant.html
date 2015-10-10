@@ -5,6 +5,16 @@
 		<li>gres_id :{{RestaurantCtrl.res.gres_id}}</li>
 	</ul>
 
+	<div>
+		<ul ng-if = "RestaurantCtrl.showComment">
+			<li ng-repeat = "comment in RestaurantCtrl.comments">
+				eiei-{{comment.description}}
+			</li>
+		</ul>
+		<input type="text" ng-model="RestaurantCtrl.description" style="background-color:red">
+		<button ng-click="RestaurantCtrl.addNewComment()">comment</button>
+	</div>
 
+	{{RestaurantCtrl.comments}}
 </ion-nav-view>
 
