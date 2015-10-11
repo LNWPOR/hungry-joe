@@ -2,6 +2,7 @@ angular.module('Showmap',[])
 .controller('ShowmapController', ['$ionicLoading','KmradiusServices','RestaurantListsServices','MapvalueServices', function($ionicLoading,KmradiusServices,RestaurantListsServices,MapvalueServices){
 	var vm = this;
     var kmRad;
+    var ResID;
 
     // set default map
     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -48,9 +49,10 @@ angular.module('Showmap',[])
                 location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
 
                 keyword: 'KFC' ,
-                types: ['restaurant', 'food','meal_delivery'],
+                types: ['restaurant', 'food'],
                 name: ['KFC'],
                 radius: 10000
+
               };
 
             service_places.nearbySearch(request, callback_places);
@@ -80,6 +82,7 @@ angular.module('Showmap',[])
             title: "KFC",
 
           });
+
           var service_distance = new google.maps.DistanceMatrixService();
           // click mark to pop up the detail window
           google.maps.event.addListener(marker, 'click', function() {
@@ -88,31 +91,27 @@ angular.module('Showmap',[])
             infowindow.open(map, this);
             service_places.getDetails({placeId: place.place_id}, function(place, status) {
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
-
-                    var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"><a href="#/restaurant">go to restaurant page</a></img></div>'+
+                    var pop_up = '<div><img src="./img/KFC.png" alt="KFC" style="width:15px;height:15px;"></img><a href="#/restaurant">go to restaurant page</a></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>" +
                     '<div><a href="https://www.kfc.co.th/#!/home">link web</a></div>'+
                     "<div>tel: <a href='tel://1150'>1150</a></div>";
 
                     infowindow.setContent(pop_up);
                 }
+
+                MapvalueServices.setGresID(place.place_id);
+                var ResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id)
+                ResPromise.$promise.then(function(data){
+                    if(!data.hasOwnProperty('gres_id')){
+                        RestaurantListsServices.addRestaurant(place.name,place.place_id);
+                    }
+                })
+
             });
 
-            //get gres_id from database
-            var ResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id)
-            ResPromise.$promise.then(function(data){
-                    // console.log(data['gres_id']);
-                if(!data.hasOwnProperty('gres_id')){
-                    // console.log("haha");
-                    RestaurantListsServices.addRestaurant(place.name,place.place_id);
-                }
-            })
-
-            //set ResID
-            MapvalueServices.setResID(place.place_id);
-
-            infowindow.open(map, this);
             
+            infowindow.open(map, this);
+
           });
         }
 
