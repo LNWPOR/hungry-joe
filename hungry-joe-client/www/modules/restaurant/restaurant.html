@@ -1,4 +1,16 @@
 <ion-nav-view title="Restaurant">
-	<button ng-click="RestaurantCtrl.showeiei()"></button>
+
+	<link href="css/restaurantstyle.css" rel="stylesheet">
+
+	<!-- <button ng-click="RestaurantCtrl.showeiei()"></button> -->
+
+	<div class="rating" ng-click="RestaurantCtrl.showeiei()">
+    <input type="radio" id="star5" value="5" ng-model="RestaurantCtrl.rateVal"><label for="star5">5 stars</label>
+    <input type="radio" id="star4" value="4" ng-model="RestaurantCtrl.rateVal"><label for="star4">4 stars</label>
+    <input type="radio" id="star3" value="3" ng-model="RestaurantCtrl.rateVal"><label for="star3">3 stars</label>
+    <input type="radio" id="star2" value="2" ng-model="RestaurantCtrl.rateVal"><label for="star2">2 stars</label>
+    <input type="radio" id="star1" value="1" ng-model="RestaurantCtrl.rateVal"><label for="star1">1 star</label>
+	</div>
+  
 </ion-nav-view>
 
