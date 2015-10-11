@@ -14,7 +14,8 @@ angular.module('HungryJoe',
   'Kmradius',
   'Mapvalue',
   'btford.socket-io',
-  'Socket'
+  'Socket',
+  'Rating'
 ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

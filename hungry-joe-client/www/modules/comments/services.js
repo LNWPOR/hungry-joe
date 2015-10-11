@@ -10,7 +10,6 @@ angular.module('Comments',[]).factory('CommentsServices', ['$resource', function
     });
     
     CommentsServices.getRestaurantComments = function(restaurant_id){
-        
         return RestaurantComments.query({},{'restaurant_id':restaurant_id});
     }
   	

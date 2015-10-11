@@ -3,15 +3,22 @@
 		<li>id      :{{RestaurantCtrl.res._id}}</li>
 		<li>name    :{{RestaurantCtrl.res.name}}</li>
 		<li>gres_id :{{RestaurantCtrl.res.gres_id}}</li>
+		<li>rating  :{{RestaurantCtrl.rating}}</li>
 	</ul>
+
+
+
+
+	<input type="text" ng-model="RestaurantCtrl.rate" style="background-color:blue">
+	<button ng-click="RestaurantCtrl.upRate()">add rate</button>
+
+
+
 
 	<div>
 		<ul ng-if = "RestaurantCtrl.showComment">
 			<li ng-repeat="comment in RestaurantCtrl.comments">
 				{{comment.username}}-{{comment.description}}
-			</li>
-			<li ng-repeat="token in RestaurantCtrl.tokens">
-				{{token.username}}-{{token.description}}
 			</li>
 		</ul>
 		<input type="text" ng-model="RestaurantCtrl.description" style="background-color:red">
