@@ -6,19 +6,15 @@
 		<li>rating  :{{RestaurantCtrl.rating}}</li>
 	</ul>
 
-
-
-
-	<input type="text" ng-model="RestaurantCtrl.rate" style="background-color:blue">
-	<button ng-click="RestaurantCtrl.upRate()">add rate</button>
-
-
-
+	<div ng-if="RestaurantCtrl.showRatingButton">
+		<input type="text" ng-model="RestaurantCtrl.rate" style="background-color:blue">
+		<button ng-click="RestaurantCtrl.upRate()">add rate</button>
+	</div>
 
 	<div>
-		<ul ng-if = "RestaurantCtrl.showComment">
+		<ul ng-if="RestaurantCtrl.showComment">
 			<li ng-repeat="comment in RestaurantCtrl.comments">
-				{{comment.username}}-{{comment.description}}
+				{{comment.username}} : {{comment.description}}
 			</li>
 		</ul>
 		<input type="text" ng-model="RestaurantCtrl.description" style="background-color:red">
