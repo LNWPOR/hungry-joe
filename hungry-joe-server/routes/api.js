@@ -4,7 +4,8 @@ var express = require('express'),
     Users = require('../models/users'),
     Comments = require('../models/comments'),
     RestaurantLists = require('../models/restaurantLists'),
-    MenuLists = require('../models/menuLists');
+    MenuLists = require('../models/menuLists'),
+    Rating = require('../models/rating');
     
 router.post('/users/register', function(req, res) {
   Users.register(new Users({ username: req.body.username }), req.body.password, function(err, account) {
@@ -52,19 +53,21 @@ router.get('/users/:username', function(req, res) {
     });
 });
 
-router.get('/comments', function(req, res) {
-    Comments.find(function(err, Comments) {
-        if (err)
-            res.send(err)
-        res.json(Comments);
-    });
-});
 router.get('/comments/:restaurant_id', function(req, res) {
-    Comments.find({restaurant_id:req.params.restaurant_id},function(err, Comments) {
-        if (err)
-            res.send(err)
-        res.json(Comments);
-    });
+    if (req.params.restaurant_id) {
+      Comments.find({ restaurant_id: req.params.restaurant_id }, function(err, Comments) {
+          if (err)
+              res.send(err)
+          res.json(Comments);
+      });
+    }
+});
+
+router.post('/comments', function(req, res) {
+  var comment = new Comments(req.body);
+  comment.save(function (err, result) {
+    res.json(result);
+  });
 });
 
 router.get('/restaurantlists', function(req, res) {
@@ -87,17 +90,6 @@ router.get('/restaurantlists/:gres_id', function(req, res) {
         res.json(RestaurantLists);
     });
 });
-router.put('/restaurantlists/:restaurant_id', function(req, res) {
-    RestaurantLists.findById(req.params.restaurant_id, function(err, restaurant) {
-		if (err)
-			res.send(err);
-		restaurant.rating = req.body.rating;
-		restaurant.save(function(err) {
-		    if (err)
-			    res.send(err);
-		});
-	});
-});
 
 router.get('/menulists', function(req, res) {
     MenuLists.find(function(err, MenuLists ) {
@@ -107,9 +99,20 @@ router.get('/menulists', function(req, res) {
     });
 });
 
-router.post('/newuser', function (req, res) {
-    var json = req.body;
-    res.send('Add new ' + json.name + ' Completed!');
+router.get('/rating/:restaurant_id',function(req, res) {
+    if (req.params.restaurant_id) {
+      Rating.find({ restaurant_id: req.params.restaurant_id }, function(err, Rating) {
+          if (err)
+              res.send(err)
+          res.json(Rating);
+      });
+    }  
+});
+router.post('/rating', function(req, res) {
+  var rating = new Rating(req.body);
+  rating.save(function (err, result) {
+    res.json(result);
+  });
 });
 
 
