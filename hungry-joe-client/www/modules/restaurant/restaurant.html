@@ -1,4 +1,7 @@
 <ion-nav-view title="Restaurant">
+
+	<link href="css/restaurantstyle.css" rel="stylesheet">
+
 	<ul>
 		<li>id      :{{RestaurantCtrl.res._id}}</li>
 		<li>name    :{{RestaurantCtrl.res.name}}</li>
@@ -6,12 +9,18 @@
 		<li>rating  :{{RestaurantCtrl.rating}}</li>
 	</ul>
 
-	<div ng-if="RestaurantCtrl.showRatingButton">
-		<input type="text" ng-model="RestaurantCtrl.rate" style="background-color:blue">
-		<button ng-click="RestaurantCtrl.upRate()">add rate</button>
+	<div class="rating" ng-if="RestaurantCtrl.showRatingButton" ng-click="RestaurantCtrl.upRate()">
+    <input type="radio" id="star5" value="5" ng-model="RestaurantCtrl.rate"><label for="star5">5 stars</label>
+    <input type="radio" id="star4" value="4" ng-model="RestaurantCtrl.rate"><label for="star4">4 stars</label>
+    <input type="radio" id="star3" value="3" ng-model="RestaurantCtrl.rate"><label for="star3">3 stars</label>
+    <input type="radio" id="star2" value="2" ng-model="RestaurantCtrl.rate"><label for="star2">2 stars</label>
+    <input type="radio" id="star1" value="1" ng-model="RestaurantCtrl.rate"><label for="star1">1 star</label>
 	</div>
 
-	<div>
+	<br>
+	<br>
+
+	<div class="usercomment">
 		<ul ng-if="RestaurantCtrl.showComment">
 			<li ng-repeat="comment in RestaurantCtrl.comments">
 				{{comment.username}} : {{comment.description}}

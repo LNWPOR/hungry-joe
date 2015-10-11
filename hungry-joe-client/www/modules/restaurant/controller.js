@@ -1,6 +1,11 @@
 angular.module('Restaurant',[])
 .controller('RestaurantController', [ 'RestaurantListsServices' ,'MapvalueServices', 'CommentsServices', 'UsersServices', 'SocketServices', 'RatingServices', function(RestaurantListsServices,MapvalueServices,CommentsServices,UsersServices,SocketServices,RatingServices){
 	var vm = this;
+
+	// vm.showeiei = function(){
+	// 	console.log(vm.rateVal);
+	// }
+
 	SocketServices.connect();
 	var currnetUsername = UsersServices.getCurrentUsername();
 	vm.showComment = false;
@@ -51,7 +56,6 @@ angular.module('Restaurant',[])
 		vm.rating += parseInt(data);
 		vm.showRatingButton = false;
 	});
-
 
 
 }]);
