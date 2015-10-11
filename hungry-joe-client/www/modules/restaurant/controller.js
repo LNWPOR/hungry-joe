@@ -50,6 +50,7 @@ angular.module('Restaurant',[])
 	vm.upRate = function(){
 		RatingServices.addRating(vm.rate,vm.res._id,currnetUsername);
 		SocketServices.emit('sendRate',vm.rate);
+		console.log(vm.rate);
 		vm.rate = '';
 	}
 	SocketServices.on('getRate',function(data){
