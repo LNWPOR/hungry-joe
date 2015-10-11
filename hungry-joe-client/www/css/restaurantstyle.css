@@ -1,5 +1,6 @@
 .rating {
     float:left;
+    clear: both;
 }
 
 .rating:not(:checked) > input {
