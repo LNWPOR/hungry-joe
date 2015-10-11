@@ -6,6 +6,7 @@ var express = require('express'),
     RestaurantLists = require('../models/restaurantLists'),
     MenuLists = require('../models/menuLists');
     
+    
 router.post('/users/register', function(req, res) {
   Users.register(new Users({ username: req.body.username }), req.body.password, function(err, account) {
     if (err) {
