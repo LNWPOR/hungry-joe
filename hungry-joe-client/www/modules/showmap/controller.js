@@ -51,7 +51,7 @@ angular.module('Showmap',[])
                 keyword: 'KFC' ,
                 types: ['restaurant', 'food'],
                 name: ['KFC'],
-                radius: 10000
+                radius: kmRad
 
               };
 
@@ -105,7 +105,7 @@ angular.module('Showmap',[])
                     if(!data.hasOwnProperty('gres_id')){
                         RestaurantListsServices.addRestaurant(place.name,place.place_id);
                     }
-                });
+                })
 
             });
 

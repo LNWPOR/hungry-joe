@@ -1,5 +1,6 @@
 angular.module('Login',[])
 .controller('LoginController', ['UsersServices','$location','MenuListsServices', function(UsersServices,$location,MenuListsServices){
+
 	var vm = this;
   
 	// vm.users = UsersServices.getUsers();
@@ -74,3 +75,5 @@ angular.module('Login',[])
 
   vm.res = MenuListsServices.getMenuLists();
 }]);
+
+
