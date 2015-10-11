@@ -1,7 +1,7 @@
 angular.module('Kmradius',[]).factory('KmradiusServices', ['$resource', function ($resource) {
     var KmradiusServices = {};
     var Rad;
-    var Radtmp = 20000;
+    var Radtmp = 2000;
 
    KmradiusServices.setRad = function(x){
       if(x==null){
