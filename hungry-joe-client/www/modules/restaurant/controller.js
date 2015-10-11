@@ -1,6 +1,7 @@
 angular.module('Restaurant',[])
-.controller('RestaurantController', [ 'RestaurantListsServices' ,'MapvalueServices', 'CommentsServices', 'UsersServices', function(RestaurantListsServices,MapvalueServices,CommentsServices,UsersServices){
+.controller('RestaurantController', [ 'RestaurantListsServices' ,'MapvalueServices', 'CommentsServices', 'UsersServices', 'SocketServices', function(RestaurantListsServices,MapvalueServices,CommentsServices,UsersServices,SocketServices){
 	var vm = this;
+	SocketServices.connect();
 
 
 	vm.showComment = false;
@@ -18,8 +19,15 @@ angular.module('Restaurant',[])
 	vm.addNewComment = function(){
 		CommentsServices.addComments(vm.description,vm.res._id,UsersServices.getCurrentUsername());
 		console.log('You just comment :' + vm.description);
-		vm.tokens.push({"description":vm.description,"username":UsersServices.getCurrentUsername()});
+		// vm.tokens.push({"description":vm.description,"username":UsersServices.getCurrentUsername()});
+		var tmpToken = {"description":vm.description,"username":UsersServices.getCurrentUsername()};
+		SocketServices.emit('sendComment',tmpToken);
 		vm.description = '';
 	}
+
+	SocketServices.on('getComment',function(data){
+		// console.log(data);
+		vm.tokens.push(data);
+	});
 
 }]);
