@@ -14,6 +14,10 @@ io.on('connection', function(socket){
   socket.on('sendComment',function(data) {
     io.sockets.emit('getComment',data);
   });
+  
+  socket.on('sendRate',function(data) {
+    io.sockets.emit('getRate',data);
+  });
 });
 
 http.listen(process.env.PORT,process.env.IP, function() {
