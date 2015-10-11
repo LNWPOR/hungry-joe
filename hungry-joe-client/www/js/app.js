@@ -12,7 +12,10 @@ angular.module('HungryJoe',
   'RestaurantLists',
   'ngResource',
   'Kmradius',
-  'Mapvalue'
+  'Mapvalue',
+  'btford.socket-io',
+  'Socket',
+  'Rating'
 ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
