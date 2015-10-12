@@ -14,7 +14,7 @@ angular.module('Showmap',[])
     };    
 
     // init google map
-	google.maps.event.addDomListenerOnce(window, 'click', function() {
+    google.maps.event.addDomListenerOnce(window, 'click', function() {
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
  
@@ -26,6 +26,7 @@ angular.module('Showmap',[])
                 title: "My Location",
                 animation: google.maps.Animation.BOUNCE,
             });
+            // click to show pop up on mymark
             google.maps.event.addListener(myLocation, 'click', function() {
                 infowindow.setContent("<h style='color:pink'>หิว</h>");
                 infowindow.open(map, this);
@@ -50,22 +51,26 @@ angular.module('Showmap',[])
                 keyword: 'KFC' ,
                 types: ['restaurant', 'food'],
                 name: ['KFC'],
-                radius: 25000
+                radius: kmRad
+
               };
 
-            service_places.radarSearch(request, callback_places);
+            service_places.nearbySearch(request, callback_places);
         });
 
         var service_places = new google.maps.places.PlacesService(map);
         var infowindow = new google.maps.InfoWindow(); 
         
         // mark place that found
-        function callback_places(results, status) {
+        function callback_places(results, status, pagination) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
               createMarker(results[i]);
             }
           }
+            if(pagination.hasNextPage){
+                pagination.nextPage();
+            }
         }
         // mark a place
         function createMarker(place) {
@@ -100,7 +105,7 @@ angular.module('Showmap',[])
                     if(!data.hasOwnProperty('gres_id')){
                         RestaurantListsServices.addRestaurant(place.name,place.place_id);
                     }
-                });
+                })
 
             });
 

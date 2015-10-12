@@ -1,28 +1,33 @@
-<ion-nav-view title="Login">
+<ion-nav-view title="Login" id="bg">
+	<div>
+		<img src="./img/joe.png" alt="logo" id="logo_pic"></img>
+	</div>
 
-	<div ng-show = "!LoginCtrl.getUserStatus()">
-	  <h1>Login</h2>
+	<div ng-show = "!LoginCtrl.getUserStatus()" id="login">
 	  <form ng-submit="LoginCtrl.login()">
+
+	  	<div class="list">
+		  <label class="item item-input">
+		    <input type="text" name="username" placeholder="Username" ng-model="LoginCtrl.loginForm.username"required>
+		  </label>
+		  <label class="item item-input">
+		    <input type="password" name="password" placeholder="Password" ng-model="LoginCtrl.loginForm.password" required>
+		  </label>
+		</div>
+
 	    <div>
-	      <label>Username</label>
-	      <input type="text" name="username" ng-model="LoginCtrl.loginForm.username" required>
+	        <button type="submit" ng-disabled="LoginCtrl.disabled" id="Loginbut">Sign in</button>
 	    </div>
-	    <div>
-	      <label>Password</label>
-	        <input type="password"  name="password" ng-model="LoginCtrl.loginForm.password" required>
-	      </div>
-	      <div>
-	        <button type="submit" ng-disabled="LoginCtrl.disabled">Login</button>
-	      </div>
+
 	  </form>
 	</div>
 
 	<div ng-show = "LoginCtrl.getUserStatus()">
-		<button ng-click='LoginCtrl.logout()'>Logout</button>
+		<button ng-click='LoginCtrl.logout()' id="Logoutbut">Sign out</button>
 	</div>
-
+	<button ng-show = "!LoginCtrl.registerFormIsActive" ng-click='LoginCtrl.showRegisterForm()' id="Reg">Sign up</button>
 	
-	<button ng-show = "!LoginCtrl.registerFormIsActive" ng-click='LoginCtrl.showRegisterForm()'>Register</button>
+
 	<div ng-show = "LoginCtrl.registerFormIsActive">
 	  <h1>Register</h2>
 	  <form ng-submit="LoginCtrl.register()">
