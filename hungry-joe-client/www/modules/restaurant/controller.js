@@ -7,7 +7,7 @@ angular.module('Restaurant',[])
 	// }
 
 	SocketServices.connect();
-	var currnetUsername = UsersServices.getCurrentUsername();
+	var currentUsername = UsersServices.getCurrentUsername();
 	vm.showComment = false;
 	vm.showRatingButton = true;
 
@@ -28,7 +28,7 @@ angular.module('Restaurant',[])
 			for(var i = 0;i<ratingData.length;i++)
 			{	
 				vm.rating += ratingData[i].rate;
-				if (ratingData[i].username == currnetUsername) {
+				if (ratingData[i].username == currentUsername) {
 					vm.showRatingButton = false;
 				}
 			}
@@ -37,8 +37,8 @@ angular.module('Restaurant',[])
 	
 	//add new Comment Realtime
 	vm.addNewComment = function(){
-		CommentsServices.addComments(vm.description,vm.res._id,currnetUsername);
-		var tmpComment = {"description":vm.description,"username":currnetUsername};
+		CommentsServices.addComments(vm.description,vm.res._id,currentUsername);
+		var tmpComment = {"description":vm.description,"username":currentUsername};
 		SocketServices.emit('sendComment',tmpComment);
 		vm.description = '';
 	}
@@ -48,7 +48,7 @@ angular.module('Restaurant',[])
 
 	//add new rating Realtime
 	vm.upRate = function(){
-		RatingServices.addRating(vm.rate,vm.res._id,currnetUsername);
+		RatingServices.addRating(vm.rate,vm.res._id,currentUsername);
 		SocketServices.emit('sendRate',vm.rate);
 		console.log(vm.rate);
 		vm.rate = '';
