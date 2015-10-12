@@ -1,9 +1,11 @@
 <ion-nav-view title="Login" id="bg">
 	<div>
 		<img src="./img/joe.png" alt="logo" id="logo_pic"></img>
+		<img src="./img/logoname.png" alt="name" id = "name">
 	</div>
 
-	<div ng-show = "!LoginCtrl.getUserStatus()" id="login">
+
+	<div ng-show = "!LoginCtrl.getUserStatus()" class="login rectcor">
 	  <form ng-submit="LoginCtrl.login()">
 
 	  	<div class="list">
@@ -16,17 +18,21 @@
 		</div>
 
 	    <div>
-	        <button type="submit" ng-disabled="LoginCtrl.disabled" id="Loginbut">Sign in</button>
+	        <button type="submit" ng-disabled="LoginCtrl.disabled" class="button button-small button-positive Loginbut">Sign in</button>
 	    </div>
+
+	    <button ng-show = "!LoginCtrl.registerFormIsActive" ng-click='LoginCtrl.showRegisterForm()' class="button button-small button-balanced Reg">Sign up</button>
+
 
 	  </form>
 	</div>
 
-	<div ng-show = "LoginCtrl.getUserStatus()">
-		<button ng-click='LoginCtrl.logout()' id="Logoutbut">Sign out</button>
+
+	<!-- <div ng-show = "LoginCtrl.getUserStatus()">
+		<button ng-show = "LoginCtrl.getUserStatus()" ng-click='LoginCtrl.logout()' id="Logoutbut">Sign out</button>
 	</div>
-	<button ng-show = "!LoginCtrl.registerFormIsActive" ng-click='LoginCtrl.showRegisterForm()' id="Reg">Sign up</button>
-	
+	<button ng-show = "!LoginCtrl.registerFormIsActive" ng-click='LoginCtrl.showRegisterForm()' id="Reg">Sign up</button> -->
+
 
 	<div ng-show = "LoginCtrl.registerFormIsActive">
 	  <h1>Register</h2>
@@ -47,13 +53,13 @@
 
 	<!-- <button ng-click ="LoginCtrl.getUserStatus()">check status</button> -->
 	
-	<h5>You need to login before doing anything haha</h5>
+	<!-- <h5>You need to login before doing anything haha</h5>
 	<ul>
 		<li><a href="#/home">home</a></li>
 		<li><a href="#/km">km</a></li>
 		<li><a href="#/search">search</a></li>
 		<li><a href="#/showmap">showmap</a></li>
 		<li><a href="#/restaurant">restaurant</a></li>
-	</ul>
+	</ul> -->
 	
 </ion-nav-view>
