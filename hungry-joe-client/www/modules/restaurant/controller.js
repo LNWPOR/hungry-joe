@@ -49,14 +49,16 @@ angular.module('Restaurant',[])
 	//add new rating Realtime
 	vm.upRate = function(){
 		RatingServices.addRating(vm.rate,vm.res._id,currentUsername);
-		SocketServices.emit('sendRate',vm.rate);
-		console.log(vm.rate);
+		SocketServices.emit('sendRate',vm.rate,vm.res._id,currentUsername);
 		vm.rate = '';
 	}
-	SocketServices.on('getRate',function(data){
-		vm.rating += parseInt(data);
-		vm.showRatingButton = false;
+	SocketServices.on('getRate',function(rate,res_id,username){
+		if (vm.res._id == res_id) {
+			vm.rating += parseFloat(rate);
+			if (currentUsername == username) {
+				vm.showRatingButton = false;
+			}
+		}
 	});
-
 
 }]);
