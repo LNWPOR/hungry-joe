@@ -1,4 +1,6 @@
+
 <ion-nav-view title="KM">
+  <ion-content>
 
 	<link href="css/kmstyle.css" rel="stylesheet">
 
@@ -6,41 +8,38 @@
   		<h1 class="title">K.M</h1>
 	</div>
 	
+  <div id="kmsearch" class="row">
+    <div class="col col-75">
+    
+    <div class="list">
 
-	<div id="kmsearch" class="row">
-  		<div class="col col-75">
-		
-		<div class="list">
 
-
-  			<label class="item item-input item-select">
-    				<div class="input-label">
-      				select distance
-    				</div>
-    			<select name="mySelect" ng-model="KmCtrl.kmsearch">
-    				<!-- <option selected> </option> -->
-     				  <option value="200">200 m</option>
-      				<option value="500">500 m</option>
-      				<option value="1000">1 km</option>
-      				<option value="2000">2 km</option>
+        <label class="item item-input item-select">
+            <div class="input-label">
+              select distance
+            </div>
+          <select name="mySelect" ng-model="KmCtrl.kmsearch">
+            
+              <option value="200">200 m</option>
+              <option value="500">500 m</option>
+              <option value="1000">1 km</option>
+              <option value="2000">2 km</option>
               <option value="5000">5 km</option>
               <option value="7000">7 km</option>
               <option value="10000">10 km</option>
-    			</select>
-  			</label>
+          </select>
+        </label>
+      
+  </div>
 
-		</div>
-		
-		<!-- <button ng-click="KmCtrl.clickeiei()"></button> -->
+    </div>
+    <div class="col">
+    
+        <a href="#/showmap" ng-click="KmCtrl.Set()"><button class="button icon ion-search"></button></a>
 
-  		</div>
-  		<div class="col">
+    </div>
+  </div>
+	
 
-			<a href="#/showmap" ng-click="KmCtrl.Set()"><button class="button icon ion-search"></button></a>
-
-  		</div>
-	</div>
-
-	<!-- <tt> select val = {{KmCtrl.testval}} </tt> -->
-
-</ion-nav-view>
+  </ion-content>
+</ion-view>

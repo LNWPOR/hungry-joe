@@ -1,3 +1,4 @@
+
 <ion-nav-view title="Restaurant" id="bg">
 
 	<link href="css/restaurantstyle.css" rel="stylesheet">
@@ -61,5 +62,16 @@
 
 	</div>
 
-</ion-nav-view>
+
+		<div class="usercomment">
+			<ul ng-if="RestaurantCtrl.showComment">
+				<li ng-repeat="comment in RestaurantCtrl.comments">
+					{{comment.username}} : {{comment.description}}
+				</li>
+			</ul>
+			<input type="text" ng-model="RestaurantCtrl.description" style="background-color:red">
+			<button ng-click="RestaurantCtrl.addNewComment()">comment</button>
+		</div>
+	</ion-content>
+</ion-view>
 
