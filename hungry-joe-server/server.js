@@ -11,12 +11,12 @@ io.on('connection', function(socket){
     console.log('user disconnected');
   });
   
-  socket.on('sendComment',function(data) {
-    io.sockets.emit('getComment',data);
+  socket.on('sendComment',function(description,res_id,username) {
+    io.sockets.emit('getComment',description,res_id,username);
   });
   
-  socket.on('sendRate',function(data) {
-    io.sockets.emit('getRate',data);
+  socket.on('sendRate',function(rate,res_id,username) {
+    io.sockets.emit('getRate',rate,res_id,username);
   });
 });
 
