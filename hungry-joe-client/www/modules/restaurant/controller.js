@@ -54,7 +54,7 @@ angular.module('Restaurant',[])
 		vm.rate = '';
 	}
 	SocketServices.on('getRate',function(data){
-		vm.rating += parseInt(data);
+		vm.rating += parseFloat(data);
 		vm.showRatingButton = false;
 	});
 
