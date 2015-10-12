@@ -1,65 +1,66 @@
 <ion-view view-title="Login" hide-nav-bar="true" id="bg">
-	<div>
-		<img src="./img/joe.png" alt="logo" id="logo_pic"></img>
-		<img src="./img/logoname.png" alt="name" id = "name">
-	</div>
-
-
-	<div ng-show = "!LoginCtrl.getUserStatus()" class="login rectcor">
-	  <form ng-submit="LoginCtrl.login()">
-
-	  	<div class="list">
-		  <label class="item item-input">
-		    <input type="text" name="username" placeholder="Username" ng-model="LoginCtrl.loginForm.username"required>
-		  </label>
-		  <label class="item item-input">
-		    <input type="password" name="password" placeholder="Password" ng-model="LoginCtrl.loginForm.password" required>
-		  </label>
+	<ion-content>
+		<div>
+			<img src="./img/joe.png" alt="logo" id="logo_pic"></img>
+			<img src="./img/logoname.png" alt="name" id = "name">
 		</div>
 
-	    <div>
-	        <button type="submit" ng-disabled="LoginCtrl.disabled" class="button button-small button-positive Loginbut">Sign in</button>
-	    </div>
 
-	    <button ng-show = "!LoginCtrl.registerFormIsActive" ng-click='LoginCtrl.showRegisterForm()' class="button button-small button-balanced Reg">Sign up</button>
+		<div ng-show = "!LoginCtrl.getUserStatus()" class="login rectcor">
+		  <form ng-submit="LoginCtrl.login()">
+
+		  	<div class="list">
+			  <label class="item item-input">
+			    <input type="text" name="username" placeholder="Username" ng-model="LoginCtrl.loginForm.username"required>
+			  </label>
+			  <label class="item item-input">
+			    <input type="password" name="password" placeholder="Password" ng-model="LoginCtrl.loginForm.password" required>
+			  </label>
+			</div>
+
+		    <div>
+		        <button type="submit" ng-disabled="LoginCtrl.disabled" class="button button-small button-positive Loginbut">Sign in</button>
+		    </div>
+
+		    <button ng-show = "!LoginCtrl.registerFormIsActive" ng-click='LoginCtrl.showRegisterForm()' class="button button-small button-balanced Reg">Sign up</button>
 
 
-	  </form>
-	</div>
+		  </form>
+		</div>
 
 
-	<!-- <div ng-show = "LoginCtrl.getUserStatus()">
-		<button ng-show = "LoginCtrl.getUserStatus()" ng-click='LoginCtrl.logout()' id="Logoutbut">Sign out</button>
-	</div>
-	<button ng-show = "!LoginCtrl.registerFormIsActive" ng-click='LoginCtrl.showRegisterForm()' id="Reg">Sign up</button> -->
+		<!-- <div ng-show = "LoginCtrl.getUserStatus()">
+			<button ng-show = "LoginCtrl.getUserStatus()" ng-click='LoginCtrl.logout()' id="Logoutbut">Sign out</button>
+		</div>
+		<button ng-show = "!LoginCtrl.registerFormIsActive" ng-click='LoginCtrl.showRegisterForm()' id="Reg">Sign up</button> -->
 
 
-	<div ng-show = "LoginCtrl.registerFormIsActive">
-	  <h1>Register</h2>
-	  <form ng-submit="LoginCtrl.register()">
-	    <div>
-	      <label>Username</label>
-	      <input type="text" name="username" ng-model="LoginCtrl.registerForm.username" required>
-	    </div>
-	    <div>
-	      <label>Password</label>
-	        <input type="password" name="password" ng-model="LoginCtrl.registerForm.password" required>
-	      </div>
-	      <div>
-	        <button type="submit" ng-disabled="LoginCtrl.disabled">Submit</button>
-	      </div>
-	  </form>
-	</div>
+		<div ng-show = "LoginCtrl.registerFormIsActive">
+		  <h1>Register</h2>
+		  <form ng-submit="LoginCtrl.register()">
+		    <div>
+		      <label>Username</label>
+		      <input type="text" name="username" ng-model="LoginCtrl.registerForm.username" required>
+		    </div>
+		    <div>
+		      <label>Password</label>
+		        <input type="password" name="password" ng-model="LoginCtrl.registerForm.password" required>
+		      </div>
+		      <div>
+		        <button type="submit" ng-disabled="LoginCtrl.disabled">Submit</button>
+		      </div>
+		  </form>
+		</div>
 
-	<!-- <button ng-click ="LoginCtrl.getUserStatus()">check status</button> -->
-	
-	<!-- <h5>You need to login before doing anything haha</h5>
-	<ul>
-		<li><a href="#/home">home</a></li>
-		<li><a href="#/km">km</a></li>
-		<li><a href="#/search">search</a></li>
-		<li><a href="#/showmap">showmap</a></li>
-		<li><a href="#/restaurant">restaurant</a></li>
-	</ul> -->
-	
+		<!-- <button ng-click ="LoginCtrl.getUserStatus()">check status</button> -->
+		
+		<!-- <h5>You need to login before doing anything haha</h5>
+		<ul>
+			<li><a href="#/home">home</a></li>
+			<li><a href="#/km">km</a></li>
+			<li><a href="#/search">search</a></li>
+			<li><a href="#/showmap">showmap</a></li>
+			<li><a href="#/restaurant">restaurant</a></li>
+		</ul> -->
+	</ion-content>
 </ion-view>
