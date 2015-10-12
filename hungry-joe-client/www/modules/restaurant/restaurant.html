@@ -1,34 +1,32 @@
-<ion-nav-view title="Restaurant">
-
-	<link href="css/restaurantstyle.css" rel="stylesheet">
-
-	<ul>
-		<li>id      :{{RestaurantCtrl.res._id}}</li>
-		<li>name    :{{RestaurantCtrl.res.name}}</li>
-		<li>gres_id :{{RestaurantCtrl.res.gres_id}}</li>
-		<li>rating  :{{RestaurantCtrl.rating}}</li>
-	</ul>
-
-	<div class="rating" ng-if="RestaurantCtrl.showRatingButton" ng-click="RestaurantCtrl.upRate()">
-    <input type="radio" id="star5" value="1" ng-model="RestaurantCtrl.rate"><label for="star5">5 stars</label>
-    <input type="radio" id="star4" value="0.8" ng-model="RestaurantCtrl.rate"><label for="star4">4 stars</label>
-    <input type="radio" id="star3" value="0.6" ng-model="RestaurantCtrl.rate"><label for="star3">3 stars</label>
-    <input type="radio" id="star2" value="0.4" ng-model="RestaurantCtrl.rate"><label for="star2">2 stars</label>
-    <input type="radio" id="star1" value="0.2" ng-model="RestaurantCtrl.rate"><label for="star1">1 star</label>
-	</div>
-
-	<br>
-	<br>
-
-	<div class="usercomment">
-		<ul ng-if="RestaurantCtrl.showComment">
-			<li ng-repeat="comment in RestaurantCtrl.comments">
-				{{comment.username}} : {{comment.description}}
-			</li>
+<ion-view view-title="Restaurant">
+	<ion-content class="has-header">
+		<ul>
+			<li>id      :{{RestaurantCtrl.res._id}}</li>
+			<li>name    :{{RestaurantCtrl.res.name}}</li>
+			<li>gres_id :{{RestaurantCtrl.res.gres_id}}</li>
+			<li>rating  :{{RestaurantCtrl.rating}}</li>
 		</ul>
-		<input type="text" ng-model="RestaurantCtrl.description" style="background-color:red">
-		<button ng-click="RestaurantCtrl.addNewComment()">comment</button>
-	</div>
 
-</ion-nav-view>
+		<div class="rating" ng-if="RestaurantCtrl.showRatingButton" ng-click="RestaurantCtrl.upRate()">
+	    <input type="radio" id="star5" value="1" ng-model="RestaurantCtrl.rate"><label for="star5">5 stars</label>
+	    <input type="radio" id="star4" value="0.8" ng-model="RestaurantCtrl.rate"><label for="star4">4 stars</label>
+	    <input type="radio" id="star3" value="0.6" ng-model="RestaurantCtrl.rate"><label for="star3">3 stars</label>
+	    <input type="radio" id="star2" value="0.4" ng-model="RestaurantCtrl.rate"><label for="star2">2 stars</label>
+	    <input type="radio" id="star1" value="0.2" ng-model="RestaurantCtrl.rate"><label for="star1">1 star</label>
+		</div>
+
+		<br>
+		<br>
+
+		<div class="usercomment">
+			<ul ng-if="RestaurantCtrl.showComment">
+				<li ng-repeat="comment in RestaurantCtrl.comments">
+					{{comment.username}} : {{comment.description}}
+				</li>
+			</ul>
+			<input type="text" ng-model="RestaurantCtrl.description" style="background-color:red">
+			<button ng-click="RestaurantCtrl.addNewComment()">comment</button>
+		</div>
+	</ion-content>
+</ion-view>
 

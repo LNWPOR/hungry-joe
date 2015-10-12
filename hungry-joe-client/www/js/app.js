@@ -28,10 +28,10 @@ angular.module('HungryJoe',
     }
   });
 })
-// .run(function ($rootScope, $location, UsersServices) {
-//   $rootScope.$on('$stateChangeStart', function (event, next, current) {
-//     if (UsersServices.isLoggedIn() === false) {
-//       $location.path('/login');
-//     }
-//   });
-// });
+.run(function ($rootScope, $location, UsersServices) {
+  $rootScope.$on('$stateChangeStart', function (event, next, current) {
+    if (UsersServices.isLoggedIn() === false) {
+      $location.path('/login');
+    }
+  });
+});
