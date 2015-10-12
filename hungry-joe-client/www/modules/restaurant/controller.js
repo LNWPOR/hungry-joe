@@ -38,12 +38,14 @@ angular.module('Restaurant',[])
 	//add new Comment Realtime
 	vm.addNewComment = function(){
 		CommentsServices.addComments(vm.description,vm.res._id,currentUsername);
-		var tmpComment = {"description":vm.description,"username":currentUsername};
-		SocketServices.emit('sendComment',tmpComment);
+		SocketServices.emit('sendComment',vm.description,vm.res._id,currentUsername);
 		vm.description = '';
 	}
-	SocketServices.on('getComment',function(data){
-		vm.comments.push(data);
+	SocketServices.on('getComment',function(description,res_id,username){
+		var tmpComment = {"description":description,"res_id":res_id,"username":username};
+		if (vm.res._id == res_id) {
+			vm.comments.push(tmpComment);
+		}
 	});
 
 	//add new rating Realtime
