@@ -2,6 +2,8 @@ angular.module('Showmap',[])
 .controller('ShowmapController', ['$ionicLoading','KmradiusServices','RestaurantListsServices','MapvalueServices', function($ionicLoading,KmradiusServices,RestaurantListsServices,MapvalueServices){
 	var vm = this;
     var kmRad;
+    var search = [];
+    var from;
     var ResID;
 
     // set default map
@@ -17,6 +19,9 @@ angular.module('Showmap',[])
     google.maps.event.addDomListenerOnce(window, 'click', function() {
  
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        var service_places = new google.maps.places.PlacesService(map);
+        var infowindow = new google.maps.InfoWindow(); 
  
         navigator.geolocation.getCurrentPosition(function(pos) {
             map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
@@ -41,27 +46,41 @@ angular.module('Showmap',[])
             });
         };
 
-        kmRad = KmradiusServices.getRad();
+        from = KmradiusServices.getFrom();
 
-        
+        if(from == 0){
+            kmRad = KmradiusServices.getRad();
+            // set radius search
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                var request = {
+                    location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
 
-        // set radius search
-        navigator.geolocation.getCurrentPosition(function(pos) {
-            var request = {
-                location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                    keyword: 'KFC' ,
+                    types: ['restaurant', 'food'],
+                    name: ['KFC'],
+                    radius: kmRad
+                  };
 
-                keyword: 'KFC' ,
-                types: ['restaurant', 'food'],
-                name: ['KFC'],
-                radius: kmRad
+                service_places.nearbySearch(request, callback_places);
+            });
+        }
+        else if(from == 1){
+            search = KmradiusServices.getSearch();
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                for(var i=0;i<search.length;i++){
+                var request = {
+                    location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
 
-              };
+                    keyword: search[i] ,
+                    types: ['restaurant', 'food'],
+                    name: [search[i]],
+                    radius: 2000
+                  };
 
-            service_places.nearbySearch(request, callback_places);
-        });
-
-        var service_places = new google.maps.places.PlacesService(map);
-        var infowindow = new google.maps.InfoWindow(); 
+                service_places.nearbySearch(request, callback_places);
+                }
+            });
+        }
         
         // mark place that found
         function callback_places(results, status, pagination) {
@@ -88,8 +107,7 @@ angular.module('Showmap',[])
           var service_distance = new google.maps.DistanceMatrixService();
           // click mark to pop up the detail window
           google.maps.event.addListener(marker, 'click', function() {
-
-
+                    
             infowindow.setContent("");
             infowindow.open(map, this);
             service_places.getDetails({placeId: place.place_id}, function(place, status) {
