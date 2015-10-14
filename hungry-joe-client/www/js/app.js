@@ -15,7 +15,8 @@ angular.module('HungryJoe',
   'Mapvalue',
   'btford.socket-io',
   'Socket',
-  'Rating'
+  'Rating',
+  'Register'
 ])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -30,7 +31,8 @@ angular.module('HungryJoe',
 })
 .run(function ($rootScope, $location, UsersServices) {
   $rootScope.$on('$stateChangeStart', function (event, next, current) {
-    if (UsersServices.isLoggedIn() === false) {
+    var path = $location.path();
+    if (UsersServices.isLoggedIn() === false && path != '/register') {
       $location.path('/login');
     }
   });

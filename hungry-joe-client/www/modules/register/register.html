@@ -1,0 +1,19 @@
+<ion-view view-title="Register" hide-nav-bar="true">
+	<ion-content>
+		<h1>REGISTER</h1>
+		<form ng-submit="RegisterCtrl.register()">
+		  	<div class="list">
+			  <label class="item item-input">
+			    <input type="text" name="username" placeholder="Username" ng-model="RegisterCtrl.registerForm.username"required>
+			  </label>
+			  <label class="item item-input">
+			    <input type="password" name="password" placeholder="Password" ng-model="RegisterCtrl.registerForm.password" required>
+			  </label>
+			</div>
+
+		    <div>
+		        <button type="submit" ng-disabled="RegisterCtrl.disabled" class="button button-small button-positive Loginbut">Sign up</button>
+		    </div>
+	  </form>
+	</ion-content>
+</ion-view>

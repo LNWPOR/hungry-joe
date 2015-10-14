@@ -1,4 +1,4 @@
-angular.module('Kmradius',[]).factory('KmradiusServices', ['$resource', function ($resource) {
+angular.module('Kmradius',[]).factory('KmradiusServices', [ function () {
     var KmradiusServices = {};
     var Rad;
     var Radtmp = 2000;
