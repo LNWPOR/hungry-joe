@@ -43,6 +43,8 @@ angular.module('Showmap',[])
 
         kmRad = KmradiusServices.getRad();
 
+        
+
         // set radius search
         navigator.geolocation.getCurrentPosition(function(pos) {
             var request = {
@@ -86,7 +88,8 @@ angular.module('Showmap',[])
           var service_distance = new google.maps.DistanceMatrixService();
           // click mark to pop up the detail window
           google.maps.event.addListener(marker, 'click', function() {
-                    
+
+
             infowindow.setContent("");
             infowindow.open(map, this);
             service_places.getDetails({placeId: place.place_id}, function(place, status) {
