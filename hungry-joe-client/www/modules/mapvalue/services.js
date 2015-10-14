@@ -1,4 +1,4 @@
-angular.module('Mapvalue',[]).factory('MapvalueServices', ['$resource', function ($resource) {
+angular.module('Mapvalue',[]).factory('MapvalueServices', [function () {
     var MapvalueServices = {};
     var gresTmp;
 

@@ -7,6 +7,11 @@ angular.module('HungryJoe')
     templateUrl: 'modules/login/login.html',
     controller: 'LoginController as LoginCtrl'
   })
+  .state('register', {
+    url: '/register',
+    templateUrl: 'modules/register/register.html',
+    controller: 'RegisterController as RegisterCtrl'
+  })
   .state('home', {
     url: '/home',
     templateUrl: 'modules/home/home.html',
