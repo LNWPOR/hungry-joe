@@ -1,8 +1,9 @@
 div{
   text-align: center;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
 }
 .to_center_div{
+  position: relative;
   left: 25%;
   top: 10%;
 }
@@ -25,8 +26,22 @@ div{
   margin: 5%;
 }
 
+.search{
+  margin: auto;
+  width: 90%;
+  color: #585858 ;
+  display: block;
+  text-align: center;
+  border-radius: 25px;
+  background: linear-gradient(to right, #FFFF99 , #FFFFCC);
+  border:1px solid #CCFFCC; 
+  font-size: 22px;
+  font-weight: bold;
+  padding:5% 10%;
+}
+
 .push_button{
-  position:relative;
+  /*position:relative;*/
   width:50%;
   color:#FFF;
   display:block;
@@ -35,8 +50,8 @@ div{
 /*  margin-left: 25%;
   margin-top: 15%;*/
   border-radius:5px;
-  border:solid 1px #D94E3B;
-  background:#cb3b27;
+  border:solid 1px #00CCFF;
+  background:#0066FF;
   text-align:center;
   padding:20px 30px;
   
@@ -44,15 +59,15 @@ div{
   -moz-transition: all 0.1s;
   transition: all 0.1s;
   
-  -webkit-box-shadow: 0px 9px 0px #84261a;
-        -moz-box-shadow: 0px 9px 0px #84261a;
-        box-shadow: 0px 9px 0px #84261a;
+  -webkit-box-shadow: 0px 9px 0px #003366;
+        -moz-box-shadow: 0px 9px 0px #003366;
+        box-shadow: 0px 9px 0px #003366;
 }
 
 .push_button:active{
-    -webkit-box-shadow: 0px 2px 0px #84261a;
-    -moz-box-shadow: 0px 2px 0px #84261a;
-    box-shadow: 0px 2px 0px #84261a;
+    -webkit-box-shadow: 0px 2px 0px #003366;
+    -moz-box-shadow: 0px 2px 0px #003366;
+    box-shadow: 0px 2px 0px #003366;
     position:relative;
-    top:7px;
+    top:5px;
 }
