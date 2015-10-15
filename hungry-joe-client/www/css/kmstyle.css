@@ -2,3 +2,14 @@
 	position: fixed;
 	top :50%;
 }
+
+#bg{
+    background: linear-gradient(to bottom, #0066FF , #00FFFF);
+    background-color: #0066FF;
+}
+
+#KM_pic{
+	height: auto;
+	width: 35%;
+	margin-top: 20%;
+}

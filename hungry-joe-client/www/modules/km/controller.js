@@ -13,6 +13,3 @@ angular.module('Km',[])
 
 
 }]);
-
-
-
