@@ -5,14 +5,13 @@
         <i class="icon ion-ios-search placeholder-icon"></i>
         <input type="search" placeholder="search" ng-model="SearchCtrl.search"
         ng-change='SearchCtrl.change_status(SearchCtrl.search); SearchCtrl.searchKeyword(SearchCtrl.search)'>
-          <a href="#/showmap">
+      </label>
+          <a href="#/showmap" ng-click="SearchCtrl.sendData()">
             <button
               ng-disabled = "!SearchCtrl.check"
-              ng-click="SearchCtrl.sendData()"
               class="button icon ion-search">
             </button>
           </a>
-      </label>
     </div>
     <ion-checkbox
       ng-repeat = "temp in SearchCtrl.result"

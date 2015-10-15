@@ -13,7 +13,7 @@ angular.module('Showmap',[])
         center: myLatlng,
         zoom: 14,
         mapTypeId: google.maps.MapTypeId.ROADMAP
-    };    
+    };
 
     // init google map
     google.maps.event.addDomListenerOnce(window, 'click', function() {
@@ -74,7 +74,7 @@ angular.module('Showmap',[])
                     keyword: search[i] ,
                     types: ['restaurant', 'food'],
                     name: [search[i]],
-                    radius: 2000
+                    radius: 5000
                   };
 
                 service_places.nearbySearch(request, callback_places);

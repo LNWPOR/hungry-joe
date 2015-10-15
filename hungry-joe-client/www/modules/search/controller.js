@@ -54,7 +54,6 @@ angular.module('Search',[])
 				j++;
 			}
 		}
-		//console.log(vm.send);
 		KmradiusServices.setSearch(vm.send);
 	}
 }]);
