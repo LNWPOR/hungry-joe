@@ -164,8 +164,6 @@ angular.module('Showmap',[])
 
           // click mark to pop up the detail window
           google.maps.event.addListener(marker, 'click', function() {
-            var distance;
-            var duration;
              var request = {
               origin: origin,
               destination: place.geometry.location,
