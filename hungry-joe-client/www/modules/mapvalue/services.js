@@ -10,10 +10,12 @@ angular.module('Mapvalue',[]).factory('MapvalueServices', [function () {
 
     MapvalueServices.setDistance = function(x){
     	distance = x;
+        console.log(x);
     }
 
     MapvalueServices.setDuration = function(x){
     	duration = x
+        console.log(x);
     }
     
     MapvalueServices.getgresID = function(){
