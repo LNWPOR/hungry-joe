@@ -1,6 +1,7 @@
 angular.module('RestaurantLists',[]).factory('RestaurantListsServices', ['$resource', function ($resource) {
     var RestaurantListsServices = {};
     var base = "https://hungry-joe-lnwpor-5.c9.io:8080";
+    // var base = "http://hungry-joe-server.mybluemix.net";
     var RestaurantLists = $resource(base+'/api/restaurantlists/:restaurant_id', {restaurant_id : '@restaurant_id'});
 	var RestaurantListsGres = $resource(base+'/api/restaurantlists/:gres_id', {gres_id : '@gres_id'});
    

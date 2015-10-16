@@ -1,6 +1,6 @@
 #restaurantImage{
+    height: 30%;
     width:100%;
-    height:230px;
 }
 
 #bg{
@@ -8,8 +8,10 @@
     background-color: #0066FF;
 }
 
-#row1{
-    padding-bottom: 0%;
+#Resdetail{
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 160px;
 }
 
 #commentDisplay{
@@ -21,31 +23,32 @@
     background-color: white;
 }
 
+#firstsection{
+    padding-bottom: none;
+}
+
+.rectcor {
+    border-radius: 25px;
+    border: none;
+    padding: 20px; 
+    width: 75%;
+    height: 40%;
+    background-color: white;
+}
+
 #commentSubmit{
     border:1.7px solid black;
 }
 
-.col{
-    padding-left: 10px;
-}
-
-svg {
-    position: absolute;
-    left: 24px;
-    top: 420px;
-    z-index: -1;
-    fill: white;
-}
-
-h5{
-    font-size: 110%;
-    padding-right: 145px;
+#showrate{
     display: inline-block;
+    padding-right: 15%;
 }
 
 #commentBox{
-    padding-left: 40px;
-    padding-right: 40px;
+    margin:auto;
+    height: auto;
+    width: 75%;
 }
 
 .rating {

@@ -13,6 +13,8 @@ angular.module('Restaurant',[])
 
 	//get Restaurant
 	var resPromise = RestaurantListsServices.getRestaurantByGresID(MapvalueServices.getgresID());
+	vm.distance = MapvalueServices.getDistance();
+	vm.duration = MapvalueServices.getDuration();
 	resPromise.$promise.then(function(restaurantData){
 		vm.res = restaurantData;
 		//get Comment
