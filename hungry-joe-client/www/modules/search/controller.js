@@ -1,5 +1,5 @@
 angular.module('Search',[])
-.controller('SearchController', ['$scope', '$filter', 'KmradiusServices', function($scope, $filter, KmradiusServices){
+.controller('SearchController', ['$scope', '$filter', 'KmradiusServices', 'MenuListsServices',  function($scope, $filter, KmradiusServices, MenuListsServices){
 	var vm = this;
 	vm.result = [];
 	vm.send = [];
@@ -7,23 +7,31 @@ angular.module('Search',[])
 	vm.searchKeyword = function(keyword) {
 		vm.result = $filter('filter')(vm.restaurantDB, {food : keyword});
 	}
-	vm.restaurantDB = [
-	{
-		"name":"KFC",
-		"food":["ไก่ทอด","เบอร์เกอร์"],
-		"checked" : false
-	},
-	{	
-		"name":"McDonald",
-		"food":["burger","ผัก", "ไก่ทอด"],
-		"checked" : false
-	},
-	{
-		"name":"Pizza",
-		"food":["ทอด","หมู"],
-		"checked" : false
-	}
-	]
+	var dbPromise =  MenuListsServices.getMenuLists();
+	dbPromise.$promise.then(function(db){
+		vm.restaurantDB = [
+		{
+			"name": db[0].name,
+			"food": db[0].menu,
+			"checked" : false
+		},
+		{	
+			"name": db[1].name,
+			"food": db[1].menu,
+			"checked" : false
+		},
+		{
+			"name": db[2].name,
+			"food": db[2].menu,
+			"checked" : false
+		},
+		{	
+			"name": db[3].name,
+			"food": db[3].menu,
+			"checked" : false
+		}
+		]
+	});
 	vm.check_status = function(){
 		for(var i=0;i<vm.restaurantDB.length;i++){
 			if(i == 0){
