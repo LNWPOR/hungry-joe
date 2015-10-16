@@ -1,15 +1,11 @@
 #restaurantImage{
+    height: 30%;
     width:100%;
-    height:230px;
 }
 
 #bg{
     background: linear-gradient(to bottom, #0066FF , #00FFFF);
     background-color: #0066FF;
-}
-
-#row1{
-    padding-bottom: 0%;
 }
 
 #commentDisplay{
@@ -21,25 +17,15 @@
     background-color: white;
 }
 
+.mycol{
+    padding-left: 0px;
+}
+
 #commentSubmit{
     border:1.7px solid black;
 }
 
-.col{
-    padding-left: 10px;
-}
-
-svg {
-    position: absolute;
-    left: 24px;
-    top: 420px;
-    z-index: -1;
-    fill: white;
-}
-
-h5{
-    font-size: 110%;
-    padding-right: 145px;
+#showrate{
     display: inline-block;
 }
 
