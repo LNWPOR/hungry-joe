@@ -1,6 +1,18 @@
 #bg{
 	background: linear-gradient(to bottom, #0066FF , #00FFFF);
-	background-color: #0066FF;
+	background: -moz-linear-gradient(top,  #0066FF , #00FFFF); /* FF3.6+ */
+
+	background: -webkit-gradient(linear, top, bottom, color-stop(#0066FF), color-stop(#00FFFF)); /* Chrome,Safari4+ */
+
+	background: -webkit-linear-gradient(top,  #0066FF , #00FFFF); /* Chrome10+,Safari5.1+ */
+
+	background: -o-linear-gradient(top,  #0066FF , #00FFFF); /* Opera 11.10+ */
+
+	background: -ms-linear-gradient(top,  #0066FF , #00FFFF); /* IE10+ */
+
+	background: linear-gradient(to bottom,  #0066FF , #00FFFF); /* W3C */
+
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0066FF', endColorstr='#00FFFF',GradientType=0 ); /* IE6-9 */
 }
 
 #name{
