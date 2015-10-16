@@ -17,13 +17,24 @@ angular.module('Showmap',[])
 
     // init google map
     google.maps.event.addDomListenerOnce(window, 'click', function() {
- 
+
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        var origin;
 
         var service_places = new google.maps.places.PlacesService(map);
         var infowindow = new google.maps.InfoWindow(); 
+        var directionsDisplay = new google.maps.DirectionsRenderer({
+            map: map,
+            polylineOptions: { strokeColor: "Black" },
+            suppressMarkers : true 
+          });
+        var directionsService = new google.maps.DirectionsService();
+
+
  
         navigator.geolocation.getCurrentPosition(function(pos) {
+            origin = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
             map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
             var myLocation = new google.maps.Marker({
                 position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
@@ -36,7 +47,6 @@ angular.module('Showmap',[])
                 infowindow.setContent("<h style='color:pink'>หิว</h>");
                 infowindow.open(map, this);
           });
-            
         });
 
         //button to go current position
@@ -52,16 +62,26 @@ angular.module('Showmap',[])
             kmRad = KmradiusServices.getRad();
             // set radius search
             navigator.geolocation.getCurrentPosition(function(pos) {
-                var request = {
-                    location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                var place = ['KFC', 'McDonald', 'Pizza Hut', 'The Pizza Company']
 
-                    keyword: 'KFC' ,
-                    types: ['restaurant', 'food'],
-                    name: ['KFC'],
-                    radius: kmRad
-                  };
+                for(var i=0;i<place.length;i++){
+                    var request = {
+                        location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
 
-                service_places.nearbySearch(request, callback_places);
+                        keyword: place[i] ,
+                        types: ['restaurant', 'food'],
+                        name: [place[i]],
+                        radius: kmRad
+                      };
+                if(place[i] == 'KFC')
+                    service_places.nearbySearch(request, callback_KFC);
+                else if(place[i] == 'McDonald')
+                    service_places.nearbySearch(request, callback_McDonald);
+                else if(place[i] == 'Pizza Hut')
+                    service_places.nearbySearch(request, callback_PizzaHut);
+                else if(place[i] == 'The Pizza Company')
+                    service_places.nearbySearch(request, callback_PizzaCompany);
+                }
             });
         }
         else if(from == 1){
@@ -71,43 +91,96 @@ angular.module('Showmap',[])
                 var request = {
                     location: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
 
-                    keyword: search[i] ,
+                    keyword: search[i],
                     types: ['restaurant', 'food'],
                     name: [search[i]],
                     radius: 5000
                   };
-
-                service_places.nearbySearch(request, callback_places);
+                if(search[i] == 'KFC')
+                    service_places.nearbySearch(request, callback_KFC);
+                else if(search[i] == 'McDonald')
+                    service_places.nearbySearch(request, callback_McDonald);
+                else if(search[i] == 'Pizza Hut')
+                    service_places.nearbySearch(request, callback_PizzaHut);
+                else if(search[i] == 'The Pizza Company')
+                    service_places.nearbySearch(request, callback_PizzaCompany);
                 }
             });
         }
         
         // mark place that found
-        function callback_places(results, status, pagination) {
+        function callback_KFC(results, status, pagination) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
-              createMarker(results[i]);
+              createMarker(results[i], 'KFC');
             }
           }
             if(pagination.hasNextPage){
                 pagination.nextPage();
             }
         }
-        // mark a place
-        function createMarker(place) {
+        // mark place that found
+        function callback_McDonald(results, status, pagination) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              createMarker(results[i], 'McDonald');
+            }
+          }
+            if(pagination.hasNextPage){
+                pagination.nextPage();
+            }
+        }
+        // mark place that found
+        function callback_PizzaHut(results, status, pagination) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              createMarker(results[i], 'PizzaHut');
+            }
+          }
+            if(pagination.hasNextPage){
+                pagination.nextPage();
+            }
+        }
+        // mark place that found
+        function callback_PizzaCompany(results, status, pagination) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              createMarker(results[i], 'PizzaCompany');
+            }
+          }
+            if(pagination.hasNextPage){
+                pagination.nextPage();
+            }
+        }
+        // mark a place 
+        function createMarker(place, results) {
           var placeLoc = place.geometry.location;
           var marker = new google.maps.Marker({
             map: map,
             position: place.geometry.location,
-            icon: "./img/KFC_icon.png",
-            title: "KFC",
-
+            icon: "./img/" + results + "_icon.png",
+            title: results
           });
 
-          var service_distance = new google.maps.DistanceMatrixService();
           // click mark to pop up the detail window
           google.maps.event.addListener(marker, 'click', function() {
-                    
+            var distance;
+            var duration;
+             var request = {
+              origin: origin,
+              destination: place.geometry.location,
+              durationInTraffic: false,
+              travelMode: google.maps.TravelMode.DRIVING
+          };
+          directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+              directionsDisplay.setDirections(response);
+               distance = response.routes[0].legs[0].distance.text;
+               duration = response.routes[0].legs[0].duration.text;
+               console.log(distance + " " + duration)
+            }
+          });
+
             infowindow.setContent("");
             infowindow.open(map, this);
             service_places.getDetails({placeId: place.place_id}, function(place, status) {
@@ -121,28 +194,18 @@ angular.module('Showmap',[])
                 }
 
                 MapvalueServices.setGresID(place.place_id);
+                MapvalueServices.setDistance(distance);
+                MapvalueServices.setDuration(duration);
                 var ResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id)
                 ResPromise.$promise.then(function(data){
                     if(!data.hasOwnProperty('gres_id')){
                         RestaurantListsServices.addRestaurant(place.name,place.place_id);
                     }
                 })
-
             });
-
-            
             infowindow.open(map, this);
-
           });
         }
-
-
         vm.map = map;
     });
-
-
-
-
-
-
 }]);
