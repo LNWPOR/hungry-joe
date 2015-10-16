@@ -49,16 +49,6 @@
 
 }
 
-#Logoutbut{
-	height: 20%;
-	width: 50%;
-	margin-left: 25%;
-	background-color: #FF0033;
-	border:none;
-	font-family: play;
-	color: white;
-}
-
 @font-face {
     font-family: "play";
     src: "./css/font/play/Play-Regular.ttf" format("truetype");
