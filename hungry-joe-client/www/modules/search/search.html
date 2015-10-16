@@ -6,9 +6,10 @@
         <input type="search" placeholder="search" ng-model="SearchCtrl.search"
         ng-change='SearchCtrl.change_status(SearchCtrl.search); SearchCtrl.searchKeyword(SearchCtrl.search)'>
       </label>
-          <a href="#/showmap" ng-click="SearchCtrl.sendData()">
+          <a href="#/showmap">
             <button
-              ng-disabled = "!SearchCtrl.check"
+              ng-click="SearchCtrl.sendData()"
+              ng-hide = "!SearchCtrl.check"
               class="button icon ion-search">
             </button>
           </a>
