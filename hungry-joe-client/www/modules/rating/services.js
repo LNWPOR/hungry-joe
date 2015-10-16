@@ -1,7 +1,7 @@
 angular.module('Rating',[]).factory('RatingServices', ['$resource', function ($resource) {
     var RatingServices = {};
-
     var base = "https://hungry-joe-lnwpor-5.c9.io:8080";
+    // var base = "http://hungry-joe-server.mybluemix.net";
     var Rating = $resource(base+'/api/rating');
     var RestaurantRating = $resource(base+'/api/rating/:restaurant_id',{restaurant_id : '@restaurant_id'});
     
