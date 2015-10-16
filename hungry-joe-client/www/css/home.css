@@ -30,6 +30,19 @@
   text-align: center;
   border-radius: 25px;
   background: linear-gradient(to right, #FFFF99 , #FFFFCC);
+  background: -moz-linear-gradient(left,  #FFFF99 , #FFFFCC); /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left, right, color-stop(#FFFF99), color-stop(#FFFFCC)); /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(left,  #FFFF99 , #FFFFCC); /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(left,  #FFFF99 , #FFFFCC); /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(left,  #FFFF99 , #FFFFCC); /* IE10+ */
+
+  background: linear-gradient(to right,  #FFFF99 , #FFFFCC); /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFF99', endColorstr='#FFFFCC',GradientType=0 ); /* IE6-9 */
   border:1px solid #CCFFCC; 
   font-size: 22px;
   font-weight: bold;
