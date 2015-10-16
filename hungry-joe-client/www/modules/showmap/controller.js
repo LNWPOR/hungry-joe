@@ -164,8 +164,6 @@ angular.module('Showmap',[])
 
           // click mark to pop up the detail window
           google.maps.event.addListener(marker, 'click', function() {
-            var distance;
-            var duration;
              var request = {
               origin: origin,
               destination: place.geometry.location,
@@ -175,9 +173,8 @@ angular.module('Showmap',[])
           directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
               directionsDisplay.setDirections(response);
-               distance = response.routes[0].legs[0].distance.text;
-               duration = response.routes[0].legs[0].duration.text;
-               console.log(distance + " " + duration)
+                MapvalueServices.setDistance(response.routes[0].legs[0].distance.text);
+                MapvalueServices.setDuration(response.routes[0].legs[0].duration.text);
             }
           });
 
@@ -194,8 +191,7 @@ angular.module('Showmap',[])
                 }
 
                 MapvalueServices.setGresID(place.place_id);
-                MapvalueServices.setDistance(distance);
-                MapvalueServices.setDuration(duration);
+
                 var ResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id)
                 ResPromise.$promise.then(function(data){
                     if(!data.hasOwnProperty('gres_id')){
