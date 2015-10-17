@@ -7,8 +7,20 @@
 		<h1 class="Hungryjoe">Hungryjoe</h1>
 		</div>
 	</div>
+		
+		<div ng-if="LoginCtrl.spinnerIsActive">
+			<ion-spinner class="android"></ion-spinner>
+			<br>
+			<br>
+		</div>
+		<div ng-if="LoginCtrl.errorMessage" style="color:red">
+			{{LoginCtrl.errorMessage}}
+			<br>
+			<br>
+		</div>
+		
 
-		 <div ng-if="!LoginCtrl.getUserStatus()">
+		<div ng-if="!LoginCtrl.getUserStatus()">
 			<div ng-if="!LoginCtrl.registerFormIsActive" class="login rectcor">
 		
 		 	 <form ng-submit="LoginCtrl.login()">
