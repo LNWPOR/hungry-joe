@@ -1,4 +1,4 @@
-<ion-nav-view title="Restaurant" id="bg">
+<ion-view title="Restaurant" id="bg">
 	<ion-content class="has-header">
 	<div style="text-align:center;">
 		<img class="restaurantImage" src= {{RestaurantCtrl.url_restaurant}}>
@@ -18,6 +18,8 @@
 				<div class="show_detail"> <h5 style="color:#383838 ;">Rating  : {{RestaurantCtrl.rating}}</h5></div>
 		  		<div class="show_detail"> <h5 style="color:#383838;">Distance  : {{RestaurantCtrl.distance}}</h5> </div>
 		  		<div class="show_detail"> <h5 style="color:#383838;">Estimate time  : {{RestaurantCtrl.duration}}</h5> </div>
+		  		<div class="show_detail"><h5 style="color:#383838 ;">Link  : <a href={{RestaurantCtrl.restlink}}>Go to Website!</h5></a></div>
+		  		<div class="show_detail"><h5 style="color:#383838 ;">Tel  : <a href={{RestaurantCtrl.restTeltag}}>{{RestaurantCtrl.restTel}}</h5></a></div>
 
 		</div>
 		

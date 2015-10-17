@@ -13,16 +13,31 @@ angular.module('Restaurant',[])
 	//get restaurant
 
 	var restaurant = MapvalueServices.getRestaurant();
-	if(restaurant == 'KFC')
+	if(restaurant == 'KFC'){
 		vm.restmp = "KFC-logo.jpg";
-	else if(restaurant == 'McDonald')
+		vm.restlink = "https://www.kfc.co.th/#!/home";
+		vm.restTeltag = 'tel://1150';
+		vm.restTel = "1150";
+	}
+	else if(restaurant == 'McDonald'){
 		vm.restmp = "MC-logo.png";
-	else if(restaurant == 'PizzaHut')
+		vm.restlink = "http://mcdelivery.mcthai.co.th/#!/home";
+		vm.restTeltag = 'tel://1711';
+		vm.restTel = "1711";
+	}
+	else if(restaurant == 'PizzaHut'){
 		vm.restmp = "pizzahut-logo.jpg";
-	else if(restaurant == 'PizzaCompany')
+		vm.restlink = "https://www.pizzahut.co.th/#!/home";
+		vm.restTeltag = 'tel://1150';
+		vm.restTel = "1150";
+	}
+	else if(restaurant == 'PizzaCompany'){
 		vm.restmp = "pizzacompany-logo.jpeg";
+		vm.restlink = "https://www.1112.com/#!/home";
+		vm.restTeltag = 'tel://1122';
+		vm.restTel = "1122";
+	}
 
-	// src="./img/KFC_icon.png"
 	vm.url_restaurant ="./img/" + vm.restmp;
 
 
@@ -53,6 +68,9 @@ angular.module('Restaurant',[])
 			}
 		});
 	});
+
+	console.log(vm.showRatingButton);
+
 	//add new Comment Realtime
 	vm.addNewComment = function(){
 		CommentsServices.addComments(vm.description,vm.res._id,currentUsername);
