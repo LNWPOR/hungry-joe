@@ -22,6 +22,7 @@ angular.module('Restaurant',[])
 		commentsPromise.$promise.then(function(commentData){
 			vm.comments = commentData;
 			vm.showComment = true;
+			console.log(commentData);
 		});
 		//get Rating
 		var ratingPromise = RatingServices.getRestaurantRating(vm.res._id);
@@ -36,7 +37,6 @@ angular.module('Restaurant',[])
 			}
 		});
 	});
-	
 	//add new Comment Realtime
 	vm.addNewComment = function(){
 		CommentsServices.addComments(vm.description,vm.res._id,currentUsername);

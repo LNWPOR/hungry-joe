@@ -1,47 +1,42 @@
 <ion-nav-view title="Restaurant" id="bg">
 	<ion-content class="has-header">
-		<img id="restaurantImage" src="http://it.opinionspost.com/wp-content/uploads/2014/11/kfc_350_100912015132.jpg">
+	<div style="text-align:center;">
+		<img class="restaurantImage" src="http://it.opinionspost.com/wp-content/uploads/2014/11/kfc_350_100912015132.jpg">
+	</div>
 
-		<div class="row responsive-sm" id="firstsection">
-
-	  		<div id="Resdetail" class="col">
-
-	  			<div class="col">
+	  	<div class="content_box">
 
 
-	  			<h5 id="showrate">rating  : {{RestaurantCtrl.rating}}</h5>
-
-					<div class="rating" ng-if="RestaurantCtrl.showRatingButton" ng-click="RestaurantCtrl.upRate()">
-	    				<input type="radio" id="star5" value="1" ng-model="RestaurantCtrl.rate"><label for="star5">5 stars</label>
-	    				<input type="radio" id="star4" value="0.8" ng-model="RestaurantCtrl.rate"><label for="star4">4 stars</label>
-	    				<input type="radio" id="star3" value="0.6" ng-model="RestaurantCtrl.rate"><label for="star3">3 stars</label>
-	   		 			<input type="radio" id="star2" value="0.4" ng-model="RestaurantCtrl.rate"><label for="star2">2 stars</label>
-	    				<input type="radio" id="star1" value="0.2" ng-model="RestaurantCtrl.rate"><label for="star1">1 star</label>
-					</div>
+				<div class="rating" ng-if="RestaurantCtrl.showRatingButton" ng-click="RestaurantCtrl.upRate()">
+		   			<input type="radio" id="star5" value="1" ng-model="RestaurantCtrl.rate"><label for="star5">5 stars</label>
+		   			<input type="radio" id="star4" value="0.8" ng-model="RestaurantCtrl.rate"><label for="star4">4 stars</label>
+		   			<input type="radio" id="star3" value="0.6" ng-model="RestaurantCtrl.rate"><label for="star3">3 stars</label>
+		  			<input type="radio" id="star2" value="0.4" ng-model="RestaurantCtrl.rate"><label for="star2">2 stars</label>
+	    			<input type="radio" id="star1" value="0.2" ng-model="RestaurantCtrl.rate"><label for="star1">1 star</label>
 				</div>
-
-	  		<div class="col"> <h5>distance  : {{RestaurantCtrl.distance}}</h5> </div>
-	  		<div class="col"> <h5>estimate time  : {{RestaurantCtrl.duration}}</h5> </div>
-			</div>	
+				<div class="show_detail"> <h5>Rating  : {{RestaurantCtrl.rating}}</h5></div>
+		  		<div class="show_detail"> <h5>Distance  : {{RestaurantCtrl.distance}}</h5> </div>
+		  		<div class="show_detail"> <h5>Estimate time  : {{RestaurantCtrl.duration}}</h5> </div>
 		</div>
 		
 
-		<div id="commentBox" class="usercomment rectcor">
-			<div id="commentDisplay" style="background-color : red;">
+		<div class="content_box rectcor">
+			<div class="commentDisplay">
+
 				<ul ng-if="RestaurantCtrl.showComment">
-					<li ng-repeat="comment in RestaurantCtrl.comments">
+					<li ng-repeat="comment in RestaurantCtrl.comments" style="border-radius:5px; margin-bottom:1px; background-color:#F8F8F8;">
 						{{comment.username}} : {{comment.description}}
 					</li>
 				</ul>
 			</div>
 		
 
-			<div id="commentSubmit">
+			<!-- <div> -->
 				
 
-				<div class="list">
+				<div>
 
-	  				<div class="item item-input-inset">
+	  				<div class="item item-input-inset" style="border:none;">
 	    				<label class="item-input-wrapper">
 	      					<input type="text" placeholder="insert comment" ng-model="RestaurantCtrl.description">
 	   					</label>
@@ -52,7 +47,7 @@
 
 				</div>
 			
-			</div>
+			<!-- </div> -->
 
 		</div>
 
