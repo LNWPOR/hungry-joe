@@ -200,6 +200,9 @@ angular.module('Showmap',[])
                 })
             });
             infowindow.open(map, this);
+
+            console.log(place.name);
+
           });
         }
         vm.map = map;
