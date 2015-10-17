@@ -5,11 +5,27 @@ angular.module('Restaurant',[])
 	// vm.showeiei = function(){
 	// 	console.log(vm.rateVal);
 	// }
-
 	SocketServices.connect();
 	var currentUsername = UsersServices.getCurrentUsername();
 	vm.showComment = false;
 	vm.showRatingButton = true;
+
+	//get restaurant
+
+	var restaurant = MapvalueServices.getRestaurant();
+	console.log(restaurant)
+	if(restaurant == 'KFC')
+		vm.url_restaurant = "http://it.opinionspost.com/wp-content/uploads/2014/11/kfc_350_100912015132.jpg";
+	else if(restaurant == 'McDonald')
+		vm.url_restaurant = "";
+	else if(restaurant == 'PizzaHut')
+		vm.url_restaurant = "";
+	else if(restaurant == 'PizzaCompany')
+		vm.url_restaurant = "";
+
+
+
+
 
 	//get Restaurant
 	var resPromise = RestaurantListsServices.getRestaurantByGresID(MapvalueServices.getgresID());

@@ -3,6 +3,7 @@ angular.module('Mapvalue',[]).factory('MapvalueServices', [function () {
     var gresTmp;
     var distance;
     var duration;
+    var restaurant
 
     MapvalueServices.setGresID = function(x){
     	gresTmp = x;
@@ -13,7 +14,11 @@ angular.module('Mapvalue',[]).factory('MapvalueServices', [function () {
     }
 
     MapvalueServices.setDuration = function(x){
-    	duration = x
+    	duration = x;
+    }
+
+    MapvalueServices.setRestaurant = function(x){
+        restaurant = x;
     }
     
     MapvalueServices.getgresID = function(){
@@ -26,6 +31,10 @@ angular.module('Mapvalue',[]).factory('MapvalueServices', [function () {
 
     MapvalueServices.getDuration = function(){
     	return duration;
+    }
+
+    MapvalueServices.getRestaurant = function(){
+        return restaurant;
     }
 
 
