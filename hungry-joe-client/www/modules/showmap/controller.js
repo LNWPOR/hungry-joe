@@ -178,6 +178,7 @@ angular.module('Showmap',[])
                duration = response.routes[0].legs[0].duration.text;
                     MapvalueServices.setDistance(distance);
                     MapvalueServices.setDuration(duration);
+
             }
           });
             infowindow.setContent("");
@@ -210,6 +211,7 @@ angular.module('Showmap',[])
                     infowindow.setContent(pop_up);
                 }
                 MapvalueServices.setGresID(place.place_id);
+                MapvalueServices.setRestaurant(results);
                 var ResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id)
                 ResPromise.$promise.then(function(data){
                     if(!data.hasOwnProperty('gres_id')){
