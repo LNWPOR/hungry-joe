@@ -15,9 +15,9 @@
 		  			<input type="radio" id="star2" value="0.4" ng-model="RestaurantCtrl.rate"><label for="star2">2 stars</label>
 	    			<input type="radio" id="star1" value="0.2" ng-model="RestaurantCtrl.rate"><label for="star1">1 star</label>
 				</div>
-				<div class="show_detail"> <h5>Rating  : {{RestaurantCtrl.rating}}</h5></div>
-		  		<div class="show_detail"> <h5>Distance  : {{RestaurantCtrl.distance}}</h5> </div>
-		  		<div class="show_detail"> <h5>Estimate time  : {{RestaurantCtrl.duration}}</h5> </div>
+				<div class="show_detail"> <h5 style="color:#383838 ;">Rating  : {{RestaurantCtrl.rating}}</h5></div>
+		  		<div class="show_detail"> <h5 style="color:#383838;">Distance  : {{RestaurantCtrl.distance}}</h5> </div>
+		  		<div class="show_detail"> <h5 style="color:#383838;">Estimate time  : {{RestaurantCtrl.duration}}</h5> </div>
 	  		<!-- </div> -->
 		</div>
 		
@@ -25,7 +25,7 @@
 		<div class="content_box rectcor">
 			<div class="commentDisplay">
 				<ul ng-if="RestaurantCtrl.showComment">
-					<li ng-repeat="comment in RestaurantCtrl.comments" style="border-radius:5px; margin-bottom:1px; background-color:#F8F8F8;">
+					<li ng-repeat="comment in RestaurantCtrl.comments" style="border-radius:5px; margin-bottom:2px;padding-left:2px; background-color:#F8F8F8;text-shadow: none;">
 						{{comment.username}} : {{comment.description}}
 					</li>
 				</ul>
