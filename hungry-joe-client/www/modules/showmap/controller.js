@@ -164,6 +164,7 @@ angular.module('Showmap',[])
 
           // click mark to pop up the detail window
           google.maps.event.addListener(marker, 'click', function() {
+
              var request = {
               origin: origin,
               destination: place.geometry.location,
@@ -182,24 +183,29 @@ angular.module('Showmap',[])
             infowindow.setContent("");
             infowindow.open(map, this);
             service_places.getDetails({placeId: place.place_id}, function(place, status) {
+
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                     var pop_up;
                     if(results == 'KFC'){
-                        pop_up = '<div><img src="./img/KFC_icon.png" alt="KFC" style="width:15px;height:15px;"> </img>';
+                        pop_up = '<div><img src="./img/KFC_icon.png" alt="KFC" style="width:15px;height:15px;"> </img>' + '<a href="#/restaurant">go to restaurant page</a></div>'+
+                    place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>" + '<div><a href="https://www.kfc.co.th/#!/home">link web</a></div>'+
+                    "<div>tel: <a href='tel://1150'>1150</a></div>";
                     }
                     else if(results == 'McDonald'){
-                        pop_up = '<div><img src="./img/McDonald_icon.png" alt="McDonald" style="width:15px;height:15px;"> </img>';
+                        pop_up = '<div><img src="./img/McDonald_icon.png" alt="McDonald" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                    place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>" + '<div><a href="http://mcdelivery.mcthai.co.th/#!/home">link web</a></div>'+
+                    "<div>tel: <a href='tel://1711'>1711</a></div>";;
                     }
                     else if(results == 'PizzaHut'){
-                        pop_up = '<div><img src="./img/PizzaHut_icon.png" alt="PizzaHut" style="width:15px;height:15px;"> </img>';
+                        pop_up = '<div><img src="./img/PizzaHut_icon.png" alt="PizzaHut" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                    place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>" + '<div><a href="https://www.pizzahut.co.th/#!/home">link web</a></div>'+
+                    "<div>tel: <a href='tel://1150'>1150</a></div>";;
                     }
                     else if(results == 'PizzaCompany'){
-                        pop_up = '<div><img src="./img/PizzaCompany_icon.png" alt="PizzaCompany" style="width:15px;height:15px;"> </img>';
+                        pop_up = '<div><img src="./img/PizzaCompany_icon.png" alt="PizzaCompany" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                    place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>" + '<div><a href="https://www.1112.com/#!/home">link web</a></div>'+
+                    "<div>tel: <a href='tel://1122'>1122</a></div>";;
                     }
-                    pop_up += '<a href="#/restaurant">go to restaurant page</a></div>'+
-                    place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>" +
-                    '<div><a href="https://www.kfc.co.th/#!/home">link web</a></div>'+
-                    "<div>tel: <a href='tel://1150'>1150</a></div>";
 
                     infowindow.setContent(pop_up);
                 }
