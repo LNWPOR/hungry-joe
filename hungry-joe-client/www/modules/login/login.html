@@ -8,29 +8,33 @@
 		</div>
 	</div>
 
-		<div ng-if="!LoginCtrl.registerFormIsActive" class="login rectcor">
-		  <form ng-submit="LoginCtrl.login()">
-
-		  	<div class="list">
-			  <label class="item item-input">
-			    <input type="text" name="username" placeholder="Username" ng-model="LoginCtrl.loginForm.username"required>
-			  </label>
-			  <label class="item item-input">
-			    <input type="password" name="password" placeholder="Password" ng-model="LoginCtrl.loginForm.password" required>
-			  </label>
+		 <div ng-if="!LoginCtrl.getUserStatus()">
+			<div ng-if="!LoginCtrl.registerFormIsActive" class="login rectcor">
+		
+		 	 <form ng-submit="LoginCtrl.login()">
+		 	
+		 		<div class="list">
+		 				  <label class="item item-input">
+		 				    <input type="text" name="username" placeholder="Username" ng-model="LoginCtrl.loginForm.username"required>
+		 				  </label>
+		 				  <label class="item item-input">
+		 				    <input type="password" name="password" placeholder="Password" ng-model="LoginCtrl.loginForm.password" required>
+		 				  </label>
+		 				</div>
+		 	
+		 	  <div>
+		 	      <button type="submit" ng-disabled="LoginCtrl.disabled" class="button button-small button-positive Loginbut">Sign in</button>
+		 	  </div>
+		 	
+		 	  <button ng-click='LoginCtrl.showRegisterForm()' class="button button-small button-balanced Reg">Sign up</button>
+		 	
+		 	</form>
 			</div>
-
-		    <div>
-		        <button type="submit" ng-disabled="LoginCtrl.disabled" class="button button-small button-positive Loginbut">Sign in</button>
-		    </div>
-
-		    <button ng-click='LoginCtrl.showRegisterForm()' class="button button-small button-balanced Reg">Sign up</button>
-
-		  </form>
 		</div>
 
-		<div ng-show = "LoginCtrl.getUserStatus()">
-			<button ng-show = "LoginCtrl.getUserStatus()" ng-click='LoginCtrl.logout()' id="Logoutbut">Sign out</button>
+		<div ng-if="LoginCtrl.getUserStatus()">
+			<a href="#/home"><button class="button button-small button-positive">HOME</button></a>
+			<button ng-click="LoginCtrl.logout()" class="button button-small button-assertive">Logout</button>
 		</div>
 
 		<div ng-if="LoginCtrl.registerFormIsActive" class="rectcor">
