@@ -13,17 +13,17 @@ angular.module('Restaurant',[])
 	//get restaurant
 
 	var restaurant = MapvalueServices.getRestaurant();
-	console.log(restaurant)
 	if(restaurant == 'KFC')
-		vm.url_restaurant = "http://it.opinionspost.com/wp-content/uploads/2014/11/kfc_350_100912015132.jpg";
+		vm.restmp = "KFC-logo.jpg";
 	else if(restaurant == 'McDonald')
-		vm.url_restaurant = "";
+		vm.restmp = "MC-logo.png";
 	else if(restaurant == 'PizzaHut')
-		vm.url_restaurant = "";
+		vm.restmp = "pizzahut-logo.jpg";
 	else if(restaurant == 'PizzaCompany')
-		vm.url_restaurant = "";
+		vm.restmp = "pizzacompany-logo.jpeg";
 
-
+	// src="./img/KFC_icon.png"
+	vm.url_restaurant ="./img/" + vm.restmp;
 
 
 
