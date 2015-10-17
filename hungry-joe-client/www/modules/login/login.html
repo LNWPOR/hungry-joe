@@ -33,22 +33,33 @@
 			<button ng-show = "LoginCtrl.getUserStatus()" ng-click='LoginCtrl.logout()' id="Logoutbut">Sign out</button>
 		</div>
 
-		<div ng-if="LoginCtrl.registerFormIsActive">
-		  <h1>Register</h2>
+		<div ng-if="LoginCtrl.registerFormIsActive" class="rectcor">
+		  <h1 class="reg_reg">Register</h2>
 		  <form ng-submit="LoginCtrl.register()">
 		    <div>
-		      <label>Username</label>
-		      <input type="text" name="username" ng-model="LoginCtrl.registerForm.username" required>
+		  	  <div class="reg_text">
+		      	<label >Username:</label>
+		      </div>
+		      <div class="reg_user">
+		      	<input type="text" name="username" placeholder="Username" ng-model="LoginCtrl.registerForm.username" required >
+		      </div>
 		    </div>
 		    <div>
-		      <label>Password</label>
-		        <input type="password" name="password" ng-model="LoginCtrl.registerForm.password" required>
+		      <div class="reg_text">
+		      	<label>Password:</label>
 		      </div>
-		      <div>
-		        <button type="submit" ng-disabled="LoginCtrl.disabled">Submit</button>
+		      <div class="reg_user">
+		       	<input type="password" name="password" placeholder="Password" ng-model="LoginCtrl.registerForm.password" required>
 		      </div>
+		    </div>
 
-		      <button ng-click="LoginCtrl.hideRegisterForm()">Cancel</button>
+		    <div class="reg_but">
+		      	<button class="button button-small button-balanced Reg" type="submit" ng-disabled="LoginCtrl.disabled">Submit</button>
+		    </div>
+		    <div class="reg_but">
+		    	<button class="button button-small button-assertive Reg" ng-click="LoginCtrl.hideRegisterForm()">Cancel</button>
+			</div>	
+
 		  </form>
 		</div>
 

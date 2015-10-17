@@ -15,21 +15,15 @@
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0066FF', endColorstr='#00FFFF',GradientType=0 ); /* IE6-9 */
 }
 
-#name{
-	width: 50%;
-	height:auto;
-	/*margin-left: 13%;*/
-	margin-bottom: 5%;
-
-}
-
 .rectcor {
     border-radius: 25px;
     border: 1px solid #E8E8E8 ;
     padding: 20px; 
     width: 75%;
-    height: 35%;
+    height: auto;
     background-color: white;
+    margin:auto;
+    text-shadow: 2px 2px 4px white, 0 0 1px grey, 0 0 5px black;
 }
 
 .login{
@@ -60,6 +54,42 @@
 	font-family: play;
 	font-weight: bold;
 
+}
+
+.reg_user{
+	display: block;
+	background-color: white;
+	border:1px solid lightgrey;
+	width: 100%;
+	height: auto;
+	margin: auto;
+	padding-left:10%;
+
+}
+
+.reg_but{
+	display: inline-block;
+	border: none;
+	width: 30%;
+	height: auto;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.reg_text{
+	width: 30%;
+	font-weight: bold;
+	font-family: play;
+	margin: 10px;
+	padding-left:2%;
+	text-align: left;
+	border-radius: 25px;
+}
+
+.reg_reg{
+	color: grey;
+	font-family: play;
+	border-bottom: 1px solid lightgrey;
 }
 
 .Hungryjoe{
