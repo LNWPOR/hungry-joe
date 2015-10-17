@@ -173,8 +173,10 @@ angular.module('Showmap',[])
           directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
               directionsDisplay.setDirections(response);
-                MapvalueServices.setDistance(response.routes[0].legs[0].distance.text);
-                MapvalueServices.setDuration(response.routes[0].legs[0].duration.text);
+               distance = response.routes[0].legs[0].distance.text;
+               duration = response.routes[0].legs[0].duration.text;
+                    MapvalueServices.setDistance(distance);
+                    MapvalueServices.setDuration(duration);
             }
           });
 
@@ -189,9 +191,7 @@ angular.module('Showmap',[])
 
                     infowindow.setContent(pop_up);
                 }
-
                 MapvalueServices.setGresID(place.place_id);
-
                 var ResPromise = RestaurantListsServices.getRestaurantByGresID(place.place_id)
                 ResPromise.$promise.then(function(data){
                     if(!data.hasOwnProperty('gres_id')){
