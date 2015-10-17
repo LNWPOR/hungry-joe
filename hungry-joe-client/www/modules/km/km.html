@@ -1,4 +1,4 @@
-<ion-view title="KM" id="bg" style="text-align: center;">
+<ion-view title="Search places" id="bg" style="text-align: center;">
   <ion-content class="has-header">
 	
     <img src="./img/KMradius.png" alt="kmpic" id="KM_pic">
@@ -9,9 +9,9 @@
       <div class="list">
 
 
-          <label class="item item-input item-select" style="border:1px solid grey;">
-              <div class="input-label">
-                select distance
+          <label class="item item-input item-select" style="border:1px solid grey;border-radius:6px;">
+              <div class="input-label" style="color:#707070;" >
+                Select distance:
               </div>
             <select name="mySelect" ng-model="KmCtrl.kmsearch">
               
@@ -28,9 +28,9 @@
     </div>
 
       </div>
-      <div class="col">
+      <div class="col" >
       
-          <a href="#/showmap" ng-click="KmCtrl.Set()"><button class="button icon ion-search"></button></a>
+          <a href="#/showmap" ng-click="KmCtrl.Set()"><button class="button icon ion-search" style="border:1px solid grey;border-radius:6px;color:#FF9933;"></button></a>
 
       </div>
     </div>

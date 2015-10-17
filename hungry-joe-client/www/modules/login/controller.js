@@ -4,11 +4,14 @@ angular.module('Login',[])
   var vm = this;
   
   vm.registerFormIsActive = false;
+  vm.spinnerIsActive = false;
   vm.showRegisterForm = function(){
     vm.registerFormIsActive = true;
+    vm.errorMessage = false;
   }
   vm.hideRegisterForm = function(){
     vm.registerFormIsActive = false;
+    vm.errorMessage = false;
   }
 
   vm.getUserStatus = function(){
@@ -19,7 +22,8 @@ angular.module('Login',[])
     // initial values
     vm.error = false;
     vm.disabled = true;
-
+    vm.spinnerIsActive = true;
+    vm.errorMessage = false;
     // call login from service
     UsersServices.login(vm.loginForm.username, vm.loginForm.password)
       // handle success
@@ -27,6 +31,7 @@ angular.module('Login',[])
         $location.path('/home');
         vm.disabled = false;
         vm.loginForm = {};
+        vm.spinnerIsActive = false;
       })
       // handle error
       .catch(function () {
@@ -34,6 +39,7 @@ angular.module('Login',[])
         vm.errorMessage = "Invalid username and/or password";
         vm.disabled = false;
         vm.loginForm = {};
+        vm.spinnerIsActive = false;
       });
   };  
   
@@ -53,7 +59,8 @@ angular.module('Login',[])
     // initial values
     vm.error = false;
     vm.disabled = true;
-
+    vm.spinnerIsActive = true;
+    vm.errorMessage = false;
     // call register from service
     UsersServices.register(vm.registerForm.username, vm.registerForm.password)
       // handle success
@@ -62,13 +69,16 @@ angular.module('Login',[])
         vm.disabled = false;
         vm.registerForm = {};
         vm.hideRegisterForm();
+        vm.spinnerIsActive = false;
       })
       // handle error
       .catch(function () {
         vm.error = true;
-        vm.errorMessage = "Something went wrong!";
+        vm.errorMessage = "Username already exists.";
+        // vm.errorMessage = "Something went wrong!";
         vm.disabled = false;
         vm.registerForm = {};
+        vm.spinnerIsActive = false;
       });
   };
 
