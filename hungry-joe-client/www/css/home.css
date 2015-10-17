@@ -68,16 +68,22 @@
   
   -webkit-transition: all 0.1s;
   -moz-transition: all 0.1s;
+  -ms-transition: all 0.1s;
+  -o-transition: all 0.1s;
   transition: all 0.1s;
   
   -webkit-box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
-        -moz-box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
-        box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
+  -moz-box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
+  -ms-box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
+  -o-box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
+  box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
 }
 
 .push_button:active{
     -webkit-box-shadow: 0px 2px 1px #003366;
     -moz-box-shadow: 0px 2px 1px #003366;
+    -ms-box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
+    -o-box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
     box-shadow: 0px 2px 1px #003366;
     position:relative;
     bottom:5px;
