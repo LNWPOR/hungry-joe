@@ -42,6 +42,8 @@ angular.module('Restaurant',[])
 		CommentsServices.addComments(vm.description,vm.res._id,currentUsername);
 		SocketServices.emit('sendComment',vm.description,vm.res._id,currentUsername);
 		vm.description = '';
+		var element = document.getElementById("commentDisplay");
+		element.scrollTop = element.scrollHeight;
 	}
 	SocketServices.on('getComment',function(description,res_id,username){
 		var tmpComment = {"description":description,"res_id":res_id,"username":username};

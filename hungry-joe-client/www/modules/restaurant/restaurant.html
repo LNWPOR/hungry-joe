@@ -8,6 +8,7 @@
 
 	  			<div class="col">
 
+
 	  			<h5 id="showrate">rating  : {{RestaurantCtrl.rating}}</h5>
 
 					<div class="rating" ng-if="RestaurantCtrl.showRatingButton" ng-click="RestaurantCtrl.upRate()">
@@ -26,7 +27,7 @@
 		
 
 		<div id="commentBox" class="usercomment rectcor">
-			<div id="commentDisplay">
+			<div id="commentDisplay" style="background-color : red;">
 				<ul ng-if="RestaurantCtrl.showComment">
 					<li ng-repeat="comment in RestaurantCtrl.comments">
 						{{comment.username}} : {{comment.description}}

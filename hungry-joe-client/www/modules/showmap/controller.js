@@ -160,6 +160,7 @@ angular.module('Showmap',[])
             position: place.geometry.location,
             icon: "./img/" + results + "_icon.png",
             title: results
+
           });
 
           // click mark to pop up the detail window
@@ -200,8 +201,6 @@ angular.module('Showmap',[])
                 })
             });
             infowindow.open(map, this);
-
-            console.log(place.name);
 
           });
         }
