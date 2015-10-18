@@ -19,7 +19,13 @@
       ng-repeat = "temp in SearchCtrl.result"
       ng-show = "SearchCtrl.search"
       ng-model="temp.checked"
-      ng-checked="temp.checked; SearchCtrl.check_status()">
+      ng-checked="temp.checked; SearchCtrl.check_status()"
+      style="width:90%;margin:10px auto;height:auto;border-radius:30px;
+      -webkit-box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
+      -moz-box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
+      -ms-box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
+      -o-box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;
+      box-shadow: 0px 9px 6px #003366, 0px 2px 2px white;">
       {{temp.name}}
     </ion-checkbox>
   </ion-content>

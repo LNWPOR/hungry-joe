@@ -12,12 +12,10 @@
 .my_position{
 	border-radius: 5px;
 	border:none;
-	position: absolute;
-	width: 33px;
-	height: 25px;
-	bottom: 130px;
-	right: 10px;
-	z-index: +1;
+	position: relative;
+	bottom: 25%;
+	float: right;
+	right: 2%;
 	background-color: white;
 }
 
