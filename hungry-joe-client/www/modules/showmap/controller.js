@@ -20,6 +20,9 @@ angular.module('Showmap',[])
 
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
+        var trafficLayer = new google.maps.TrafficLayer();
+  		trafficLayer.setMap(map);
+
         var origin;
 
         var service_places = new google.maps.places.PlacesService(map);
