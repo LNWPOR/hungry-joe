@@ -1,15 +1,21 @@
 <ion-view view-title="Showmap">
 	<ion-content class="has-header">
 		<ion-pane>
-	      <ion-content>
+	      	<ion-content>
+	      	<select name="mySelect" ng-model="ShowmapCtrl.selectedMode">              
+	                <option value="DRIVING">Driving</option>
+	                <option value="WALKING">Walking</option>
+            	</select>
 	   
-	           <div id="map" data-tap-disabled="true" ></div>
+	          	<div id="map" data-tap-disabled="true" ></div>
 
-	           <button id = "go_mypos" ng-click='ShowmapCtrl.go_Mypos()' class="my_position button button-small">
+	            <button id = "go_mypos" ng-click='ShowmapCtrl.go_Mypos()' class="my_position button button-small">
 				  <img src="./img/my_pos.png" alt ="mypos" style="height:20px;width:20px;"></img>
 				</button>
+				
+				
 
-	      </ion-content>
+	      	</ion-content>
 	    </ion-pane>
 	</ion-content>
 </ion-view>

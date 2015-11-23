@@ -5,6 +5,7 @@ angular.module('Showmap',[])
     var search = [];
     var from;
     var ResID;
+    vm.selectedMode = "DRIVING";
 
     // set default map
     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -168,18 +169,18 @@ angular.module('Showmap',[])
 
           // click mark to pop up the detail window
           google.maps.event.addListener(marker, 'click', function() {
-
-             var request = {
+            
+            var request = {
               origin: origin,
               destination: place.geometry.location,
               durationInTraffic: false,
-              travelMode: google.maps.TravelMode.DRIVING
-          };
+              travelMode: google.maps.TravelMode[vm.selectedMode]
+          	};
           directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
-             // directionsDisplay.setDirections(response);
-               distance = response.routes[0].legs[0].distance.text;
-               duration = response.routes[0].legs[0].duration.text;
+             	directionsDisplay.setDirections(response);
+               	distance = response.routes[0].legs[0].distance.text;
+               	duration = response.routes[0].legs[0].duration.text;
                     MapvalueServices.setDistance(distance);
                     MapvalueServices.setDuration(duration);
 
