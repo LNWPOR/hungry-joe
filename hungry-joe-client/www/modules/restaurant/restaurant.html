@@ -24,19 +24,17 @@
 
 		</div>
 		
-
+		<ion-scroll direction="y" style="width: 100%; height: 200%" overflow-scroll="true">
 		<div class="content_box rectcor">
+		<!-- <ion-scroll direction="y" style="width: 100%; height: 100%" overflow-scroll="true"> -->
 			<div class="commentDisplay">
-
-				<ul ng-if="RestaurantCtrl.showComment">
-					<li ng-repeat="comment in RestaurantCtrl.comments" style="border-radius:5px; margin-bottom:2px;padding-left:2px; background-color:#F8F8F8;text-shadow: none;">
-						{{comment.username}} : {{comment.description}}
-					</li>
-				</ul>
+					<ul ng-if="RestaurantCtrl.showComment">
+						<li ng-repeat="comment in RestaurantCtrl.comments" style="border-radius:5px; margin-bottom:2px;padding-left:2px; background-color:#F8F8F8;text-shadow: none;">
+							{{comment.username}} : {{comment.description}}
+						</li>
+					</ul>
 			</div>
-		
-
-			<!-- <div> -->
+		<!-- </ion-scroll> -->
 				
 
 				<div>
@@ -51,10 +49,10 @@
 	  				</div>
 
 				</div>
-			
-			<!-- </div> -->
 
 		</div>
+		</ion-scroll>
+
 
 
 	</ion-content>
