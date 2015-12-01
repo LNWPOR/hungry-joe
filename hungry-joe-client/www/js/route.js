@@ -31,7 +31,32 @@ angular.module('HungryJoe')
     url: '/restaurant',
     templateUrl: 'modules/restaurant/restaurant.html',
     controller: 'RestaurantController as RestaurantCtrl'
-  });
+  })
+  .state('restaurant.info', {
+    url: '/info',
+    views: {
+      'tab-info': {
+        templateUrl: 'modules/restaurant-info/restaurant-info.html'
+      }
+    }
+  })
+  .state('restaurant.comment', {
+    url: '/comment',
+    views: {
+      'tab-comment': {
+        templateUrl: 'modules/restaurant-comment/restaurant-comment.html'
+      }
+    }
+  })
+  .state('restaurant.order', {
+    url: '/order',
+    views: {
+      'tab-order': {
+        templateUrl: 'modules/restaurant-order/restaurant-order.html'
+      }
+    }
+  })
+
 
   $urlRouterProvider.otherwise('/login');
 

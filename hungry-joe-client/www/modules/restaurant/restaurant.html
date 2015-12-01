@@ -1,6 +1,6 @@
-<ion-view view-title="Restaurant" id="bg">
+<ion-view view-title="Restaurant" >
 
-	<ion-content class="has-header">
+<!-- 	<ion-content class="has-header">
 	<div style="text-align:center;">
 		<img class="restaurantImage" src= {{RestaurantCtrl.url_restaurant}}>
 	</div>
@@ -26,7 +26,6 @@
 		
 		<ion-scroll direction="y" style="width: 100%; height: 200%" overflow-scroll="true">
 		<div class="content_box rectcor">
-		<!-- <ion-scroll direction="y" style="width: 100%; height: 100%" overflow-scroll="true"> -->
 			<div class="commentDisplay">
 					<ul ng-if="RestaurantCtrl.showComment">
 						<li ng-repeat="comment in RestaurantCtrl.comments" style="border-radius:5px; margin-bottom:2px;padding-left:2px; background-color:#F8F8F8;text-shadow: none;">
@@ -34,7 +33,6 @@
 						</li>
 					</ul>
 			</div>
-		<!-- </ion-scroll> -->
 				
 
 				<div>
@@ -55,6 +53,28 @@
 
 
 
-	</ion-content>
+	</ion-content> -->
+
+
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+
+  <!-- Info Tab -->
+  <ion-tab title="Info" icon-off="ion-information-circled" icon-on="ion-information-circled" href="#/restaurant/info">
+    <ion-nav-view name="tab-info"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Comment Tab -->
+  <ion-tab title="Comment" icon-off="ion-compose" icon-on="ion-compose" href="#/restaurant/comment">
+    <ion-nav-view name="tab-comment"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Order Tab -->
+  <ion-tab title="Order" icon-off="ion-ios-telephone" icon-on="ion-ios-telephone" href="#/restaurant/order">
+    <ion-nav-view name="tab-order"></ion-nav-view>
+  </ion-tab>
+
+
+</ion-tabs>
+
 </ion-view>
 

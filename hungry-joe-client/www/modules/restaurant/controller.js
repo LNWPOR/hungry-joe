@@ -53,7 +53,7 @@ angular.module('Restaurant',[])
 		commentsPromise.$promise.then(function(commentData){
 			vm.comments = commentData;
 			vm.showComment = true;
-			console.log(commentData);
+			// console.log(commentData);
 		});
 		//get Rating
 		var ratingPromise = RatingServices.getRestaurantRating(vm.res._id);
@@ -69,7 +69,7 @@ angular.module('Restaurant',[])
 		});
 	});
 
-	console.log(vm.showRatingButton);
+	// console.log(vm.showRatingButton);
 
 	//add new Comment Realtime
 	vm.addNewComment = function(){
@@ -77,7 +77,7 @@ angular.module('Restaurant',[])
 		SocketServices.emit('sendComment',vm.description,vm.res._id,currentUsername);
 		vm.description = '';
 		var element = document.getElementById("commentDisplay");
-		element.scrollTop = element.scrollHeight;
+		// element.scrollTop = element.scrollHeight;
 	}
 	SocketServices.on('getComment',function(description,res_id,username){
 		var tmpComment = {"description":description,"res_id":res_id,"username":username};
