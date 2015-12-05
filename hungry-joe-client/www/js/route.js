@@ -56,6 +56,11 @@ angular.module('HungryJoe')
       }
     }
   })
+  .state('signup', {
+    url: '/signup',
+    templateUrl: 'modules/regis/signup.html',
+    controller: 'SignupController as SignupCtrl'
+  })
 
 
   $urlRouterProvider.otherwise('/login');
