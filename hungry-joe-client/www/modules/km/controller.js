@@ -8,6 +8,7 @@ angular.module('Km',[])
 	 }
 
 	 vm.Set = function(){
+	 	console.log("sent complete");
 	 	KmradiusServices.setRad(vm.kmsearch);
 	 }
 

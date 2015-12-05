@@ -5,6 +5,9 @@ angular.module('Showmap',[])
     var search = [];
     var from;
     var ResID;
+    var showResImage;
+
+    vm.showResImage = "./img/joe.png";
 
     // set default map
     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -175,11 +178,10 @@ angular.module('Showmap',[])
           directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
              // directionsDisplay.setDirections(response);
-               distance = response.routes[0].legs[0].distance.text;
-               duration = response.routes[0].legs[0].duration.text;
-                    MapvalueServices.setDistance(distance);
-                    MapvalueServices.setDuration(duration);
-
+               vm.distance = response.routes[0].legs[0].distance.text;
+               vm.duration = response.routes[0].legs[0].duration.text;
+                    MapvalueServices.setDistance(vm.distance);
+                    MapvalueServices.setDuration(vm.duration);
             }
           });
             infowindow.setContent("");
@@ -191,21 +193,29 @@ angular.module('Showmap',[])
                     if(results == 'KFC'){
                         pop_up = '<div><img src="./img/KFC_icon.png" alt="KFC" style="width:15px;height:15px;"> </img>' + '<a href="#/restaurant">go to restaurant page</a></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
+                    vm.reslogo = "KFC-logo.jpg";
                     }
                     else if(results == 'McDonald'){
                         pop_up = '<div><img src="./img/McDonald_icon.png" alt="McDonald" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
+                     vm.reslogo = "MC-logo.png";
                     }
                     else if(results == 'PizzaHut'){
                         pop_up = '<div><img src="./img/PizzaHut_icon.png" alt="PizzaHut" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
+                    vm.reslogo = "pizzahut-logo.jpg";
                     }
                     else if(results == 'PizzaCompany'){
                         pop_up = '<div><img src="./img/PizzaCompany_icon.png" alt="PizzaCompany" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
+                    vm.reslogo = "pizzacompany-logo.jpeg";
                     }
+                    vm.resname = place.name;
+
+                    vm.showResImage = "./img/" + vm.reslogo;
 
                     infowindow.setContent(pop_up);
+                    
                 }
                 MapvalueServices.setGresID(place.place_id);
                 MapvalueServices.setRestaurant(results);
@@ -217,6 +227,7 @@ angular.module('Showmap',[])
                 })
             });
             infowindow.open(map, this);
+
 
           });
         }
