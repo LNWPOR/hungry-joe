@@ -1,11 +1,13 @@
 angular.module('Showmap',[])
-.controller('ShowmapController', ['$ionicLoading','KmradiusServices','RestaurantListsServices','MapvalueServices', function($ionicLoading,KmradiusServices,RestaurantListsServices,MapvalueServices){
+.controller('ShowmapController', ['$ionicLoading','KmradiusServices','RestaurantListsServices','MapvalueServices','$scope', function($ionicLoading,KmradiusServices,RestaurantListsServices,MapvalueServices,$scope){
 	var vm = this;
     var kmRad;
     var search = [];
     var from;
     var ResID;
-    vm.selectedMode = "DRIVING";
+    var showResImage;
+
+    vm.showResImage = "./img/joe.png";
 
     // set default map
     var myLatlng = new google.maps.LatLng(37.3000, -120.4833);
@@ -16,13 +18,28 @@ angular.module('Showmap',[])
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
+    //checkbox
+        vm.checkBoxDrive = function(){
+            vm.checkwalk = false;
+            vm.selectedMode = "DRIVING";
+        }
+
+         vm.checkBoxWalk = function(){
+              vm.checkdrive = false;
+              vm.selectedMode = "WALKING";
+         }         
+
+
     // init google map
     google.maps.event.addDomListenerOnce(window, 'click', function() {
+
+        vm.selectedMode = "DRIVING";
+        vm.checkdrive = true;
 
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
         var trafficLayer = new google.maps.TrafficLayer();
-  		trafficLayer.setMap(map);
+        trafficLayer.setMap(map);
 
         var origin;
 
@@ -30,7 +47,7 @@ angular.module('Showmap',[])
         var infowindow = new google.maps.InfoWindow(); 
         var directionsDisplay = new google.maps.DirectionsRenderer({
             map: map,
-            polylineOptions: { strokeColor: "Black" },
+            polylineOptions: { strokeColor: '#000066' },
             suppressMarkers : true 
           });
         var directionsService = new google.maps.DirectionsService();
@@ -52,6 +69,51 @@ angular.module('Showmap',[])
                 infowindow.open(map, this);
           });
         });
+
+
+        // $scope.showtheDir = function(){
+        //     console.log("helloscope");
+        //     $scope.request = {
+        //          origin: vm.placeorigin,
+        //          destination: vm.placelocation,
+        //          durationInTraffic: false,
+        //          travelMode: google.maps.TravelMode[vm.selectedMode]
+        //      };
+        //      directionsService.route($scope.request, function(response, status) {
+        //       if (status == google.maps.DirectionsStatus.OK) {
+        //             directionsDisplay.setDirections(response);
+        //             $scope.distance = response.routes[0].legs[0].distance.text;
+        //             $scope.duration = response.routes[0].legs[0].duration.text;
+        //             MapvalueServices.setDistance(vm.distance);
+        //             MapvalueServices.setDuration(vm.duration);
+        //       }
+        //      });
+        // }
+
+        // $scope.$watch('distance',function(n,o){
+        //         $scope.distance = n;
+        //         // $scope.duration = n;
+        //     },true)
+
+        vm.showtheDir = function(){
+             var request = {
+                 origin: vm.placeorigin,
+                 destination: vm.placelocation,
+                 durationInTraffic: false,
+                 travelMode: google.maps.TravelMode[vm.selectedMode]
+             };
+             directionsService.route(request, function(response, status) {
+              if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    vm.distance = response.routes[0].legs[0].distance.text;
+                    vm.duration = response.routes[0].legs[0].duration.text;
+                    MapvalueServices.setDistance(vm.distance);
+                    MapvalueServices.setDuration(vm.duration);
+                    console.log(vm.distance);
+                    console.log(vm.duration);
+              }
+             });
+        }
 
         //button to go current position
         vm.go_Mypos = function(){
@@ -169,21 +231,23 @@ angular.module('Showmap',[])
 
           // click mark to pop up the detail window
           google.maps.event.addListener(marker, 'click', function() {
-            
-            var request = {
+
+             var request = {
               origin: origin,
               destination: place.geometry.location,
               durationInTraffic: false,
               travelMode: google.maps.TravelMode[vm.selectedMode]
-          	};
+          };
+          vm.placeorigin = origin;
+          vm.placelocation = place.geometry.location;
+
           directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
-             	directionsDisplay.setDirections(response);
-               	distance = response.routes[0].legs[0].distance.text;
-               	duration = response.routes[0].legs[0].duration.text;
-                    MapvalueServices.setDistance(distance);
-                    MapvalueServices.setDuration(duration);
-
+               directionsDisplay.setDirections(response);
+               vm.distance = response.routes[0].legs[0].distance.text;
+               vm.duration = response.routes[0].legs[0].duration.text;
+                    MapvalueServices.setDistance(vm.distance);
+                    MapvalueServices.setDuration(vm.duration);
             }
           });
             infowindow.setContent("");
@@ -195,21 +259,29 @@ angular.module('Showmap',[])
                     if(results == 'KFC'){
                         pop_up = '<div><img src="./img/KFC_icon.png" alt="KFC" style="width:15px;height:15px;"> </img>' + '<a href="#/restaurant">go to restaurant page</a></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
+                    vm.reslogo = "KFC-logo.jpg";
                     }
                     else if(results == 'McDonald'){
                         pop_up = '<div><img src="./img/McDonald_icon.png" alt="McDonald" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
+                     vm.reslogo = "MC-logo.png";
                     }
                     else if(results == 'PizzaHut'){
                         pop_up = '<div><img src="./img/PizzaHut_icon.png" alt="PizzaHut" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
+                    vm.reslogo = "pizzahut-logo.jpg";
                     }
                     else if(results == 'PizzaCompany'){
                         pop_up = '<div><img src="./img/PizzaCompany_icon.png" alt="PizzaCompany" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
+                    vm.reslogo = "pizzacompany-logo.jpeg";
                     }
+                    vm.resname = place.name;
+
+                    vm.showResImage = "./img/" + vm.reslogo;
 
                     infowindow.setContent(pop_up);
+                    
                 }
                 MapvalueServices.setGresID(place.place_id);
                 MapvalueServices.setRestaurant(results);
@@ -221,6 +293,7 @@ angular.module('Showmap',[])
                 })
             });
             infowindow.open(map, this);
+
 
           });
         }

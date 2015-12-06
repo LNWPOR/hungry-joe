@@ -1,9 +1,9 @@
 #bg{
 	
-background: #E6DADA; /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #E6DADA , #274046); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #E6DADA , #274046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+background: #2c3e50; /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #2c3e50 , #3498db); /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #2c3e50 , #3498db); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ }
 
 .rectcor {
     border-radius: 25px;
@@ -16,70 +16,13 @@ background: linear-gradient(to top, #E6DADA , #274046); /* W3C, IE 10+/ Edge, Fi
     text-shadow: 2px 2px 4px white, 0 0 1px grey, 0 0 5px black;
 }
 
-.login{
-	margin: auto;
-	padding: auto;
-    width: 75%;
-    height: auto;
-}
-
-#logo_pic{
-	height: auto;
-	width: 50%;
-	margin-top: 10%;
-	margin-bottom: 5%;
-}
 
 .Loginbut{
+	margin-top: 10%;
 	height: auto;
 	width: 100%;
 	font-family: play;
 	font-weight: bold;
-}
-
-.Reg{
-	height: auto;
-	width: 100%;
-	margin-top: 5%;
-	font-family: play;
-	font-weight: bold;
-
-}
-
-.reg_user{
-	display: block;
-	background-color: white;
-	border:1px solid lightgrey;
-	width: 100%;
-	height: auto;
-	margin: auto;
-	padding-left:10%;
-
-}
-
-.reg_but{
-	display: inline-block;
-	border: none;
-	width: 30%;
-	height: auto;
-	margin-top: 10px;
-	margin-right: 10px;
-}
-
-.reg_text{
-	width: 30%;
-	font-weight: bold;
-	font-family: play;
-	margin: 10px;
-	padding-left:2%;
-	text-align: left;
-	border-radius: 25px;
-}
-
-.reg_reg{
-	color: grey;
-	font-family: play;
-	border-bottom: 1px solid lightgrey;
 }
 
 .Hungryjoe{

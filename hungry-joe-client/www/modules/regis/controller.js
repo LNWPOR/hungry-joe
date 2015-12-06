@@ -2,37 +2,34 @@ angular.module('Signup',[])
 .controller('SignupController', ['UsersServices','$location', function(UsersServices,$location){
   var vm = this;
 
-  vm.registerFormIsActive = false;
   vm.spinnerIsActive = false;
-  vm.showRegisterForm = function(){
-    vm.registerFormIsActive = true;
-    vm.errorMessage = false;
-  }
-  vm.hideRegisterForm = function(){
-    vm.registerFormIsActive = false;
-    vm.errorMessage = false;
-  }
+  vm.errorMessage = false;
+  // vm.showRegisterForm = function(){
+  //   vm.registerFormIsActive = true;
+  //   vm.errorMessage = false;
+  // }
+  // vm.hideRegisterForm = function(){
+  //   vm.registerFormIsActive = false;
+  //   vm.errorMessage = false;
+  // }
 
   vm.getUserStatus = function(){
     return UsersServices.getUserStatus();
   }
 
-  vm.logout = function () {
+  vm.cancle = function () {
 
     // console.log(UsersServices.getUserStatus());
 
     // call logout from service
-    UsersServices.logout()
-      .then(function () {
-        $location.path('/login');
-      });
+    $location.path('/login');
   };
 
   vm.register = function () {
 
     // initial values
     vm.error = false;
-    vm.disabled = true;
+    vm.disabled = false;
     vm.spinnerIsActive = true;
     vm.errorMessage = false;
     // call register from service
@@ -42,7 +39,7 @@ angular.module('Signup',[])
         $location.path('/login');
         vm.disabled = false;
         vm.registerForm = {};
-        vm.hideRegisterForm();
+        // vm.hideRegisterForm();
         vm.spinnerIsActive = false;
       })
       // handle error
@@ -55,6 +52,4 @@ angular.module('Signup',[])
         vm.spinnerIsActive = false;
       });
   };
-
-  vm.res = MenuListsServices.getMenuLists();
 }]);

@@ -1,21 +1,21 @@
 <ion-view title="Signup">
-    <ion-content padding="'true'" scroll="false" class="has-header" ng-if="SigninCtrl.registerFormIsActive">
-        <form class="list" ng-submit="SigninCtrl.register()">
+    <ion-content padding="'true'" scroll="false" class="has-header">
+        <form class="list" ng-submit="SignupCtrl.register()">
             <ion-list>
                 <label class="item item-input">
                     <!-- <span class="input-label">Username</span> -->
-                    <input type="text" name="username" placeholder="Username" ng-model="SigninCtrl.registerForm.username" required >
+                    <input type="text" name="username" placeholder="Username" ng-model="SignupCtrl.registerForm.username" required >
                 </label>
                 <label class="item item-input">
                     <!-- <span class="input-label">Password</span> -->
-                    <input type="password" name="password" placeholder="Password" ng-model="SigninCtrl.registerForm.password" required>
+                    <input type="password" name="password" placeholder="Password" ng-model="SignupCtrl.registerForm.password" required>
                 </label>
             </ion-list>
             <div>
-            	<button class="button button-small button-balanced " type="submit" ng-disabled="SigninCtrl.disabled">Submit</button>
+            	<button class="button button-block button-balanced " type="submit" ng-disabled="SignupCtrl.disabled">Submit</button>
             </div>
             <div>
-            	<button class="button button-small button-assertive Reg" ng-click="SigninCtrl.hideRegisterForm()">Cancel</button>
+            	<button class="button button-block button-assertive " ng-click="SignupCtrl.cancle()">Cancel</button>
             </div>
         </form>
     </ion-content>

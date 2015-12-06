@@ -1,21 +1,46 @@
+<ion-view title="Map">
+    <ion-content padding="'true'" class="has-header">
+        <!-- <img src="img/RjlIHfHTJeIkCSzxtJK3_shutterstock_147558014.jpg" width="100%" height="auto" style="width: 100%; height: auto;"> -->
+        <div id="map" data-tap-disabled="true" style="height:50%;width:auto;"></div>
+
+
+	           <button id = "go_mypos" ng-click='ShowmapCtrl.go_Mypos()' class="my_position button button-small">
+				  <img src="./img/my_pos.png" alt ="mypos" style="height:20px;width:20px;"></img>
+				</button>
+        <div class="list card" style="width:100%;">
+            <div class="item item-divider">{{ShowmapCtrl.resname}}</div>
+            <div class="item item-body">
+                <ion-list>
+                    <ion-item menu-close="" class="item-thumbnail-left">
+                        <img src={{ShowmapCtrl.showResImage}}>
+                        <p>Distance : {{ShowmapCtrl.distance}}</p>
+                        <p>Duration : {{ShowmapCtrl.duration}}</p>
+                    </ion-item>
+                    <ion-checkbox id="drive" ng-model="ShowmapCtrl.checkdrive" ng-click="ShowmapCtrl.checkBoxDrive(); ShowmapCtrl.showtheDir();" ng-disabled="ShowmapCtrl.checkdrive">Driving</ion-checkbox>
+                    <ion-checkbox id="walk" ng-model="ShowmapCtrl.checkwalk" ng-click="ShowmapCtrl.checkBoxWalk(); ShowmapCtrl.showtheDir();" ng-disabled="ShowmapCtrl.checkwalk">Walking</ion-checkbox>
+                </ion-list>
+            </div>
+        </div>
+        <a menu-close="" href="#/restaurant" class="button button-calm button-block ">Go !</a>
+    </ion-content>
+</ion-view>
+
+<!-- ============================================
+
 <ion-view view-title="Showmap">
 	<ion-content class="has-header">
 		<ion-pane>
-	      	<ion-content>
-	      	<select name="mySelect" ng-model="ShowmapCtrl.selectedMode">              
-	                <option value="DRIVING">Driving</option>
-	                <option value="WALKING">Walking</option>
-            	</select>
+	      <ion-content>
 	   
-	          	<div id="map" data-tap-disabled="true" ></div>
+	           <div id="map" data-tap-disabled="true" ></div>
 
-	            <button id = "go_mypos" ng-click='ShowmapCtrl.go_Mypos()' class="my_position button button-small">
+	           <button id = "go_mypos" ng-click='ShowmapCtrl.go_Mypos()' class="my_position button button-small">
 				  <img src="./img/my_pos.png" alt ="mypos" style="height:20px;width:20px;"></img>
 				</button>
-				
-				
 
-	      	</ion-content>
+	      </ion-content>
 	    </ion-pane>
 	</ion-content>
 </ion-view>
+
+============================================ -->
