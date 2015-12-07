@@ -3,6 +3,7 @@
         <!-- <img src="img/RjlIHfHTJeIkCSzxtJK3_shutterstock_147558014.jpg" width="100%" height="auto" style="width: 100%; height: auto;"> -->
         <div id="map" data-tap-disabled="true" style="height:50%;width:auto;"></div>
 
+
 	           <button id = "go_mypos" ng-click='ShowmapCtrl.go_Mypos()' class="my_position button button-small">
 				  <img src="./img/my_pos.png" alt ="mypos" style="height:20px;width:20px;"></img>
 				</button>
@@ -12,12 +13,11 @@
                 <ion-list>
                     <ion-item menu-close="" class="item-thumbnail-left">
                         <img src={{ShowmapCtrl.showResImage}}>
-                        <!-- <h2>Detail</h2> -->
-                        <p>Distane : {{ShowmapCtrl.distance}}</p>
+                        <p>Distance : {{ShowmapCtrl.distance}}</p>
                         <p>Duration : {{ShowmapCtrl.duration}}</p>
                     </ion-item>
-                    <ion-checkbox>Driving</ion-checkbox>
-                    <ion-checkbox>Walking</ion-checkbox>
+                    <ion-radio id="drive" ng-model="checkdrive" ng-click="ShowmapCtrl.checkBoxDrive(); ShowmapCtrl.showtheDir();">Driving</ion-radio>
+                    <ion-radio id="walk" ng-click="ShowmapCtrl.checkBoxWalk(); ShowmapCtrl.showtheDir();" >Walking</ion-radio>
                 </ion-list>
             </div>
         </div>
@@ -25,22 +25,3 @@
     </ion-content>
 </ion-view>
 
-<!-- ============================================
-
-<ion-view view-title="Showmap">
-	<ion-content class="has-header">
-		<ion-pane>
-	      <ion-content>
-	   
-	           <div id="map" data-tap-disabled="true" ></div>
-
-	           <button id = "go_mypos" ng-click='ShowmapCtrl.go_Mypos()' class="my_position button button-small">
-				  <img src="./img/my_pos.png" alt ="mypos" style="height:20px;width:20px;"></img>
-				</button>
-
-	      </ion-content>
-	    </ion-pane>
-	</ion-content>
-</ion-view>
-
-============================================ -->

@@ -1,5 +1,5 @@
 angular.module('Showmap',[])
-.controller('ShowmapController', ['$ionicLoading','KmradiusServices','RestaurantListsServices','MapvalueServices', function($ionicLoading,KmradiusServices,RestaurantListsServices,MapvalueServices){
+.controller('ShowmapController', ['$ionicLoading','KmradiusServices','RestaurantListsServices','MapvalueServices','$scope', function($ionicLoading,KmradiusServices,RestaurantListsServices,MapvalueServices,$scope){
 	var vm = this;
     var kmRad;
     var search = [];
@@ -18,10 +18,33 @@ angular.module('Showmap',[])
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
+    //checkbox
+        vm.checkBoxDrive = function(){
+            vm.selectedMode = "DRIVING";
+            vm.distance = vm.distancedrive;
+            vm.duration = vm.durationdrive;
+            vm.sentdistance = vm.distancedrive;
+            vm.sentduration = vm.durationdrive;
+        }
+
+         vm.checkBoxWalk = function(){
+              vm.selectedMode = "WALKING";
+              vm.distance = vm.distancewalk;
+              vm.duration = vm.durationwalk;
+              vm.sentdistance = vm.distancewalk;
+              vm.sentduration = vm.durationwalk;
+         }         
+
+
     // init google map
     google.maps.event.addDomListenerOnce(window, 'click', function() {
 
+        vm.selectedMode = "DRIVING";
+
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        var trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(map);
 
         var origin;
 
@@ -29,7 +52,7 @@ angular.module('Showmap',[])
         var infowindow = new google.maps.InfoWindow(); 
         var directionsDisplay = new google.maps.DirectionsRenderer({
             map: map,
-            polylineOptions: { strokeColor: "Black" },
+            polylineOptions: { strokeColor: '#000066' },
             suppressMarkers : true 
           });
         var directionsService = new google.maps.DirectionsService();
@@ -50,7 +73,23 @@ angular.module('Showmap',[])
                 infowindow.setContent("<h style='color:pink'>หิว</h>");
                 infowindow.open(map, this);
           });
-        });
+        });    
+
+        vm.showtheDir = function(){
+             var request = {
+                 origin: vm.placeorigin,
+                 destination: vm.placelocation,
+                 durationInTraffic: false,
+                 travelMode: google.maps.TravelMode[vm.selectedMode]
+             };
+             directionsService.route(request, function(response, status) {
+              if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    MapvalueServices.setDistance(vm.sentdistance);
+                    MapvalueServices.setDuration(vm.sentduration);
+              }
+             });
+        }
 
         //button to go current position
         vm.go_Mypos = function(){
@@ -173,15 +212,42 @@ angular.module('Showmap',[])
               origin: origin,
               destination: place.geometry.location,
               durationInTraffic: false,
-              travelMode: google.maps.TravelMode.DRIVING
+              travelMode: google.maps.TravelMode[vm.selectedMode]
           };
+          vm.placeorigin = origin;
+          vm.placelocation = place.geometry.location;
+
           directionsService.route(request, function(response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
-             // directionsDisplay.setDirections(response);
+               directionsDisplay.setDirections(response);
                vm.distance = response.routes[0].legs[0].distance.text;
                vm.duration = response.routes[0].legs[0].duration.text;
                     MapvalueServices.setDistance(vm.distance);
                     MapvalueServices.setDuration(vm.duration);
+            }
+          });
+            var requestwalk = {
+              origin: origin,
+              destination: place.geometry.location,
+              durationInTraffic: false,
+              travelMode: google.maps.TravelMode.WALKING
+          };
+          directionsService.route(requestwalk, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+               vm.distancewalk = response.routes[0].legs[0].distance.text;
+               vm.durationwalk = response.routes[0].legs[0].duration.text;
+            }
+          });
+          var requestdrive = {
+              origin: origin,
+              destination: place.geometry.location,
+              durationInTraffic: false,
+              travelMode: google.maps.TravelMode.DRIVING
+          };
+          directionsService.route(requestdrive, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+               vm.distancedrive = response.routes[0].legs[0].distance.text;
+               vm.durationdrive = response.routes[0].legs[0].duration.text;
             }
           });
             infowindow.setContent("");
