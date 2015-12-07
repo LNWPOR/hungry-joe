@@ -1,83 +1,33 @@
-<ion-view view-title="Login" hide-nav-bar="true" id="bg">
-	<ion-content style="text-align: center;">
-	<div>
-		<img src="./img/joe.png" alt="logo" id="logo_pic"></img>
-		<!-- <img src="./img/logoname.png" alt="name" id = "name"> -->
-		<div style="margin-bottom:10%;">
-		<h1 class="Hungryjoe">Hungryjoe</h1>
+<ion-view title="Login" hide-nav-bar="true" id="bg">
+	<ion-content padding="'true'" class="has-header" style="text-align: center;" >
+		<div style="margin-bottom:15%;margin-top:10%;">
+			<img src="./img/joe.png" alt="logo" style="width:50%;height:auto;"></img>
 		</div>
-	</div>
-		
+
 		<div ng-if="LoginCtrl.spinnerIsActive">
 			<ion-spinner class="android"></ion-spinner>
-			<br>
-			<br>
 		</div>
 		<div ng-if="LoginCtrl.errorMessage" style="color:red">
 			{{LoginCtrl.errorMessage}}
-			<br>
-			<br>
 		</div>
-		
 
 		<div ng-if="!LoginCtrl.getUserStatus()">
-			<div ng-if="!LoginCtrl.registerFormIsActive" class="login rectcor">
-		
-		 	 <form ng-submit="LoginCtrl.login()">
-		 	
-		 		<div class="list">
-		 				  <label class="item item-input">
-		 				    <input type="text" name="username" placeholder="Username" ng-model="LoginCtrl.loginForm.username"required>
-		 				  </label>
-		 				  <label class="item item-input">
+			<div ng-if="!LoginCtrl.registerFormIsActive" style="width:75%;margin:auto;">
+				<form class="list" ng-submit="LoginCtrl.login()">
+		            <ion-list list-inset>
+		                <label class="item item-input">
+		                    <input type="text" name="username" placeholder="Username" ng-model="LoginCtrl.loginForm.username" required>
+		                </label>
+		                <label class="item item-input">
 		 				    <input type="password" name="password" placeholder="Password" ng-model="LoginCtrl.loginForm.password" required>
-		 				  </label>
-		 				</div>
-		 	
-		 	  <div>
-		 	      <button type="submit" ng-disabled="LoginCtrl.disabled" class="button button-small button-positive Loginbut">Sign in</button>
-		 	  </div>
-		 	
-		 	  <button ng-click='LoginCtrl.showRegisterForm()' class="button button-small button-balanced Reg" ng-disabled="LoginCtrl.disabled">Sign up</button>
-		 	
-		 	</form>
+		 				</label>
+		            </ion-list>
+
+		            <button type="submit" ng-disabled="LoginCtrl.disabled" class="button button-small button-calm Loginbut">Sign in</button>
+
+		            <a menu-close="" ng-disabled="LoginCtrl.disabled" href="#/signup"class="button button-balanced button-clear button-block ">Or create an account</a>
+	        	</form>
 			</div>
 		</div>
-
-		<div ng-if="LoginCtrl.getUserStatus()">
-			<a href="#/home"><button class="button button-small button-positive">HOME</button></a>
-			<button ng-click="LoginCtrl.logout()" class="button button-small button-assertive">Logout</button>
-		</div>
-
-		<div ng-if="LoginCtrl.registerFormIsActive" class="rectcor">
-		  <h1 class="reg_reg">Register</h2>
-		  <form ng-submit="LoginCtrl.register()">
-		    <div>
-		  	  <div class="reg_text">
-		      	<label >Username:</label>
-		      </div>
-		      <div class="reg_user">
-		      	<input type="text" name="username" placeholder="Username" ng-model="LoginCtrl.registerForm.username" required >
-		      </div>
-		    </div>
-		    <div>
-		      <div class="reg_text">
-		      	<label>Password:</label>
-		      </div>
-		      <div class="reg_user">
-		       	<input type="password" name="password" placeholder="Password" ng-model="LoginCtrl.registerForm.password" required>
-		      </div>
-		    </div>
-
-		    <div class="reg_but">
-		      	<button class="button button-small button-balanced Reg" type="submit" ng-disabled="LoginCtrl.disabled">Submit</button>
-		    </div>
-		    <div class="reg_but">
-		    	<button class="button button-small button-assertive Reg" ng-click="LoginCtrl.hideRegisterForm()">Cancel</button>
-			</div>	
-
-		  </form>
-		</div>
-
 	</ion-content>
 </ion-view>

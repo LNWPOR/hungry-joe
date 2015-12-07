@@ -20,6 +20,7 @@ angular.module('Showmap',[])
 
     //checkbox
         vm.checkBoxDrive = function(){
+
             vm.selectedMode = "DRIVING";
             vm.distance = vm.distancedrive;
             vm.duration = vm.durationdrive;
@@ -87,6 +88,51 @@ angular.module('Showmap',[])
                     directionsDisplay.setDirections(response);
                     MapvalueServices.setDistance(vm.sentdistance);
                     MapvalueServices.setDuration(vm.sentduration);
+              }
+             });
+        }
+
+
+        // $scope.showtheDir = function(){
+        //     console.log("helloscope");
+        //     $scope.request = {
+        //          origin: vm.placeorigin,
+        //          destination: vm.placelocation,
+        //          durationInTraffic: false,
+        //          travelMode: google.maps.TravelMode[vm.selectedMode]
+        //      };
+        //      directionsService.route($scope.request, function(response, status) {
+        //       if (status == google.maps.DirectionsStatus.OK) {
+        //             directionsDisplay.setDirections(response);
+        //             $scope.distance = response.routes[0].legs[0].distance.text;
+        //             $scope.duration = response.routes[0].legs[0].duration.text;
+        //             MapvalueServices.setDistance(vm.distance);
+        //             MapvalueServices.setDuration(vm.duration);
+        //       }
+        //      });
+        // }
+
+        // $scope.$watch('distance',function(n,o){
+        //         $scope.distance = n;
+        //         // $scope.duration = n;
+        //     },true)
+
+        vm.showtheDir = function(){
+             var request = {
+                 origin: vm.placeorigin,
+                 destination: vm.placelocation,
+                 durationInTraffic: false,
+                 travelMode: google.maps.TravelMode[vm.selectedMode]
+             };
+             directionsService.route(request, function(response, status) {
+              if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    vm.distance = response.routes[0].legs[0].distance.text;
+                    vm.duration = response.routes[0].legs[0].duration.text;
+                    MapvalueServices.setDistance(vm.distance);
+                    MapvalueServices.setDuration(vm.duration);
+                    console.log(vm.distance);
+                    console.log(vm.duration);
               }
              });
         }
@@ -224,6 +270,7 @@ angular.module('Showmap',[])
                vm.duration = response.routes[0].legs[0].duration.text;
                     MapvalueServices.setDistance(vm.distance);
                     MapvalueServices.setDuration(vm.duration);
+<<<<<<< HEAD
             }
           });
             var requestwalk = {

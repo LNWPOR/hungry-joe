@@ -54,33 +54,5 @@ angular.module('Login',[])
       });
   };
 
-  vm.register = function () {
-
-    // initial values
-    vm.error = false;
-    vm.disabled = true;
-    vm.spinnerIsActive = true;
-    vm.errorMessage = false;
-    // call register from service
-    UsersServices.register(vm.registerForm.username, vm.registerForm.password)
-      // handle success
-      .then(function () {
-        $location.path('/login');
-        vm.disabled = false;
-        vm.registerForm = {};
-        vm.hideRegisterForm();
-        vm.spinnerIsActive = false;
-      })
-      // handle error
-      .catch(function () {
-        vm.error = true;
-        vm.errorMessage = "Username already exists.";
-        // vm.errorMessage = "Something went wrong!";
-        vm.disabled = false;
-        vm.registerForm = {};
-        vm.spinnerIsActive = false;
-      });
-  };
-
   vm.res = MenuListsServices.getMenuLists();
 }]);
