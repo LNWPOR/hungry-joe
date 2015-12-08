@@ -270,7 +270,6 @@ angular.module('Showmap',[])
                vm.duration = response.routes[0].legs[0].duration.text;
                     MapvalueServices.setDistance(vm.distance);
                     MapvalueServices.setDuration(vm.duration);
-<<<<<<< HEAD
             }
           });
             var requestwalk = {

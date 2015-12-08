@@ -16,8 +16,8 @@
                         <p>Distance : {{ShowmapCtrl.distance}}</p>
                         <p>Duration : {{ShowmapCtrl.duration}}</p>
                     </ion-item>
-                    <ion-checkbox id="drive" ng-model="ShowmapCtrl.checkdrive" ng-click="ShowmapCtrl.checkBoxDrive(); ShowmapCtrl.showtheDir();" ng-disabled="ShowmapCtrl.checkdrive">Driving</ion-checkbox>
-                    <ion-checkbox id="walk" ng-model="ShowmapCtrl.checkwalk" ng-click="ShowmapCtrl.checkBoxWalk(); ShowmapCtrl.showtheDir();" ng-disabled="ShowmapCtrl.checkwalk">Walking</ion-checkbox>
+                    <ion-radio id="drive" ng-model="ShowmapCtrl.checkdrive" ng-click="ShowmapCtrl.checkBoxDrive(); ShowmapCtrl.showtheDir();" ng-disabled="ShowmapCtrl.checkdrive">Driving</ion-radio>
+                    <ion-radio id="walk" ng-click="ShowmapCtrl.checkBoxWalk(); ShowmapCtrl.showtheDir();" ng-disabled="ShowmapCtrl.checkwalk">Walking</ion-radio>
                 </ion-list>
             </div>
         </div>
