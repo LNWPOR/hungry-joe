@@ -3,16 +3,16 @@ angular.module('Login',[])
 
   var vm = this;
   
-  vm.registerFormIsActive = false;
+  // vm.registerFormIsActive = false;
   vm.spinnerIsActive = false;
-  vm.showRegisterForm = function(){
-    vm.registerFormIsActive = true;
-    vm.errorMessage = false;
-  }
-  vm.hideRegisterForm = function(){
-    vm.registerFormIsActive = false;
-    vm.errorMessage = false;
-  }
+  // vm.showRegisterForm = function(){
+  //   vm.registerFormIsActive = true;
+  //   vm.errorMessage = false;
+  // }
+  // vm.hideRegisterForm = function(){
+  //   vm.registerFormIsActive = false;
+  //   vm.errorMessage = false;
+  // }
 
   vm.getUserStatus = function(){
     return UsersServices.getUserStatus();
