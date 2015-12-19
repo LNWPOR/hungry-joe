@@ -1,6 +1,6 @@
 angular.module('Kmradius',[]).factory('KmradiusServices', [ function () {
     var KmradiusServices = {};
-    var Rad;
+    var Rad = 2000;
     var Radtmp = 2000;
     var search = [];
     var page_from = 0;

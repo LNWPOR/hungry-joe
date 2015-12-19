@@ -63,5 +63,6 @@ angular.module('Search',[])
 			}
 		}
 		KmradiusServices.setSearch(vm.send);
+		$scope.showMapView();
 	}
 }]);

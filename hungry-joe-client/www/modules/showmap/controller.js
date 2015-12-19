@@ -1,5 +1,5 @@
 angular.module('Showmap',[])
-.controller('ShowmapController', ['$ionicLoading','KmradiusServices','RestaurantListsServices','MapvalueServices','$scope', function($ionicLoading,KmradiusServices,RestaurantListsServices,MapvalueServices,$scope){
+.controller('ShowmapController', ['$ionicLoading','KmradiusServices','RestaurantListsServices','MapvalueServices','$scope',function($ionicLoading,KmradiusServices,RestaurantListsServices,MapvalueServices,$scope){
 	var vm = this;
     var kmRad;
     var search = [];
@@ -344,5 +344,6 @@ angular.module('Showmap',[])
           });
         }
         vm.map = map;
+
     });
 }]);

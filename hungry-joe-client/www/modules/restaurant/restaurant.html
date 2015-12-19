@@ -85,10 +85,18 @@
   			</a>
 		</div>
 
-
-		<div ng-include = "'modules/restaurant-info/restaurant-info.html'" ng-show="RestaurantCtrl.infoViewIsShow"></div>
-		<div ng-include = "'modules/restaurant-comment/restaurant-comment.html'" ng-show="RestaurantCtrl.commentViewIsShow"></div>
-		<div ng-include = "'modules/restaurant-order/restaurant-order.html'" ng-show="RestaurantCtrl.orderViewIsShow"></div>
+		<div ng-show="RestaurantCtrl.infoViewIsShow">
+			<div ng-include = "'modules/restaurant-info/restaurant-info.html'"></div>
+		</div>
+		<div ng-show="RestaurantCtrl.commentViewIsShow">
+			<div ng-include = "'modules/restaurant-comment/restaurant-comment.html'"></div>
+		</div>
+		<div ng-show="RestaurantCtrl.orderViewIsShow">
+			<div ng-include = "'modules/restaurant-order/restaurant-order.html'"></div>
+		</div>
+		
+		
+		
 	</ion-content>
 
 
