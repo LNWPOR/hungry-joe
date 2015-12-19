@@ -7,17 +7,6 @@ angular.module('HungryJoe').controller('LayoutController',['UsersServices', '$lo
 	      });
 	};
 
-	vm.showResBackButton = false;
-	$rootScope.$on('$stateChangeStart', function (event, next, current) {
-		if($location.path()=='/restaurant/info'||
-		   $location.path()=='/restaurant/comment'||
-		   $location.path()=='/restaurant/order'){
-			
-			vm.showResBackButton = true;
-		}
-		else{
-			vm.showResBackButton = false;
-		}
-	});
+
 	
 }]);

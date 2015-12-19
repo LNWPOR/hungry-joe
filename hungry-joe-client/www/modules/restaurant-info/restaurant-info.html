@@ -1,22 +1,19 @@
-<ion-view view-title="Restaurant">
-  	<ion-content>
-  		<img src= {{RestaurantCtrl.url_restaurant}} alt="logo" id="logo_res"></img>
-  		<div class="rating" ng-if="RestaurantCtrl.showRatingButton" ng-click="RestaurantCtrl.upRate()">
-   			<input type="radio" id="star5" value="1" ng-model="RestaurantCtrl.rate"><label for="star5">5 stars</label>
-   			<input type="radio" id="star4" value="0.8" ng-model="RestaurantCtrl.rate"><label for="star4">4 stars</label>
-   			<input type="radio" id="star3" value="0.6" ng-model="RestaurantCtrl.rate"><label for="star3">3 stars</label>
-  			<input type="radio" id="star2" value="0.4" ng-model="RestaurantCtrl.rate"><label for="star2">2 stars</label>
-			<input type="radio" id="star1" value="0.2" ng-model="RestaurantCtrl.rate"><label for="star1">1 star</label>
-		</div>
-		<ion-list>
-	        <ion-item menu-close="">Rating : {{RestaurantCtrl.rating}}</ion-item>
-	    </ion-list>
-	    <div class="list card">
-	        <div class="item item-divider">Infomation</div>
-	        <div class="item item-body">
-	        	<h2>Name</h2>
-	        	<p>{{RestaurantCtrl.res.name}}</p>
-	        </div>
-	    </div>
-  	</ion-content>
-</ion-view>
+<img src= {{RestaurantCtrl.url_restaurant}} alt="logo" id="logo_res"></img>
+<div class="rating" ng-if="RestaurantCtrl.showRatingButton" ng-click="RestaurantCtrl.upRate()">
+	<input type="radio" id="star5" value="1" ng-model="RestaurantCtrl.rate"><label for="star5">5 stars</label>
+	<input type="radio" id="star4" value="0.8" ng-model="RestaurantCtrl.rate"><label for="star4">4 stars</label>
+	<input type="radio" id="star3" value="0.6" ng-model="RestaurantCtrl.rate"><label for="star3">3 stars</label>
+	<input type="radio" id="star2" value="0.4" ng-model="RestaurantCtrl.rate"><label for="star2">2 stars</label>
+<input type="radio" id="star1" value="0.2" ng-model="RestaurantCtrl.rate"><label for="star1">1 star</label>
+</div>
+<ion-list>
+	<ion-item menu-close="">Rating : {{RestaurantCtrl.rating}}</ion-item>
+</ion-list>
+<div class="list card">
+	<div class="item item-divider">Infomation</div>
+	<div class="item item-body">
+		<h2>Name</h2>
+		<p>{{RestaurantCtrl.res.name}}</p>
+	</div>
+</div>
+  	
