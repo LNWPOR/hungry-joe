@@ -1,4 +1,25 @@
-<ion-view title="Search places" id="bg" style="text-align: center;">
+<ion-view title="Km">
+    <ion-content padding="'true'" class="has-header" ng-click="KmCtrl.Set()">
+        <ion-list></ion-list>
+        <div class="item item-divider" style="text-align:center;">Select your distance</div>
+        <ion-list>
+            <ion-item href="#/showmap" ng-click="KmCtrl.kmsearch=200">200 m</ion-item>
+            <ion-item href="#/showmap" ng-click="KmCtrl.kmsearch=500">500 m</ion-item>
+            <ion-item href="#/showmap" ng-click="KmCtrl.kmsearch=1000">1 km</ion-item>
+            <ion-item href="#/showmap" ng-click="KmCtrl.kmsearch=2000">2 km</ion-item>
+            <ion-item href="#/showmap" ng-click="KmCtrl.kmsearch=5000">5 km</ion-item>
+            <ion-item href="#/showmap" ng-click="KmCtrl.kmsearch=7000">7 km</ion-item>
+            <ion-item href="#/showmap" ng-click="KmCtrl.kmsearch=10000">10 km</ion-item>
+        </ion-list>
+      </div>
+    </ion-content>
+    <div class="col" >
+      
+         <!--  <a href="" ng-click="KmCtrl.clickeiei()"><button class="button icon ion-search"></button></a> -->
+
+      </div>
+</ion-view>
+<!-- <ion-view title="Search places" id="bg" style="text-align: center;">
   <ion-content class="has-header">
 	
     <img src="./img/KMradius.png" alt="kmpic" id="KM_pic">
@@ -38,3 +59,4 @@
 
   </ion-content>
 </ion-view>
+ -->

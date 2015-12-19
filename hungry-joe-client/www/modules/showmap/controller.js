@@ -20,13 +20,20 @@ angular.module('Showmap',[])
 
     //checkbox
         vm.checkBoxDrive = function(){
-            vm.checkwalk = false;
+
             vm.selectedMode = "DRIVING";
+            vm.distance = vm.distancedrive;
+            vm.duration = vm.durationdrive;
+            vm.sentdistance = vm.distancedrive;
+            vm.sentduration = vm.durationdrive;
         }
 
          vm.checkBoxWalk = function(){
-              vm.checkdrive = false;
               vm.selectedMode = "WALKING";
+              vm.distance = vm.distancewalk;
+              vm.duration = vm.durationwalk;
+              vm.sentdistance = vm.distancewalk;
+              vm.sentduration = vm.durationwalk;
          }         
 
 
@@ -34,7 +41,6 @@ angular.module('Showmap',[])
     google.maps.event.addDomListenerOnce(window, 'click', function() {
 
         vm.selectedMode = "DRIVING";
-        vm.checkdrive = true;
 
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
@@ -68,7 +74,23 @@ angular.module('Showmap',[])
                 infowindow.setContent("<h style='color:pink'>หิว</h>");
                 infowindow.open(map, this);
           });
-        });
+        });    
+
+        vm.showtheDir = function(){
+             var request = {
+                 origin: vm.placeorigin,
+                 destination: vm.placelocation,
+                 durationInTraffic: false,
+                 travelMode: google.maps.TravelMode[vm.selectedMode]
+             };
+             directionsService.route(request, function(response, status) {
+              if (status == google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response);
+                    MapvalueServices.setDistance(vm.sentdistance);
+                    MapvalueServices.setDuration(vm.sentduration);
+              }
+             });
+        }
 
 
         // $scope.showtheDir = function(){
@@ -248,6 +270,30 @@ angular.module('Showmap',[])
                vm.duration = response.routes[0].legs[0].duration.text;
                     MapvalueServices.setDistance(vm.distance);
                     MapvalueServices.setDuration(vm.duration);
+            }
+          });
+            var requestwalk = {
+              origin: origin,
+              destination: place.geometry.location,
+              durationInTraffic: false,
+              travelMode: google.maps.TravelMode.WALKING
+          };
+          directionsService.route(requestwalk, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+               vm.distancewalk = response.routes[0].legs[0].distance.text;
+               vm.durationwalk = response.routes[0].legs[0].duration.text;
+            }
+          });
+          var requestdrive = {
+              origin: origin,
+              destination: place.geometry.location,
+              durationInTraffic: false,
+              travelMode: google.maps.TravelMode.DRIVING
+          };
+          directionsService.route(requestdrive, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+               vm.distancedrive = response.routes[0].legs[0].distance.text;
+               vm.durationdrive = response.routes[0].legs[0].duration.text;
             }
           });
             infowindow.setContent("");
