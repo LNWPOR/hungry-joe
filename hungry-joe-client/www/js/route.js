@@ -12,21 +12,6 @@ angular.module('HungryJoe')
     templateUrl: 'modules/home/home.html',
     controller: 'HomeController as HomeCtrl'
   })
-  .state('km', {
-    url: '/km',
-    templateUrl: 'modules/km/km.html',
-    controller: 'KmController as KmCtrl'
-  })
-  .state('search', {
-    url: '/search',
-    templateUrl: 'modules/search/search.html',
-    controller: 'SearchController as SearchCtrl'
-  })
-  .state('showmap', {
-    url: '/showmap',
-    templateUrl: 'modules/showmap/showmap.html',
-    controller: 'ShowmapController as ShowmapCtrl'
-  })
   .state('restaurant', {
     url: '/restaurant',
     templateUrl: 'modules/restaurant/restaurant.html',
@@ -37,7 +22,6 @@ angular.module('HungryJoe')
     templateUrl: 'modules/regis/signup.html',
     controller: 'SignupController as SignupCtrl'
   })
-
 
   $urlRouterProvider.otherwise('/login');
 
