@@ -101,4 +101,27 @@ angular.module('Restaurant',[])
 		}
 	});
 
+
+	vm.infoViewIsShow = true;
+	vm.commentViewIsShow = false;
+	vm.orderViewIsShow = false;
+
+	vm.showInfoView = function(){
+		vm.infoViewIsShow = true;
+		vm.commentViewIsShow = false;
+		vm.orderViewIsShow = false;
+	}
+
+	vm.showCommentView = function(){
+		vm.infoViewIsShow = false;
+		vm.commentViewIsShow = true;
+		vm.orderViewIsShow = false;
+	}
+
+	vm.showOrderView = function(){
+		vm.infoViewIsShow = false;
+		vm.commentViewIsShow = false;
+		vm.orderViewIsShow = true;
+	}
+
 }]);

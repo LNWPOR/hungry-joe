@@ -15,15 +15,42 @@
 	</ion-content>
 </ion-view>
  -->
-<ion-view title="Home" >
-    <ion-content padding="true" class="has-header" id="bg">
+<ion-view title="Home" hide-back-button="true" >
+    <ion-content  class="has-header" id="bg">
     	<!-- <div class="top_div">
     		<span class="search"></span>
     	</div> -->
-        <div ></div>
+
+        <!-- <div ></div>
         <ion-list></ion-list>
         <ion-list></ion-list>
         <a menu-close="" href="#/km" class="button button-dark button-block  icon-right ion-android-locate">Restaurant around you</a>
-        <a menu-close="" href="#/search" class="button button-dark button-block  icon-right ion-ios-search-strong">Menu</a>
+        <a menu-close="" href="#/search" class="button button-dark button-block  icon-right ion-ios-search-strong">Menu</a> -->
+
+
+        <div class="button-bar">
+            <a ng-class="{ 'button button-light': kmViewIsShow, 'button button-calm': !kmViewIsShow }" ng-click="showKmView()">
+                <i class="ion-android-locate"></i>
+            </a>
+            <a ng-class="{ 'button button-light': searchViewIsShow, 'button button-calm': !searchViewIsShow }" ng-click="showSearchView()">
+                <i class="ion-ios-search-strong"></i>
+            </a>
+        </div>
+		<div ng-if="mapViewIsShow">
+			<div ng-controller = "ShowmapController as ShowmapCtrl">
+				<div ng-include = "'modules/showmap/showmap.html'"></div>
+			</div>
+		</div>
+		<div ng-show="kmViewIsShow">
+			<div ng-controller = "KmController as KmCtrl">
+	        	<div ng-include = "'modules/km/km.html'"></div>
+			</div>
+		</div>
+		<div ng-show="searchViewIsShow">
+			<div ng-controller = "SearchController as SearchCtrl">
+				<div ng-include = "'modules/search/search.html'" ng-show="searchViewIsShow"></div>
+			</div>
+		</div>
+
     </ion-content>
 </ion-view>

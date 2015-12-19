@@ -1,5 +1,5 @@
 angular.module('Km',[])
-.controller('KmController', ['KmradiusServices',function(KmradiusServices){
+.controller('KmController', ['KmradiusServices','$scope',function(KmradiusServices,$scope){
 	var vm = this;
 	var testval;
 
@@ -7,10 +7,10 @@ angular.module('Km',[])
 	 	console.log(vm.kmsearch);
 	 }
 
-	 vm.Set = function(){
-	 	console.log("sent complete");
-	 	KmradiusServices.setRad(vm.kmsearch);
+	 vm.Set = function(km){
+	 	// console.log("sent complete"+km);
+	 	KmradiusServices.setRad(km);
+	 	$scope.showMapView();
 	 }
-
 
 }]);
