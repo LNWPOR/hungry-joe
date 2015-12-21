@@ -13,14 +13,22 @@
                 <ion-list>
                     <ion-item menu-close="" class="item-thumbnail-left">
                         <img src={{ShowmapCtrl.showResImage}}>
+                        
+                    <div class="row">
+                    <div class="col col-80">
                         <p>Distance : {{ShowmapCtrl.distance}}</p>
                         <p>Duration : {{ShowmapCtrl.duration}}</p>
+                    </div>
+                    <div class="col" style="padding-top:10%;">
+                        <a href="#/restaurant" <button class="button button-assertive icon ion-ios-cart"></button></a>
+                    </div>
+                    </div>
+
                     </ion-item>
                     <ion-radio id="drive" ng-model="ShowmapCtrl.checkdrive" ng-click="ShowmapCtrl.checkBoxDrive(); ShowmapCtrl.showtheDir();" ng-disabled="ShowmapCtrl.checkdrive">Driving</ion-radio>
                     <ion-radio id="walk" ng-click="ShowmapCtrl.checkBoxWalk(); ShowmapCtrl.showtheDir();" ng-disabled="ShowmapCtrl.checkwalk">Walking</ion-radio>
                 </ion-list>
             </div>
         </div>
-        <a menu-close="" href="#/restaurant" class="button button-calm button-block ">Go !</a>
     </ion-content>
 
