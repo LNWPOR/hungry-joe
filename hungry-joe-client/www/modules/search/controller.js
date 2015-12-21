@@ -29,6 +29,21 @@ angular.module('Search',[])
 			"name": db[3].name,
 			"food": db[3].menu,
 			"checked" : false
+		},
+		{	
+			"name": db[4].name,
+			"food": db[4].menu,
+			"checked" : false
+		},
+		{	
+			"name": db[5].name,
+			"food": db[5].menu,
+			"checked" : false
+		},
+		{	
+			"name": db[6].name,
+			"food": db[6].menu,
+			"checked" : false
 		}
 		]
 	});

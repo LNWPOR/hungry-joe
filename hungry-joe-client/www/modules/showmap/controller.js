@@ -150,7 +150,7 @@ angular.module('Showmap',[])
             kmRad = KmradiusServices.getRad();
             // set radius search
             navigator.geolocation.getCurrentPosition(function(pos) {
-                var place = ['KFC', 'McDonald', 'Pizza Hut', 'The Pizza Company']
+                var place = ['KFC', 'McDonald', 'Pizza Hut', 'The Pizza Company', 'MK', 'FUJI', 'SHABUSHI']
 
                 for(var i=0;i<place.length;i++){
                     var request = {
@@ -169,6 +169,12 @@ angular.module('Showmap',[])
                     service_places.nearbySearch(request, callback_PizzaHut);
                 else if(place[i] == 'The Pizza Company')
                     service_places.nearbySearch(request, callback_PizzaCompany);
+                else if(place[i] == 'MK')
+                    service_places.nearbySearch(request, callback_MK);
+                else if(place[i] == 'FUJI')
+                    service_places.nearbySearch(request, callback_Fuji);
+                else if(place[i] == 'SHABUSHI')
+                    service_places.nearbySearch(request, callback_Shabushi);
                 }
             });
         }
@@ -192,6 +198,13 @@ angular.module('Showmap',[])
                     service_places.nearbySearch(request, callback_PizzaHut);
                 else if(search[i] == 'The Pizza Company')
                     service_places.nearbySearch(request, callback_PizzaCompany);
+                else if(search[i] == 'MK')
+                    service_places.nearbySearch(request, callback_MK);
+                else if(search[i] == 'FUJI')
+                    service_places.nearbySearch(request, callback_Fuji);
+                else if(search[i] == 'SHABUSHI'){
+                    service_places.nearbySearch(request, callback_Shabushi);
+                  }
                 }
             });
         }
@@ -234,6 +247,39 @@ angular.module('Showmap',[])
           if (status === google.maps.places.PlacesServiceStatus.OK) {
             for (var i = 0; i < results.length; i++) {
               createMarker(results[i], 'PizzaCompany');
+            }
+          }
+            if(pagination.hasNextPage){
+                pagination.nextPage();
+            }
+        }
+        // mark place that found
+        function callback_MK(results, status, pagination) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              createMarker(results[i], 'MK');
+            }
+          }
+            if(pagination.hasNextPage){
+                pagination.nextPage();
+            }
+        }
+        // mark place that found
+        function callback_Fuji(results, status, pagination) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              createMarker(results[i], 'Fuji');
+            }
+          }
+            if(pagination.hasNextPage){
+                pagination.nextPage();
+            }
+        }
+        // mark place that found
+        function callback_Shabushi(results, status, pagination) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            for (var i = 0; i < results.length; i++) {
+              createMarker(results[i], 'Shabushi');
             }
           }
             if(pagination.hasNextPage){
@@ -321,6 +367,21 @@ angular.module('Showmap',[])
                         pop_up = '<div><img src="./img/PizzaCompany_icon.png" alt="PizzaCompany" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
                     vm.reslogo = "pizzacompany-logo.jpeg";
+                    }
+                    else if(results == 'MK'){
+                        pop_up = '<div><img src="./img/MK_icon.png" alt="MK" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                    place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
+                    vm.reslogo = "MK-logo.jpg";
+                    }
+                    else if(results == 'Fuji'){
+                        pop_up = '<div><img src="./img/Fuji_icon.png" alt="MK" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                    place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
+                    vm.reslogo = "Fuji-logo.jpg";
+                    }
+                    else if(results == 'Shabushi'){
+                        pop_up = '<div><img src="./img/Shabushi_icon.png" alt="MK" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                    place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
+                    vm.reslogo = "Shabushi-logo.jpg";
                     }
                     vm.resname = place.name;
 

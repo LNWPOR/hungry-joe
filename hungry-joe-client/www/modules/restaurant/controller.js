@@ -37,6 +37,24 @@ angular.module('Restaurant',[])
 		vm.restTeltag = 'tel://1122';
 		vm.restTel = "1122";
 	}
+	else if(restaurant == 'MK'){
+		vm.restmp = "MK-logo.jpg";
+		vm.restlink = "https://www.mkrestaurant.com/th/#!/home";
+		vm.restTeltag = 'tel://1642';
+		vm.restTel = "1642";
+	}
+	else if(restaurant == 'Fuji'){
+		vm.restmp = "Fuji-logo.jpg";
+		vm.restlink = "http://www.fuji.co.th/#!/home";
+		vm.restTeltag = 'tel://02-6363949';
+		vm.restTel = "02-6363949";
+	}
+	else if(restaurant == 'Shabushi'){
+		vm.restmp = "Shabushi-logo.jpg";
+		vm.restlink = "http://www.shabushibuffet.com/#!/home";
+		vm.restTeltag = 'tel://02-7858888';
+		vm.restTel = "02-7858888";
+	}
 
 	vm.url_restaurant ="./img/" + vm.restmp;
 
