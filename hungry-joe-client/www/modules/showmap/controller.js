@@ -7,6 +7,7 @@ angular.module('Showmap',[])
     var ResID;
     var showResImage;
 
+    vm.cartbutton = true;
     vm.showResImage = "./img/joe.png";
 
     // set default map
@@ -131,8 +132,8 @@ angular.module('Showmap',[])
                     vm.duration = response.routes[0].legs[0].duration.text;
                     MapvalueServices.setDistance(vm.distance);
                     MapvalueServices.setDuration(vm.duration);
-                    console.log(vm.distance);
-                    console.log(vm.duration);
+                    // console.log(vm.distance);
+                    // console.log(vm.duration);
               }
              });
         }
@@ -299,6 +300,8 @@ angular.module('Showmap',[])
 
           // click mark to pop up the detail window
           google.maps.event.addListener(marker, 'click', function() {
+
+            vm.cartbutton = false;
 
              var request = {
               origin: origin,

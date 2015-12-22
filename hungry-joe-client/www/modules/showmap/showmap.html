@@ -1,13 +1,13 @@
 
-    <ion-content padding="'true'" class="has-header">
+    <ion-content padding="'true'" class="has-header" scroll="false" scrollbar-y="false">
         <!-- <img src="img/RjlIHfHTJeIkCSzxtJK3_shutterstock_147558014.jpg" width="100%" height="auto" style="width: 100%; height: auto;"> -->
-        <div id="map" data-tap-disabled="true" style="height:50%;width:auto;"></div>
+        <div id="map" data-tap-disabled="true" style="height:45%;width:auto;top:5px;"></div>
 
 
 	           <!-- <button id = "go_mypos" ng-click='ShowmapCtrl.go_Mypos()' class="my_position button button-small">
 				  <img src="./img/my_pos.png" alt ="mypos" style="height:20px;width:20px;"></img>
 				</button> -->
-        <div class="list card">
+        <div class="list card" style="width:100%;bottom:20px;">
             <div class="item item-divider">{{ShowmapCtrl.resname}}</div>
             <div class="item item-body">
                 <ion-list>
@@ -20,7 +20,7 @@
                         <p>Duration : {{ShowmapCtrl.duration}}</p>
                     </div>
                     <div class="col" style="padding-top:10%;">
-                        <a href="#/restaurant" <button class="button button-assertive icon ion-ios-cart"></button></a>
+                        <a href="#/restaurant" ng-disabled="ShowmapCtrl.cartbutton" <button class="button button-assertive icon ion-ios-cart"></button></a>
                     </div>
                     </div>
 
