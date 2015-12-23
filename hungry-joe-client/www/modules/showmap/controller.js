@@ -352,37 +352,37 @@ angular.module('Showmap',[])
                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                     var pop_up;
                     if(results == 'KFC'){
-                        pop_up = '<div><img src="./img/KFC_icon.png" alt="KFC" style="width:15px;height:15px;"> </img>' + '<a href="#/restaurant">go to restaurant page</a></div>'+
+                        pop_up = '<img src="./img/KFC_icon.png" alt="KFC" style="width:15px;height:15px;"> </img>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
                     vm.reslogo = "KFC-logo.jpg";
                     }
                     else if(results == 'McDonald'){
-                        pop_up = '<div><img src="./img/McDonald_icon.png" alt="McDonald" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                        pop_up = '<img src="./img/McDonald_icon.png" alt="McDonald" style="width:15px;height:15px;"> </img>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
                      vm.reslogo = "MC-logo.png";
                     }
                     else if(results == 'PizzaHut'){
-                        pop_up = '<div><img src="./img/PizzaHut_icon.png" alt="PizzaHut" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                        pop_up = '<img src="./img/PizzaHut_icon.png" alt="PizzaHut" style="width:15px;height:15px;"> </img>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
                     vm.reslogo = "pizzahut-logo.jpg";
                     }
                     else if(results == 'PizzaCompany'){
-                        pop_up = '<div><img src="./img/PizzaCompany_icon.png" alt="PizzaCompany" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                        pop_up = '<img src="./img/PizzaCompany_icon.png" alt="PizzaCompany" style="width:15px;height:15px;"> </img>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
                     vm.reslogo = "pizzacompany-logo.jpeg";
                     }
                     else if(results == 'MK'){
-                        pop_up = '<div><img src="./img/MK_icon.png" alt="MK" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                        pop_up = '<img src="./img/MK_icon.png" alt="MK" style="width:15px;height:15px;"> </img>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
                     vm.reslogo = "MK-logo.jpg";
                     }
                     else if(results == 'Fuji'){
-                        pop_up = '<div><img src="./img/Fuji_icon.png" alt="MK" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                        pop_up = '<img src="./img/Fuji_icon.png" alt="MK" style="width:15px;height:15px;"> </img>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
                     vm.reslogo = "Fuji-logo.jpg";
                     }
                     else if(results == 'Shabushi'){
-                        pop_up = '<div><img src="./img/Shabushi_icon.png" alt="MK" style="width:15px;height:15px;"> </img>'+ '<a href="#/restaurant">go to restaurant page</a></div>'+
+                        pop_up = '<img src="./img/Shabushi_icon.png" alt="MK" style="width:15px;height:15px;"> </img>'+
                     place.name + "<br>" +"<p>Address: "+ place.vicinity + "</p>";
                     vm.reslogo = "Shabushi-logo.jpg";
                     }
