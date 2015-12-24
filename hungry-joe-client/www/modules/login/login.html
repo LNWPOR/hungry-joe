@@ -29,5 +29,11 @@
 	        	</form>
 			</div>
 		</div>
+
+		<div ng-if="LoginCtrl.getUserStatus()">
+			<a href="#/home" class="button button-block button-positive">
+				Home
+			</a>
+		</div>
 	</ion-content>
 </ion-view>
